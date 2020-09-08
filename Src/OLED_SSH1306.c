@@ -12,7 +12,7 @@ void OLED_Init()
 {	
 	for(uint8_t i=0; i<25; i++)
 	{
-		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0X100);
+		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0x100);
 		HAL_Delay(100);
 	}
 }
@@ -20,13 +20,13 @@ void OLED_Init()
 //向OLED进行写命令操作
 void OLED_Write_Order(uint8_t Order)
 {
-	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0X100);
+	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0x100);
 }
 
 //向OLED进行写数据操作
 void OLED_Write_Data(uint8_t Data)
 {
-	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0X100);
+	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0x100);
 }
 
 //打开OLED
@@ -52,12 +52,13 @@ void OLED_Display(uint8_t String)
 }
 
 //指定位置显示字符串
-//Page_Add		页地址	范围：B0h ~ B7h
+//Page_Add		页地址
 //Column_Add	列地址	范围：00h ~ 1Fh
 void OLED_Display_String(uint8_t Page_Add, uint8_t Column_Add, char *pString, uint8_t Lingth)
 {
-	OLED_Write_Data(Page_Add);
-	OLED_Write_Data(Column_Add);
+	OLED_Write_Order(0xB0 + Page_Add);
+	OLED_Write_Order(0x00);
+	OLED_Write_Order(0x10);
 	
 	for(uint8_t j=0; j<=Lingth; j++)
 	{
