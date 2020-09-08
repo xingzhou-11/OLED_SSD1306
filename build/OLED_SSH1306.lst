@@ -1,0 +1,692 @@
+ARM GAS  /tmp/cc1oC40z.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"OLED_SSH1306.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.OLED_Init,"ax",%progbits
+  16              		.align	1
+  17              		.global	OLED_Init
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	OLED_Init:
+  24              	.LFB65:
+  25              		.file 1 "Src/OLED_SSH1306.c"
+   1:Src/OLED_SSH1306.c **** #include "OLED_SSD1306.h"
+   2:Src/OLED_SSH1306.c **** #include "ASCII_8X16.h"
+   3:Src/OLED_SSH1306.c **** 
+   4:Src/OLED_SSH1306.c **** uint8_t Init_Data[] = {
+   5:Src/OLED_SSH1306.c **** 	0xAE, 0x00, 0x10, 0x40, 0xB0, 0x81, 0xA1, 0xA6, 
+   6:Src/OLED_SSH1306.c **** 	0xA8, 0x3F, 0xC8, 0xD3, 0x00, 0xD5, 0x80, 0xD9, 
+   7:Src/OLED_SSH1306.c **** 	0xDA, 0x12, 0xDB, 0x30,	0x8D, 0x10, 0xAF
+   8:Src/OLED_SSH1306.c **** 	};
+   9:Src/OLED_SSH1306.c **** 
+  10:Src/OLED_SSH1306.c **** //OLED初始化
+  11:Src/OLED_SSH1306.c **** void OLED_Init()
+  12:Src/OLED_SSH1306.c **** {	
+  26              		.loc 1 12 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 10B5     		push	{r4, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 4, -8
+  34              		.cfi_offset 14, -4
+  35 0002 84B0     		sub	sp, sp, #16
+  36              	.LCFI1:
+  37              		.cfi_def_cfa_offset 24
+  38              	.LVL0:
+  39              	.LBB2:
+  13:Src/OLED_SSH1306.c **** 	for(uint8_t i=0; i<25; i++)
+  40              		.loc 1 13 0
+  41 0004 0024     		movs	r4, #0
+  42 0006 11E0     		b	.L2
+  43              	.LVL1:
+  44              	.L3:
+  14:Src/OLED_SSH1306.c **** 	{
+ARM GAS  /tmp/cc1oC40z.s 			page 2
+
+
+  15:Src/OLED_SSH1306.c **** 		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0X100);
+  45              		.loc 1 15 0 discriminator 3
+  46 0008 4FF48073 		mov	r3, #256
+  47 000c 0293     		str	r3, [sp, #8]
+  48 000e 0123     		movs	r3, #1
+  49 0010 0193     		str	r3, [sp, #4]
+  50 0012 084A     		ldr	r2, .L5
+  51 0014 2244     		add	r2, r2, r4
+  52 0016 0092     		str	r2, [sp]
+  53 0018 0022     		movs	r2, #0
+  54 001a 7821     		movs	r1, #120
+  55 001c 0648     		ldr	r0, .L5+4
+  56 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write
+  57              	.LVL2:
+  16:Src/OLED_SSH1306.c **** 		HAL_Delay(100);
+  58              		.loc 1 16 0 discriminator 3
+  59 0022 6420     		movs	r0, #100
+  60 0024 FFF7FEFF 		bl	HAL_Delay
+  61              	.LVL3:
+  13:Src/OLED_SSH1306.c **** 	for(uint8_t i=0; i<25; i++)
+  62              		.loc 1 13 0 discriminator 3
+  63 0028 0134     		adds	r4, r4, #1
+  64              	.LVL4:
+  65 002a E4B2     		uxtb	r4, r4
+  66              	.LVL5:
+  67              	.L2:
+  13:Src/OLED_SSH1306.c **** 	for(uint8_t i=0; i<25; i++)
+  68              		.loc 1 13 0 is_stmt 0 discriminator 1
+  69 002c 182C     		cmp	r4, #24
+  70 002e EBD9     		bls	.L3
+  71              	.LBE2:
+  17:Src/OLED_SSH1306.c **** 	}
+  18:Src/OLED_SSH1306.c **** }
+  72              		.loc 1 18 0 is_stmt 1
+  73 0030 04B0     		add	sp, sp, #16
+  74              	.LCFI2:
+  75              		.cfi_def_cfa_offset 8
+  76              		@ sp needed
+  77 0032 10BD     		pop	{r4, pc}
+  78              	.LVL6:
+  79              	.L6:
+  80              		.align	2
+  81              	.L5:
+  82 0034 00000000 		.word	.LANCHOR0
+  83 0038 00000000 		.word	hi2c1
+  84              		.cfi_endproc
+  85              	.LFE65:
+  87              		.section	.text.OLED_Write_Order,"ax",%progbits
+  88              		.align	1
+  89              		.global	OLED_Write_Order
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  93              		.fpu softvfp
+  95              	OLED_Write_Order:
+  96              	.LFB66:
+  19:Src/OLED_SSH1306.c **** 
+ARM GAS  /tmp/cc1oC40z.s 			page 3
+
+
+  20:Src/OLED_SSH1306.c **** //向OLED进行写命令操作
+  21:Src/OLED_SSH1306.c **** void OLED_Write_Order(uint8_t Order)
+  22:Src/OLED_SSH1306.c **** {
+  97              		.loc 1 22 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 8
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              	.LVL7:
+ 102 0000 00B5     		push	{lr}
+ 103              	.LCFI3:
+ 104              		.cfi_def_cfa_offset 4
+ 105              		.cfi_offset 14, -4
+ 106 0002 87B0     		sub	sp, sp, #28
+ 107              	.LCFI4:
+ 108              		.cfi_def_cfa_offset 32
+ 109 0004 06AA     		add	r2, sp, #24
+ 110 0006 02F8010D 		strb	r0, [r2, #-1]!
+  23:Src/OLED_SSH1306.c **** 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0X100);
+ 111              		.loc 1 23 0
+ 112 000a 4FF48073 		mov	r3, #256
+ 113 000e 0293     		str	r3, [sp, #8]
+ 114 0010 0123     		movs	r3, #1
+ 115 0012 0193     		str	r3, [sp, #4]
+ 116 0014 0092     		str	r2, [sp]
+ 117 0016 0022     		movs	r2, #0
+ 118 0018 7821     		movs	r1, #120
+ 119 001a 0348     		ldr	r0, .L9
+ 120              	.LVL8:
+ 121 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 122              	.LVL9:
+  24:Src/OLED_SSH1306.c **** }
+ 123              		.loc 1 24 0
+ 124 0020 07B0     		add	sp, sp, #28
+ 125              	.LCFI5:
+ 126              		.cfi_def_cfa_offset 4
+ 127              		@ sp needed
+ 128 0022 5DF804FB 		ldr	pc, [sp], #4
+ 129              	.L10:
+ 130 0026 00BF     		.align	2
+ 131              	.L9:
+ 132 0028 00000000 		.word	hi2c1
+ 133              		.cfi_endproc
+ 134              	.LFE66:
+ 136              		.section	.text.OLED_Write_Data,"ax",%progbits
+ 137              		.align	1
+ 138              		.global	OLED_Write_Data
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 142              		.fpu softvfp
+ 144              	OLED_Write_Data:
+ 145              	.LFB67:
+  25:Src/OLED_SSH1306.c **** 
+  26:Src/OLED_SSH1306.c **** //向OLED进行写数据操作
+  27:Src/OLED_SSH1306.c **** void OLED_Write_Data(uint8_t Data)
+  28:Src/OLED_SSH1306.c **** {
+ 146              		.loc 1 28 0
+ARM GAS  /tmp/cc1oC40z.s 			page 4
+
+
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 8
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150              	.LVL10:
+ 151 0000 00B5     		push	{lr}
+ 152              	.LCFI6:
+ 153              		.cfi_def_cfa_offset 4
+ 154              		.cfi_offset 14, -4
+ 155 0002 87B0     		sub	sp, sp, #28
+ 156              	.LCFI7:
+ 157              		.cfi_def_cfa_offset 32
+ 158 0004 06AA     		add	r2, sp, #24
+ 159 0006 02F8010D 		strb	r0, [r2, #-1]!
+  29:Src/OLED_SSH1306.c **** 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0X100);
+ 160              		.loc 1 29 0
+ 161 000a 4FF48073 		mov	r3, #256
+ 162 000e 0293     		str	r3, [sp, #8]
+ 163 0010 0123     		movs	r3, #1
+ 164 0012 0193     		str	r3, [sp, #4]
+ 165 0014 0092     		str	r2, [sp]
+ 166 0016 4022     		movs	r2, #64
+ 167 0018 7821     		movs	r1, #120
+ 168 001a 0348     		ldr	r0, .L13
+ 169              	.LVL11:
+ 170 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 171              	.LVL12:
+  30:Src/OLED_SSH1306.c **** }
+ 172              		.loc 1 30 0
+ 173 0020 07B0     		add	sp, sp, #28
+ 174              	.LCFI8:
+ 175              		.cfi_def_cfa_offset 4
+ 176              		@ sp needed
+ 177 0022 5DF804FB 		ldr	pc, [sp], #4
+ 178              	.L14:
+ 179 0026 00BF     		.align	2
+ 180              	.L13:
+ 181 0028 00000000 		.word	hi2c1
+ 182              		.cfi_endproc
+ 183              	.LFE67:
+ 185              		.section	.text.OLED_open,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	OLED_open
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu softvfp
+ 193              	OLED_open:
+ 194              	.LFB68:
+  31:Src/OLED_SSH1306.c **** 
+  32:Src/OLED_SSH1306.c **** //打开OLED
+  33:Src/OLED_SSH1306.c **** void OLED_open()
+  34:Src/OLED_SSH1306.c **** {
+ 195              		.loc 1 34 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 08B5     		push	{r3, lr}
+ARM GAS  /tmp/cc1oC40z.s 			page 5
+
+
+ 200              	.LCFI9:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 3, -8
+ 203              		.cfi_offset 14, -4
+  35:Src/OLED_SSH1306.c **** 	OLED_Write_Order(0xA4);
+ 204              		.loc 1 35 0
+ 205 0002 A420     		movs	r0, #164
+ 206 0004 FFF7FEFF 		bl	OLED_Write_Order
+ 207              	.LVL13:
+  36:Src/OLED_SSH1306.c **** 	OLED_Write_Order(0xAE);
+ 208              		.loc 1 36 0
+ 209 0008 AE20     		movs	r0, #174
+ 210 000a FFF7FEFF 		bl	OLED_Write_Order
+ 211              	.LVL14:
+ 212 000e 08BD     		pop	{r3, pc}
+ 213              		.cfi_endproc
+ 214              	.LFE68:
+ 216              		.section	.text.OLED_close,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	OLED_close
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 222              		.fpu softvfp
+ 224              	OLED_close:
+ 225              	.LFB69:
+  37:Src/OLED_SSH1306.c **** }
+  38:Src/OLED_SSH1306.c **** 
+  39:Src/OLED_SSH1306.c **** //关闭OLED
+  40:Src/OLED_SSH1306.c **** void OLED_close()
+  41:Src/OLED_SSH1306.c **** {
+ 226              		.loc 1 41 0
+ 227              		.cfi_startproc
+ 228              		@ args = 0, pretend = 0, frame = 0
+ 229              		@ frame_needed = 0, uses_anonymous_args = 0
+ 230 0000 08B5     		push	{r3, lr}
+ 231              	.LCFI10:
+ 232              		.cfi_def_cfa_offset 8
+ 233              		.cfi_offset 3, -8
+ 234              		.cfi_offset 14, -4
+  42:Src/OLED_SSH1306.c **** 	OLED_Write_Order(0xA5);
+ 235              		.loc 1 42 0
+ 236 0002 A520     		movs	r0, #165
+ 237 0004 FFF7FEFF 		bl	OLED_Write_Order
+ 238              	.LVL15:
+  43:Src/OLED_SSH1306.c **** 	OLED_Write_Order(0xAF);
+ 239              		.loc 1 43 0
+ 240 0008 AF20     		movs	r0, #175
+ 241 000a FFF7FEFF 		bl	OLED_Write_Order
+ 242              	.LVL16:
+ 243 000e 08BD     		pop	{r3, pc}
+ 244              		.cfi_endproc
+ 245              	.LFE69:
+ 247              		.section	.text.OLED_Display,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	OLED_Display
+ 250              		.syntax unified
+ARM GAS  /tmp/cc1oC40z.s 			page 6
+
+
+ 251              		.thumb
+ 252              		.thumb_func
+ 253              		.fpu softvfp
+ 255              	OLED_Display:
+ 256              	.LFB70:
+  44:Src/OLED_SSH1306.c **** }
+  45:Src/OLED_SSH1306.c **** 
+  46:Src/OLED_SSH1306.c **** //指定位置显示字符
+  47:Src/OLED_SSH1306.c **** void OLED_Display(uint8_t String)
+  48:Src/OLED_SSH1306.c **** {
+ 257              		.loc 1 48 0
+ 258              		.cfi_startproc
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261              	.LVL17:
+ 262 0000 38B5     		push	{r3, r4, r5, lr}
+ 263              	.LCFI11:
+ 264              		.cfi_def_cfa_offset 16
+ 265              		.cfi_offset 3, -16
+ 266              		.cfi_offset 4, -12
+ 267              		.cfi_offset 5, -8
+ 268              		.cfi_offset 14, -4
+  49:Src/OLED_SSH1306.c **** 	uint8_t  Data = String - '0';
+ 269              		.loc 1 49 0
+ 270 0002 3038     		subs	r0, r0, #48
+ 271              	.LVL18:
+ 272 0004 C5B2     		uxtb	r5, r0
+ 273              	.LVL19:
+ 274              	.LBB3:
+  50:Src/OLED_SSH1306.c **** 	for(uint8_t i=0; i<16; i++)
+ 275              		.loc 1 50 0
+ 276 0006 0024     		movs	r4, #0
+ 277 0008 07E0     		b	.L20
+ 278              	.LVL20:
+ 279              	.L21:
+  51:Src/OLED_SSH1306.c **** 		OLED_Write_Data(ASCII_8_16[Data][i]);
+ 280              		.loc 1 51 0 discriminator 3
+ 281 000a 054B     		ldr	r3, .L23
+ 282 000c 03EB0513 		add	r3, r3, r5, lsl #4
+ 283 0010 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
+ 284 0012 FFF7FEFF 		bl	OLED_Write_Data
+ 285              	.LVL21:
+  50:Src/OLED_SSH1306.c **** 	for(uint8_t i=0; i<16; i++)
+ 286              		.loc 1 50 0 discriminator 3
+ 287 0016 0134     		adds	r4, r4, #1
+ 288              	.LVL22:
+ 289 0018 E4B2     		uxtb	r4, r4
+ 290              	.LVL23:
+ 291              	.L20:
+  50:Src/OLED_SSH1306.c **** 	for(uint8_t i=0; i<16; i++)
+ 292              		.loc 1 50 0 is_stmt 0 discriminator 1
+ 293 001a 0F2C     		cmp	r4, #15
+ 294 001c F5D9     		bls	.L21
+ 295              	.LBE3:
+  52:Src/OLED_SSH1306.c **** }
+ 296              		.loc 1 52 0 is_stmt 1
+ 297 001e 38BD     		pop	{r3, r4, r5, pc}
+ARM GAS  /tmp/cc1oC40z.s 			page 7
+
+
+ 298              	.LVL24:
+ 299              	.L24:
+ 300              		.align	2
+ 301              	.L23:
+ 302 0020 00000000 		.word	.LANCHOR1
+ 303              		.cfi_endproc
+ 304              	.LFE70:
+ 306              		.section	.text.OLED_Display_String,"ax",%progbits
+ 307              		.align	1
+ 308              		.global	OLED_Display_String
+ 309              		.syntax unified
+ 310              		.thumb
+ 311              		.thumb_func
+ 312              		.fpu softvfp
+ 314              	OLED_Display_String:
+ 315              	.LFB71:
+  53:Src/OLED_SSH1306.c **** 
+  54:Src/OLED_SSH1306.c **** //指定位置显示字符串
+  55:Src/OLED_SSH1306.c **** //Page_Add		页地址	范围：B0h ~ B7h
+  56:Src/OLED_SSH1306.c **** //Column_Add	列地址	范围：00h ~ 1Fh
+  57:Src/OLED_SSH1306.c **** void OLED_Display_String(uint8_t Page_Add, uint8_t Column_Add, char *pString, uint8_t Lingth)
+  58:Src/OLED_SSH1306.c **** {
+ 316              		.loc 1 58 0
+ 317              		.cfi_startproc
+ 318              		@ args = 0, pretend = 0, frame = 0
+ 319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320              	.LVL25:
+ 321 0000 70B5     		push	{r4, r5, r6, lr}
+ 322              	.LCFI12:
+ 323              		.cfi_def_cfa_offset 16
+ 324              		.cfi_offset 4, -16
+ 325              		.cfi_offset 5, -12
+ 326              		.cfi_offset 6, -8
+ 327              		.cfi_offset 14, -4
+ 328 0002 0C46     		mov	r4, r1
+ 329 0004 1646     		mov	r6, r2
+ 330 0006 1D46     		mov	r5, r3
+  59:Src/OLED_SSH1306.c **** 	OLED_Write_Data(Page_Add);
+ 331              		.loc 1 59 0
+ 332 0008 FFF7FEFF 		bl	OLED_Write_Data
+ 333              	.LVL26:
+  60:Src/OLED_SSH1306.c **** 	OLED_Write_Data(Column_Add);
+ 334              		.loc 1 60 0
+ 335 000c 2046     		mov	r0, r4
+ 336 000e FFF7FEFF 		bl	OLED_Write_Data
+ 337              	.LVL27:
+ 338              	.LBB4:
+  61:Src/OLED_SSH1306.c **** 	
+  62:Src/OLED_SSH1306.c **** 	for(uint8_t j=0; j<=Lingth; j++)
+ 339              		.loc 1 62 0
+ 340 0012 0024     		movs	r4, #0
+ 341 0014 04E0     		b	.L26
+ 342              	.LVL28:
+ 343              	.L27:
+  63:Src/OLED_SSH1306.c **** 	{
+  64:Src/OLED_SSH1306.c **** 		OLED_Display( pString[j]);
+ 344              		.loc 1 64 0 discriminator 3
+ARM GAS  /tmp/cc1oC40z.s 			page 8
+
+
+ 345 0016 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
+ 346 0018 FFF7FEFF 		bl	OLED_Display
+ 347              	.LVL29:
+  62:Src/OLED_SSH1306.c **** 	{
+ 348              		.loc 1 62 0 discriminator 3
+ 349 001c 0134     		adds	r4, r4, #1
+ 350              	.LVL30:
+ 351 001e E4B2     		uxtb	r4, r4
+ 352              	.LVL31:
+ 353              	.L26:
+  62:Src/OLED_SSH1306.c **** 	{
+ 354              		.loc 1 62 0 is_stmt 0 discriminator 1
+ 355 0020 AC42     		cmp	r4, r5
+ 356 0022 F8D9     		bls	.L27
+ 357              	.LBE4:
+  65:Src/OLED_SSH1306.c **** 	}
+  66:Src/OLED_SSH1306.c **** }...
+ 358              		.loc 1 66 0 is_stmt 1
+ 359 0024 70BD     		pop	{r4, r5, r6, pc}
+ 360              		.cfi_endproc
+ 361              	.LFE71:
+ 363              		.global	Init_Data
+ 364              		.global	ASCII_8_16
+ 365              		.section	.data.Init_Data,"aw",%progbits
+ 366              		.align	2
+ 367              		.set	.LANCHOR0,. + 0
+ 370              	Init_Data:
+ 371 0000 AE       		.byte	-82
+ 372 0001 00       		.byte	0
+ 373 0002 10       		.byte	16
+ 374 0003 40       		.byte	64
+ 375 0004 B0       		.byte	-80
+ 376 0005 81       		.byte	-127
+ 377 0006 A1       		.byte	-95
+ 378 0007 A6       		.byte	-90
+ 379 0008 A8       		.byte	-88
+ 380 0009 3F       		.byte	63
+ 381 000a C8       		.byte	-56
+ 382 000b D3       		.byte	-45
+ 383 000c 00       		.byte	0
+ 384 000d D5       		.byte	-43
+ 385 000e 80       		.byte	-128
+ 386 000f D9       		.byte	-39
+ 387 0010 DA       		.byte	-38
+ 388 0011 12       		.byte	18
+ 389 0012 DB       		.byte	-37
+ 390 0013 30       		.byte	48
+ 391 0014 8D       		.byte	-115
+ 392 0015 10       		.byte	16
+ 393 0016 AF       		.byte	-81
+ 394              		.section	.rodata.ASCII_8_16,"a",%progbits
+ 395              		.align	2
+ 396              		.set	.LANCHOR1,. + 0
+ 399              	ASCII_8_16:
+ 400 0000 F8       		.byte	-8
+ 401 0001 FC       		.byte	-4
+ 402 0002 04       		.byte	4
+ARM GAS  /tmp/cc1oC40z.s 			page 9
+
+
+ 403 0003 C4       		.byte	-60
+ 404 0004 24       		.byte	36
+ 405 0005 FC       		.byte	-4
+ 406 0006 F8       		.byte	-8
+ 407 0007 00       		.byte	0
+ 408 0008 07       		.byte	7
+ 409 0009 0F       		.byte	15
+ 410 000a 09       		.byte	9
+ 411 000b 08       		.byte	8
+ 412 000c 08       		.byte	8
+ 413 000d 0F       		.byte	15
+ 414 000e 07       		.byte	7
+ 415 000f 00       		.byte	0
+ 416 0010 00       		.byte	0
+ 417 0011 10       		.byte	16
+ 418 0012 18       		.byte	24
+ 419 0013 FC       		.byte	-4
+ 420 0014 FC       		.byte	-4
+ 421 0015 00       		.byte	0
+ 422 0016 00       		.byte	0
+ 423 0017 00       		.byte	0
+ 424 0018 00       		.byte	0
+ 425 0019 08       		.byte	8
+ 426 001a 08       		.byte	8
+ 427 001b 0F       		.byte	15
+ 428 001c 0F       		.byte	15
+ 429 001d 08       		.byte	8
+ 430 001e 08       		.byte	8
+ 431 001f 00       		.byte	0
+ 432 0020 08       		.byte	8
+ 433 0021 0C       		.byte	12
+ 434 0022 84       		.byte	-124
+ 435 0023 C4       		.byte	-60
+ 436 0024 64       		.byte	100
+ 437 0025 3C       		.byte	60
+ 438 0026 18       		.byte	24
+ 439 0027 00       		.byte	0
+ 440 0028 0E       		.byte	14
+ 441 0029 0F       		.byte	15
+ 442 002a 09       		.byte	9
+ 443 002b 08       		.byte	8
+ 444 002c 08       		.byte	8
+ 445 002d 0C       		.byte	12
+ 446 002e 0C       		.byte	12
+ 447 002f 00       		.byte	0
+ 448 0030 08       		.byte	8
+ 449 0031 0C       		.byte	12
+ 450 0032 44       		.byte	68
+ 451 0033 44       		.byte	68
+ 452 0034 44       		.byte	68
+ 453 0035 FC       		.byte	-4
+ 454 0036 B8       		.byte	-72
+ 455 0037 00       		.byte	0
+ 456 0038 04       		.byte	4
+ 457 0039 0C       		.byte	12
+ 458 003a 08       		.byte	8
+ 459 003b 08       		.byte	8
+ARM GAS  /tmp/cc1oC40z.s 			page 10
+
+
+ 460 003c 08       		.byte	8
+ 461 003d 0F       		.byte	15
+ 462 003e 07       		.byte	7
+ 463 003f 00       		.byte	0
+ 464 0040 C0       		.byte	-64
+ 465 0041 E0       		.byte	-32
+ 466 0042 B0       		.byte	-80
+ 467 0043 98       		.byte	-104
+ 468 0044 FC       		.byte	-4
+ 469 0045 FC       		.byte	-4
+ 470 0046 80       		.byte	-128
+ 471 0047 00       		.byte	0
+ 472 0048 00       		.byte	0
+ 473 0049 00       		.byte	0
+ 474 004a 00       		.byte	0
+ 475 004b 08       		.byte	8
+ 476 004c 0F       		.byte	15
+ 477 004d 0F       		.byte	15
+ 478 004e 08       		.byte	8
+ 479 004f 00       		.byte	0
+ 480 0050 7C       		.byte	124
+ 481 0051 7C       		.byte	124
+ 482 0052 44       		.byte	68
+ 483 0053 44       		.byte	68
+ 484 0054 C4       		.byte	-60
+ 485 0055 C4       		.byte	-60
+ 486 0056 84       		.byte	-124
+ 487 0057 00       		.byte	0
+ 488 0058 04       		.byte	4
+ 489 0059 0C       		.byte	12
+ 490 005a 08       		.byte	8
+ 491 005b 08       		.byte	8
+ 492 005c 08       		.byte	8
+ 493 005d 0F       		.byte	15
+ 494 005e 07       		.byte	7
+ 495 005f 00       		.byte	0
+ 496 0060 F0       		.byte	-16
+ 497 0061 F8       		.byte	-8
+ 498 0062 4C       		.byte	76
+ 499 0063 44       		.byte	68
+ 500 0064 44       		.byte	68
+ 501 0065 C0       		.byte	-64
+ 502 0066 80       		.byte	-128
+ 503 0067 00       		.byte	0
+ 504 0068 07       		.byte	7
+ 505 0069 0F       		.byte	15
+ 506 006a 08       		.byte	8
+ 507 006b 08       		.byte	8
+ 508 006c 08       		.byte	8
+ 509 006d 0F       		.byte	15
+ 510 006e 07       		.byte	7
+ 511 006f 00       		.byte	0
+ 512 0070 0C       		.byte	12
+ 513 0071 0C       		.byte	12
+ 514 0072 04       		.byte	4
+ 515 0073 84       		.byte	-124
+ 516 0074 C4       		.byte	-60
+ARM GAS  /tmp/cc1oC40z.s 			page 11
+
+
+ 517 0075 7C       		.byte	124
+ 518 0076 3C       		.byte	60
+ 519 0077 00       		.byte	0
+ 520 0078 00       		.byte	0
+ 521 0079 00       		.byte	0
+ 522 007a 0F       		.byte	15
+ 523 007b 0F       		.byte	15
+ 524 007c 00       		.byte	0
+ 525 007d 00       		.byte	0
+ 526 007e 00       		.byte	0
+ 527 007f 00       		.byte	0
+ 528 0080 B8       		.byte	-72
+ 529 0081 FC       		.byte	-4
+ 530 0082 44       		.byte	68
+ 531 0083 44       		.byte	68
+ 532 0084 44       		.byte	68
+ 533 0085 FC       		.byte	-4
+ 534 0086 B8       		.byte	-72
+ 535 0087 00       		.byte	0
+ 536 0088 07       		.byte	7
+ 537 0089 0F       		.byte	15
+ 538 008a 08       		.byte	8
+ 539 008b 08       		.byte	8
+ 540 008c 08       		.byte	8
+ 541 008d 0F       		.byte	15
+ 542 008e 07       		.byte	7
+ 543 008f 00       		.byte	0
+ 544 0090 38       		.byte	56
+ 545 0091 7C       		.byte	124
+ 546 0092 44       		.byte	68
+ 547 0093 44       		.byte	68
+ 548 0094 44       		.byte	68
+ 549 0095 FC       		.byte	-4
+ 550 0096 F8       		.byte	-8
+ 551 0097 00       		.byte	0
+ 552 0098 00       		.byte	0
+ 553 0099 08       		.byte	8
+ 554 009a 08       		.byte	8
+ 555 009b 08       		.byte	8
+ 556 009c 0C       		.byte	12
+ 557 009d 07       		.byte	7
+ 558 009e 03       		.byte	3
+ 559 009f 00       		.byte	0
+ 560              		.text
+ 561              	.Letext0:
+ 562              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 563              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 564              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 565              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 566              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 567              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 568              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 569              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 570              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 571              		.file 11 "Inc/i2c.h"
+ 572              		.file 12 "Inc/ASCII_8X16.h"
+ARM GAS  /tmp/cc1oC40z.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 OLED_SSH1306.c
+     /tmp/cc1oC40z.s:16     .text.OLED_Init:0000000000000000 $t
+     /tmp/cc1oC40z.s:23     .text.OLED_Init:0000000000000000 OLED_Init
+     /tmp/cc1oC40z.s:82     .text.OLED_Init:0000000000000034 $d
+     /tmp/cc1oC40z.s:88     .text.OLED_Write_Order:0000000000000000 $t
+     /tmp/cc1oC40z.s:95     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
+     /tmp/cc1oC40z.s:132    .text.OLED_Write_Order:0000000000000028 $d
+     /tmp/cc1oC40z.s:137    .text.OLED_Write_Data:0000000000000000 $t
+     /tmp/cc1oC40z.s:144    .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
+     /tmp/cc1oC40z.s:181    .text.OLED_Write_Data:0000000000000028 $d
+     /tmp/cc1oC40z.s:186    .text.OLED_open:0000000000000000 $t
+     /tmp/cc1oC40z.s:193    .text.OLED_open:0000000000000000 OLED_open
+     /tmp/cc1oC40z.s:217    .text.OLED_close:0000000000000000 $t
+     /tmp/cc1oC40z.s:224    .text.OLED_close:0000000000000000 OLED_close
+     /tmp/cc1oC40z.s:248    .text.OLED_Display:0000000000000000 $t
+     /tmp/cc1oC40z.s:255    .text.OLED_Display:0000000000000000 OLED_Display
+     /tmp/cc1oC40z.s:302    .text.OLED_Display:0000000000000020 $d
+     /tmp/cc1oC40z.s:307    .text.OLED_Display_String:0000000000000000 $t
+     /tmp/cc1oC40z.s:314    .text.OLED_Display_String:0000000000000000 OLED_Display_String
+     /tmp/cc1oC40z.s:370    .data.Init_Data:0000000000000000 Init_Data
+     /tmp/cc1oC40z.s:399    .rodata.ASCII_8_16:0000000000000000 ASCII_8_16
+     /tmp/cc1oC40z.s:366    .data.Init_Data:0000000000000000 $d
+     /tmp/cc1oC40z.s:395    .rodata.ASCII_8_16:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Mem_Write
+HAL_Delay
+hi2c1

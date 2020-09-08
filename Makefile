@@ -39,7 +39,7 @@ C_SOURCES =  \
 Src/main.c \
 Src/gpio.c \
 Src/i2c.c \
-Src/OLED_SSD1306.c \
+Src/OLED_SSH1306.c \
 Src/stm32f1xx_it.c \
 Src/stm32f1xx_hal_msp.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \

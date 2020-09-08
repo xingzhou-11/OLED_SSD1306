@@ -1,17 +1,18 @@
 #include "OLED_SSD1306.h"
+#include "ASCII_8X16.h"
 
-//OLED初始化
-void OLED_Init()
-{
-	uint8_t Init_Data[] = {
+uint8_t Init_Data[] = {
 	0xAE, 0x00, 0x10, 0x40, 0xB0, 0x81, 0xA1, 0xA6, 
 	0xA8, 0x3F, 0xC8, 0xD3, 0x00, 0xD5, 0x80, 0xD9, 
 	0xDA, 0x12, 0xDB, 0x30,	0x8D, 0x10, 0xAF
 	};
-	
+
+//OLED初始化
+void OLED_Init()
+{	
 	for(uint8_t i=0; i<25; i++)
 	{
-		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0X10);
+		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0X100);
 		HAL_Delay(100);
 	}
 }
@@ -19,13 +20,13 @@ void OLED_Init()
 //向OLED进行写命令操作
 void OLED_Write_Order(uint8_t Order)
 {
-	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0X10);
+	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0X100);
 }
 
 //向OLED进行写数据操作
 void OLED_Write_Data(uint8_t Data)
 {
-	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0X10);
+	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0X100);
 }
 
 //打开OLED
