@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cct01NU7.s 			page 1
+ARM GAS  /tmp/ccMcai7O.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
   31:Src/main.c    **** /* Private typedef -----------------------------------------------------------*/
   32:Src/main.c    **** /* USER CODE BEGIN PTD */
   33:Src/main.c    **** 
-ARM GAS  /tmp/cct01NU7.s 			page 2
+ARM GAS  /tmp/ccMcai7O.s 			page 2
 
 
   34:Src/main.c    **** /* USER CODE END PTD */
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
   88:Src/main.c    ****   /* Initialize all configured peripherals */
   89:Src/main.c    ****   MX_GPIO_Init();
   90:Src/main.c    ****   MX_I2C1_Init();
-ARM GAS  /tmp/cct01NU7.s 			page 3
+ARM GAS  /tmp/ccMcai7O.s 			page 3
 
 
   91:Src/main.c    ****   /* USER CODE BEGIN 2 */
@@ -126,7 +126,7 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
   93:Src/main.c    ****   OLED_Init();
   94:Src/main.c    **** 	
   95:Src/main.c    **** 	OLED_open();
-  96:Src/main.c    **** 	OLED_Display_String(0xB0, 0, "12345", 5);
+  96:Src/main.c    **** 	OLED_Display_String(0xB0, 0, "1", 1);
   97:Src/main.c    **** 
   98:Src/main.c    ****   /* USER CODE END 2 */
   99:Src/main.c    **** 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
  119:Src/main.c    **** 
  120:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
  121:Src/main.c    ****   */
-ARM GAS  /tmp/cct01NU7.s 			page 4
+ARM GAS  /tmp/ccMcai7O.s 			page 4
 
 
  122:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
   85 0048 2946     		mov	r1, r5
   86 004a 01A8     		add	r0, sp, #4
   87 004c FFF7FEFF 		bl	HAL_RCC_ClockConfig
-ARM GAS  /tmp/cct01NU7.s 			page 5
+ARM GAS  /tmp/ccMcai7O.s 			page 5
 
 
   88              	.LVL2:
@@ -294,16 +294,16 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
  130              		.loc 1 93 0
  131 0012 FFF7FEFF 		bl	OLED_Init
  132              	.LVL7:
-  95:Src/main.c    **** 	OLED_Display_String(0xB0, 0, "12345", 5);
+  95:Src/main.c    **** 	OLED_Display_String(0xB0, 0, "1", 1);
  133              		.loc 1 95 0
  134 0016 FFF7FEFF 		bl	OLED_open
  135              	.LVL8:
-ARM GAS  /tmp/cct01NU7.s 			page 6
+ARM GAS  /tmp/ccMcai7O.s 			page 6
 
 
   96:Src/main.c    **** 
  136              		.loc 1 96 0
- 137 001a 0523     		movs	r3, #5
+ 137 001a 0123     		movs	r3, #1
  138 001c 024A     		ldr	r2, .L6
  139 001e 0021     		movs	r1, #0
  140 0020 B020     		movs	r0, #176
@@ -348,8 +348,7 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
  171              		.section	.rodata.main.str1.4,"aMS",%progbits,1
  172              		.align	2
  173              	.LC0:
- 174 0000 31323334 		.ascii	"12345\000"
- 174      3500
+ 174 0000 3100     		.ascii	"1\000"
  175              		.text
  176              	.Letext0:
  177              		.file 2 "/usr/include/newlib/machine/_default_types.h"
@@ -358,29 +357,29 @@ ARM GAS  /tmp/cct01NU7.s 			page 1
  180              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
  181              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
  182              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
-ARM GAS  /tmp/cct01NU7.s 			page 7
-
-
  183              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ARM GAS  /tmp/ccMcai7O.s 			page 7
+
+
  184              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
  185              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
  186              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
  187              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
  188              		.file 13 "Inc/i2c.h"
  189              		.file 14 "Inc/gpio.h"
-ARM GAS  /tmp/cct01NU7.s 			page 8
+ARM GAS  /tmp/ccMcai7O.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/cct01NU7.s:16     .text.SystemClock_Config:0000000000000000 $t
-     /tmp/cct01NU7.s:23     .text.SystemClock_Config:0000000000000000 SystemClock_Config
-     /tmp/cct01NU7.s:99     .text.main:0000000000000000 $t
-     /tmp/cct01NU7.s:106    .text.main:0000000000000000 main
-     /tmp/cct01NU7.s:148    .text.main:0000000000000028 $d
-     /tmp/cct01NU7.s:153    .text.Error_Handler:0000000000000000 $t
-     /tmp/cct01NU7.s:160    .text.Error_Handler:0000000000000000 Error_Handler
-     /tmp/cct01NU7.s:172    .rodata.main.str1.4:0000000000000000 $d
+     /tmp/ccMcai7O.s:16     .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccMcai7O.s:23     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccMcai7O.s:99     .text.main:0000000000000000 $t
+     /tmp/ccMcai7O.s:106    .text.main:0000000000000000 main
+     /tmp/ccMcai7O.s:148    .text.main:0000000000000028 $d
+     /tmp/ccMcai7O.s:153    .text.Error_Handler:0000000000000000 $t
+     /tmp/ccMcai7O.s:160    .text.Error_Handler:0000000000000000 Error_Handler
+     /tmp/ccMcai7O.s:172    .rodata.main.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
