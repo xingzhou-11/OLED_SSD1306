@@ -33,14 +33,14 @@ void OLED_Write_Data(uint8_t Data)
 void OLED_open()
 {
 	OLED_Write_Order(0xA4);
-	OLED_Write_Order(0xAE);
+	OLED_Write_Order(0xAF);
 }
 
 //关闭OLED
 void OLED_close()
 {
 	OLED_Write_Order(0xA5);
-	OLED_Write_Order(0xAF);
+	OLED_Write_Order(0xAE);
 }
 
 //指定位置显示字符
