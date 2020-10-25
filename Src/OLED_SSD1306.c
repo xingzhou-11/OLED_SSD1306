@@ -1,5 +1,5 @@
 #include "OLED_SSD1306.h"
-#include "ASCII_8X16.h"
+#include "ASCII.h"
 
 uint8_t Init_Data[] = {
 	0xAE, 0x00, 0x10, 0x40, 0xB0, 0x81, 0xA1, 0xA4,
@@ -30,7 +30,7 @@ void OLED_Init()
 }
 
 //清屏
-void OLED_Clear(void)
+void OLED_clear(void)
 {
 	for(uint8_t i=0; i<8; i++)
 	{
