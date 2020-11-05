@@ -19,7 +19,7 @@ build/main.o: Src/main.c Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h Inc/i2c.h \
- Inc/main.h Inc/gpio.h
+ Inc/main.h Inc/gpio.h Inc/OLED_SSD1306.h Inc/i2c.h
 
 Inc/main.h:
 
@@ -72,3 +72,7 @@ Inc/i2c.h:
 Inc/main.h:
 
 Inc/gpio.h:
+
+Inc/OLED_SSD1306.h:
+
+Inc/i2c.h:

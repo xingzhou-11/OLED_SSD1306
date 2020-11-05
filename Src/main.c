@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "OLED_SSD1306.h"
 
 /* USER CODE END Includes */
 
@@ -91,9 +92,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   OLED_Init();
-	
 	OLED_open();
-	OLED_Display_String(0xB0, 0, "1", 1);
 
   /* USER CODE END 2 */
 
@@ -104,6 +103,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    OLED_Display_Single(0, 0, '5');
   }
   /* USER CODE END 3 */
 }

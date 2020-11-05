@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccMcai7O.s 			page 1
+ARM GAS  /tmp/cc7LvQ9d.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -52,91 +52,91 @@ ARM GAS  /tmp/ccMcai7O.s 			page 1
   25:Src/main.c    **** 
   26:Src/main.c    **** /* Private includes ----------------------------------------------------------*/
   27:Src/main.c    **** /* USER CODE BEGIN Includes */
-  28:Src/main.c    **** 
-  29:Src/main.c    **** /* USER CODE END Includes */
-  30:Src/main.c    **** 
-  31:Src/main.c    **** /* Private typedef -----------------------------------------------------------*/
-  32:Src/main.c    **** /* USER CODE BEGIN PTD */
-  33:Src/main.c    **** 
-ARM GAS  /tmp/ccMcai7O.s 			page 2
+  28:Src/main.c    **** #include "OLED_SSD1306.h"
+  29:Src/main.c    **** 
+  30:Src/main.c    **** /* USER CODE END Includes */
+  31:Src/main.c    **** 
+  32:Src/main.c    **** /* Private typedef -----------------------------------------------------------*/
+  33:Src/main.c    **** /* USER CODE BEGIN PTD */
+ARM GAS  /tmp/cc7LvQ9d.s 			page 2
 
 
-  34:Src/main.c    **** /* USER CODE END PTD */
-  35:Src/main.c    **** 
-  36:Src/main.c    **** /* Private define ------------------------------------------------------------*/
-  37:Src/main.c    **** /* USER CODE BEGIN PD */
-  38:Src/main.c    **** /* USER CODE END PD */
-  39:Src/main.c    **** 
-  40:Src/main.c    **** /* Private macro -------------------------------------------------------------*/
-  41:Src/main.c    **** /* USER CODE BEGIN PM */
-  42:Src/main.c    **** 
-  43:Src/main.c    **** /* USER CODE END PM */
-  44:Src/main.c    **** 
-  45:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
-  46:Src/main.c    **** 
-  47:Src/main.c    **** /* USER CODE BEGIN PV */
-  48:Src/main.c    **** 
-  49:Src/main.c    **** /* USER CODE END PV */
-  50:Src/main.c    **** 
-  51:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
-  52:Src/main.c    **** void SystemClock_Config(void);
-  53:Src/main.c    **** /* USER CODE BEGIN PFP */
-  54:Src/main.c    **** 
-  55:Src/main.c    **** /* USER CODE END PFP */
-  56:Src/main.c    **** 
-  57:Src/main.c    **** /* Private user code ---------------------------------------------------------*/
-  58:Src/main.c    **** /* USER CODE BEGIN 0 */
-  59:Src/main.c    **** 
-  60:Src/main.c    **** /* USER CODE END 0 */
-  61:Src/main.c    **** 
-  62:Src/main.c    **** /**
-  63:Src/main.c    ****   * @brief  The application entry point.
-  64:Src/main.c    ****   * @retval int
-  65:Src/main.c    ****   */
-  66:Src/main.c    **** int main(void)
-  67:Src/main.c    **** {
-  68:Src/main.c    ****   /* USER CODE BEGIN 1 */
-  69:Src/main.c    **** 
-  70:Src/main.c    ****   /* USER CODE END 1 */
-  71:Src/main.c    **** 
-  72:Src/main.c    ****   /* MCU Configuration--------------------------------------------------------*/
-  73:Src/main.c    **** 
-  74:Src/main.c    ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  75:Src/main.c    ****   HAL_Init();
-  76:Src/main.c    **** 
-  77:Src/main.c    ****   /* USER CODE BEGIN Init */
-  78:Src/main.c    **** 
-  79:Src/main.c    ****   /* USER CODE END Init */
-  80:Src/main.c    **** 
-  81:Src/main.c    ****   /* Configure the system clock */
-  82:Src/main.c    ****   SystemClock_Config();
-  83:Src/main.c    **** 
-  84:Src/main.c    ****   /* USER CODE BEGIN SysInit */
-  85:Src/main.c    **** 
-  86:Src/main.c    ****   /* USER CODE END SysInit */
-  87:Src/main.c    **** 
-  88:Src/main.c    ****   /* Initialize all configured peripherals */
-  89:Src/main.c    ****   MX_GPIO_Init();
-  90:Src/main.c    ****   MX_I2C1_Init();
-ARM GAS  /tmp/ccMcai7O.s 			page 3
+  34:Src/main.c    **** 
+  35:Src/main.c    **** /* USER CODE END PTD */
+  36:Src/main.c    **** 
+  37:Src/main.c    **** /* Private define ------------------------------------------------------------*/
+  38:Src/main.c    **** /* USER CODE BEGIN PD */
+  39:Src/main.c    **** /* USER CODE END PD */
+  40:Src/main.c    **** 
+  41:Src/main.c    **** /* Private macro -------------------------------------------------------------*/
+  42:Src/main.c    **** /* USER CODE BEGIN PM */
+  43:Src/main.c    **** 
+  44:Src/main.c    **** /* USER CODE END PM */
+  45:Src/main.c    **** 
+  46:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  47:Src/main.c    **** 
+  48:Src/main.c    **** /* USER CODE BEGIN PV */
+  49:Src/main.c    **** 
+  50:Src/main.c    **** /* USER CODE END PV */
+  51:Src/main.c    **** 
+  52:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  53:Src/main.c    **** void SystemClock_Config(void);
+  54:Src/main.c    **** /* USER CODE BEGIN PFP */
+  55:Src/main.c    **** 
+  56:Src/main.c    **** /* USER CODE END PFP */
+  57:Src/main.c    **** 
+  58:Src/main.c    **** /* Private user code ---------------------------------------------------------*/
+  59:Src/main.c    **** /* USER CODE BEGIN 0 */
+  60:Src/main.c    **** 
+  61:Src/main.c    **** /* USER CODE END 0 */
+  62:Src/main.c    **** 
+  63:Src/main.c    **** /**
+  64:Src/main.c    ****   * @brief  The application entry point.
+  65:Src/main.c    ****   * @retval int
+  66:Src/main.c    ****   */
+  67:Src/main.c    **** int main(void)
+  68:Src/main.c    **** {
+  69:Src/main.c    ****   /* USER CODE BEGIN 1 */
+  70:Src/main.c    **** 
+  71:Src/main.c    ****   /* USER CODE END 1 */
+  72:Src/main.c    **** 
+  73:Src/main.c    ****   /* MCU Configuration--------------------------------------------------------*/
+  74:Src/main.c    **** 
+  75:Src/main.c    ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  76:Src/main.c    ****   HAL_Init();
+  77:Src/main.c    **** 
+  78:Src/main.c    ****   /* USER CODE BEGIN Init */
+  79:Src/main.c    **** 
+  80:Src/main.c    ****   /* USER CODE END Init */
+  81:Src/main.c    **** 
+  82:Src/main.c    ****   /* Configure the system clock */
+  83:Src/main.c    ****   SystemClock_Config();
+  84:Src/main.c    **** 
+  85:Src/main.c    ****   /* USER CODE BEGIN SysInit */
+  86:Src/main.c    **** 
+  87:Src/main.c    ****   /* USER CODE END SysInit */
+  88:Src/main.c    **** 
+  89:Src/main.c    ****   /* Initialize all configured peripherals */
+  90:Src/main.c    ****   MX_GPIO_Init();
+ARM GAS  /tmp/cc7LvQ9d.s 			page 3
 
 
-  91:Src/main.c    ****   /* USER CODE BEGIN 2 */
-  92:Src/main.c    **** 
-  93:Src/main.c    ****   OLED_Init();
-  94:Src/main.c    **** 	
+  91:Src/main.c    ****   MX_I2C1_Init();
+  92:Src/main.c    ****   /* USER CODE BEGIN 2 */
+  93:Src/main.c    **** 
+  94:Src/main.c    ****   OLED_Init();
   95:Src/main.c    **** 	OLED_open();
-  96:Src/main.c    **** 	OLED_Display_String(0xB0, 0, "1", 1);
-  97:Src/main.c    **** 
-  98:Src/main.c    ****   /* USER CODE END 2 */
-  99:Src/main.c    **** 
- 100:Src/main.c    ****   /* Infinite loop */
- 101:Src/main.c    ****   /* USER CODE BEGIN WHILE */
- 102:Src/main.c    ****   while (1)
- 103:Src/main.c    ****   {
- 104:Src/main.c    ****     /* USER CODE END WHILE */
- 105:Src/main.c    **** 
- 106:Src/main.c    ****     /* USER CODE BEGIN 3 */
+  96:Src/main.c    **** 
+  97:Src/main.c    ****   /* USER CODE END 2 */
+  98:Src/main.c    **** 
+  99:Src/main.c    ****   /* Infinite loop */
+ 100:Src/main.c    ****   /* USER CODE BEGIN WHILE */
+ 101:Src/main.c    ****   while (1)
+ 102:Src/main.c    ****   {
+ 103:Src/main.c    ****     /* USER CODE END WHILE */
+ 104:Src/main.c    **** 
+ 105:Src/main.c    ****     /* USER CODE BEGIN 3 */
+ 106:Src/main.c    ****     OLED_Display_Single(0, 0, '5');
  107:Src/main.c    ****   }
  108:Src/main.c    ****   /* USER CODE END 3 */
  109:Src/main.c    **** }
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccMcai7O.s 			page 1
  119:Src/main.c    **** 
  120:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
  121:Src/main.c    ****   */
-ARM GAS  /tmp/ccMcai7O.s 			page 4
+ARM GAS  /tmp/cc7LvQ9d.s 			page 4
 
 
  122:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccMcai7O.s 			page 1
   85 0048 2946     		mov	r1, r5
   86 004a 01A8     		add	r0, sp, #4
   87 004c FFF7FEFF 		bl	HAL_RCC_ClockConfig
-ARM GAS  /tmp/ccMcai7O.s 			page 5
+ARM GAS  /tmp/cc7LvQ9d.s 			page 5
 
 
   88              	.LVL2:
@@ -263,8 +263,8 @@ ARM GAS  /tmp/ccMcai7O.s 			page 1
  104              		.fpu softvfp
  106              	main:
  107              	.LFB65:
-  67:Src/main.c    ****   /* USER CODE BEGIN 1 */
- 108              		.loc 1 67 0
+  68:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 108              		.loc 1 68 0
  109              		.cfi_startproc
  110              		@ Volatile: function does not return.
  111              		@ args = 0, pretend = 0, frame = 0
@@ -274,58 +274,53 @@ ARM GAS  /tmp/ccMcai7O.s 			page 1
  115              		.cfi_def_cfa_offset 8
  116              		.cfi_offset 3, -8
  117              		.cfi_offset 14, -4
-  75:Src/main.c    **** 
- 118              		.loc 1 75 0
+  76:Src/main.c    **** 
+ 118              		.loc 1 76 0
  119 0002 FFF7FEFF 		bl	HAL_Init
  120              	.LVL3:
-  82:Src/main.c    **** 
- 121              		.loc 1 82 0
+  83:Src/main.c    **** 
+ 121              		.loc 1 83 0
  122 0006 FFF7FEFF 		bl	SystemClock_Config
  123              	.LVL4:
-  89:Src/main.c    ****   MX_I2C1_Init();
- 124              		.loc 1 89 0
+  90:Src/main.c    ****   MX_I2C1_Init();
+ 124              		.loc 1 90 0
  125 000a FFF7FEFF 		bl	MX_GPIO_Init
  126              	.LVL5:
-  90:Src/main.c    ****   /* USER CODE BEGIN 2 */
- 127              		.loc 1 90 0
+  91:Src/main.c    ****   /* USER CODE BEGIN 2 */
+ 127              		.loc 1 91 0
  128 000e FFF7FEFF 		bl	MX_I2C1_Init
  129              	.LVL6:
-  93:Src/main.c    **** 	
- 130              		.loc 1 93 0
+  94:Src/main.c    **** 	OLED_open();
+ 130              		.loc 1 94 0
  131 0012 FFF7FEFF 		bl	OLED_Init
  132              	.LVL7:
-  95:Src/main.c    **** 	OLED_Display_String(0xB0, 0, "1", 1);
+  95:Src/main.c    **** 
  133              		.loc 1 95 0
  134 0016 FFF7FEFF 		bl	OLED_open
  135              	.LVL8:
-ARM GAS  /tmp/ccMcai7O.s 			page 6
+ARM GAS  /tmp/cc7LvQ9d.s 			page 6
 
 
-  96:Src/main.c    **** 
- 136              		.loc 1 96 0
- 137 001a 0123     		movs	r3, #1
- 138 001c 024A     		ldr	r2, .L6
- 139 001e 0021     		movs	r1, #0
- 140 0020 B020     		movs	r0, #176
- 141 0022 FFF7FEFF 		bl	OLED_Display_String
+ 136              	.L4:
+ 106:Src/main.c    ****   }
+ 137              		.loc 1 106 0 discriminator 1
+ 138 001a 3522     		movs	r2, #53
+ 139 001c 0021     		movs	r1, #0
+ 140 001e 0846     		mov	r0, r1
+ 141 0020 FFF7FEFF 		bl	OLED_Display_Single
  142              	.LVL9:
- 143              	.L4:
- 144 0026 FEE7     		b	.L4
- 145              	.L7:
- 146              		.align	2
- 147              	.L6:
- 148 0028 00000000 		.word	.LC0
- 149              		.cfi_endproc
- 150              	.LFE65:
- 152              		.section	.text.Error_Handler,"ax",%progbits
- 153              		.align	1
- 154              		.global	Error_Handler
- 155              		.syntax unified
- 156              		.thumb
- 157              		.thumb_func
- 158              		.fpu softvfp
- 160              	Error_Handler:
- 161              	.LFB67:
+ 143 0024 F9E7     		b	.L4
+ 144              		.cfi_endproc
+ 145              	.LFE65:
+ 147              		.section	.text.Error_Handler,"ax",%progbits
+ 148              		.align	1
+ 149              		.global	Error_Handler
+ 150              		.syntax unified
+ 151              		.thumb
+ 152              		.thumb_func
+ 153              		.fpu softvfp
+ 155              	Error_Handler:
+ 156              	.LFB67:
  147:Src/main.c    **** 
  148:Src/main.c    **** /* USER CODE BEGIN 4 */
  149:Src/main.c    **** 
@@ -337,49 +332,41 @@ ARM GAS  /tmp/ccMcai7O.s 			page 1
  155:Src/main.c    ****   */
  156:Src/main.c    **** void Error_Handler(void)
  157:Src/main.c    **** {
- 162              		.loc 1 157 0
- 163              		.cfi_startproc
- 164              		@ args = 0, pretend = 0, frame = 0
- 165              		@ frame_needed = 0, uses_anonymous_args = 0
- 166              		@ link register save eliminated.
- 167 0000 7047     		bx	lr
- 168              		.cfi_endproc
- 169              	.LFE67:
- 171              		.section	.rodata.main.str1.4,"aMS",%progbits,1
- 172              		.align	2
- 173              	.LC0:
- 174 0000 3100     		.ascii	"1\000"
- 175              		.text
- 176              	.Letext0:
- 177              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 178              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 179              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 180              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 181              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
- 182              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 183              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
-ARM GAS  /tmp/ccMcai7O.s 			page 7
-
-
- 184              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
- 185              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 186              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 187              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 188              		.file 13 "Inc/i2c.h"
- 189              		.file 14 "Inc/gpio.h"
-ARM GAS  /tmp/ccMcai7O.s 			page 8
+ 157              		.loc 1 157 0
+ 158              		.cfi_startproc
+ 159              		@ args = 0, pretend = 0, frame = 0
+ 160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 161              		@ link register save eliminated.
+ 162 0000 7047     		bx	lr
+ 163              		.cfi_endproc
+ 164              	.LFE67:
+ 166              		.text
+ 167              	.Letext0:
+ 168              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 169              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 170              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 171              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 172              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 173              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 174              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 175              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
+ 176              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 177              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 178              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 179              		.file 13 "Inc/i2c.h"
+ 180              		.file 14 "Inc/gpio.h"
+ 181              		.file 15 "Inc/OLED_SSD1306.h"
+ARM GAS  /tmp/cc7LvQ9d.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccMcai7O.s:16     .text.SystemClock_Config:0000000000000000 $t
-     /tmp/ccMcai7O.s:23     .text.SystemClock_Config:0000000000000000 SystemClock_Config
-     /tmp/ccMcai7O.s:99     .text.main:0000000000000000 $t
-     /tmp/ccMcai7O.s:106    .text.main:0000000000000000 main
-     /tmp/ccMcai7O.s:148    .text.main:0000000000000028 $d
-     /tmp/ccMcai7O.s:153    .text.Error_Handler:0000000000000000 $t
-     /tmp/ccMcai7O.s:160    .text.Error_Handler:0000000000000000 Error_Handler
-     /tmp/ccMcai7O.s:172    .rodata.main.str1.4:0000000000000000 $d
+     /tmp/cc7LvQ9d.s:16     .text.SystemClock_Config:0000000000000000 $t
+     /tmp/cc7LvQ9d.s:23     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/cc7LvQ9d.s:99     .text.main:0000000000000000 $t
+     /tmp/cc7LvQ9d.s:106    .text.main:0000000000000000 main
+     /tmp/cc7LvQ9d.s:148    .text.Error_Handler:0000000000000000 $t
+     /tmp/cc7LvQ9d.s:155    .text.Error_Handler:0000000000000000 Error_Handler
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
@@ -391,4 +378,4 @@ MX_GPIO_Init
 MX_I2C1_Init
 OLED_Init
 OLED_open
-OLED_Display_String
+OLED_Display_Single
