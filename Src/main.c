@@ -93,6 +93,7 @@ int main(void)
 
   OLED_Init();
 	OLED_open();
+  OLED_clear();
 
   /* USER CODE END 2 */
 
@@ -103,7 +104,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    OLED_Display_Single(0, 0, '5');
+    //OLED_Display_Single(0, 0, '5');
   }
   /* USER CODE END 3 */
 }

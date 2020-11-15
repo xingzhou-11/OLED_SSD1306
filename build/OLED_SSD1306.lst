@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccQ98FRh.s 			page 1
+ARM GAS  /tmp/ccdul9sQ.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
   43 0010 0123     		movs	r3, #1
   44 0012 0193     		str	r3, [sp, #4]
   45 0014 0092     		str	r2, [sp]
-ARM GAS  /tmp/ccQ98FRh.s 			page 2
+ARM GAS  /tmp/ccdul9sQ.s 			page 2
 
 
   46 0016 0022     		movs	r2, #0
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
   96 0018 7821     		movs	r1, #120
   97 001a 0348     		ldr	r0, .L7
   98              	.LVL4:
-ARM GAS  /tmp/ccQ98FRh.s 			page 3
+ARM GAS  /tmp/ccdul9sQ.s 			page 3
 
 
   99 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  147 0010 0193     		str	r3, [sp, #4]
  148 0012 084A     		ldr	r2, .L13
  149 0014 2244     		add	r2, r2, r4
-ARM GAS  /tmp/ccQ98FRh.s 			page 4
+ARM GAS  /tmp/ccdul9sQ.s 			page 4
 
 
  150 0016 0092     		str	r2, [sp]
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  197              		@ args = 0, pretend = 0, frame = 0
  198              		@ frame_needed = 0, uses_anonymous_args = 0
  199 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  /tmp/ccQ98FRh.s 			page 5
+ARM GAS  /tmp/ccdul9sQ.s 			page 5
 
 
  200              	.LCFI9:
@@ -262,9 +262,9 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
   39:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x10);
   40:Src/OLED_SSD1306.c **** 		for (uint8_t j=0; j<128; j++)
   41:Src/OLED_SSD1306.c **** 		{
-  42:Src/OLED_SSD1306.c **** 			OLED_Write_Data(0);
+  42:Src/OLED_SSD1306.c **** 			OLED_Write_Data(1);
  214              		.loc 1 42 0 discriminator 3
- 215 0006 0020     		movs	r0, #0
+ 215 0006 0120     		movs	r0, #1
  216 0008 FFF7FEFF 		bl	OLED_Write_Data
  217              	.LVL15:
   40:Src/OLED_SSD1306.c **** 		{
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  241              	.LVL20:
   38:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x10);
  242              		.loc 1 38 0
-ARM GAS  /tmp/ccQ98FRh.s 			page 6
+ARM GAS  /tmp/ccdul9sQ.s 			page 6
 
 
  243 0028 0020     		movs	r0, #0
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  284 0004 FFF7FEFF 		bl	OLED_Write_Order
  285              	.LVL24:
   56:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x14);
-ARM GAS  /tmp/ccQ98FRh.s 			page 7
+ARM GAS  /tmp/ccdul9sQ.s 			page 7
 
 
  286              		.loc 1 56 0
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  332              	.LVL30:
   67:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xAE);
  333              		.loc 1 67 0
-ARM GAS  /tmp/ccQ98FRh.s 			page 8
+ARM GAS  /tmp/ccdul9sQ.s 			page 8
 
 
  334 0014 AE20     		movs	r0, #174
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  379              	.LVL37:
   79:Src/OLED_SSD1306.c **** 	OLED_Write_Order(y%16 + 0x00);
  380              		.loc 1 79 0
-ARM GAS  /tmp/ccQ98FRh.s 			page 9
+ARM GAS  /tmp/ccdul9sQ.s 			page 9
 
 
  381 0018 04F00F00 		and	r0, r4, #15
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  429 0000 AE       		.byte	-82
  430 0001 00       		.byte	0
  431 0002 10       		.byte	16
-ARM GAS  /tmp/ccQ98FRh.s 			page 10
+ARM GAS  /tmp/ccdul9sQ.s 			page 10
 
 
  432 0003 40       		.byte	64
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  488 001d 08       		.byte	8
  489 001e 08       		.byte	8
  490 001f 00       		.byte	0
-ARM GAS  /tmp/ccQ98FRh.s 			page 11
+ARM GAS  /tmp/ccdul9sQ.s 			page 11
 
 
  491 0020 08       		.byte	8
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  545 0056 84       		.byte	-124
  546 0057 00       		.byte	0
  547 0058 04       		.byte	4
-ARM GAS  /tmp/ccQ98FRh.s 			page 12
+ARM GAS  /tmp/ccdul9sQ.s 			page 12
 
 
  548 0059 0C       		.byte	12
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  602 008f 00       		.byte	0
  603 0090 38       		.byte	56
  604 0091 7C       		.byte	124
-ARM GAS  /tmp/ccQ98FRh.s 			page 13
+ARM GAS  /tmp/ccdul9sQ.s 			page 13
 
 
  605 0092 44       		.byte	68
@@ -748,33 +748,33 @@ ARM GAS  /tmp/ccQ98FRh.s 			page 1
  629              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
  630              		.file 11 "Inc/i2c.h"
  631              		.file 12 "Inc/ASCII.h"
-ARM GAS  /tmp/ccQ98FRh.s 			page 14
+ARM GAS  /tmp/ccdul9sQ.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 OLED_SSD1306.c
-     /tmp/ccQ98FRh.s:16     .text.OLED_Write_Order:0000000000000000 $t
-     /tmp/ccQ98FRh.s:23     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
-     /tmp/ccQ98FRh.s:61     .text.OLED_Write_Order:0000000000000028 $d
-     /tmp/ccQ98FRh.s:66     .text.OLED_Write_Data:0000000000000000 $t
-     /tmp/ccQ98FRh.s:73     .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
-     /tmp/ccQ98FRh.s:110    .text.OLED_Write_Data:0000000000000028 $d
-     /tmp/ccQ98FRh.s:115    .text.OLED_Init:0000000000000000 $t
-     /tmp/ccQ98FRh.s:122    .text.OLED_Init:0000000000000000 OLED_Init
-     /tmp/ccQ98FRh.s:180    .text.OLED_Init:0000000000000034 $d
-     /tmp/ccQ98FRh.s:186    .text.OLED_clear:0000000000000000 $t
-     /tmp/ccQ98FRh.s:193    .text.OLED_clear:0000000000000000 OLED_clear
-     /tmp/ccQ98FRh.s:264    .text.OLED_open:0000000000000000 $t
-     /tmp/ccQ98FRh.s:271    .text.OLED_open:0000000000000000 OLED_open
-     /tmp/ccQ98FRh.s:303    .text.OLED_close:0000000000000000 $t
-     /tmp/ccQ98FRh.s:310    .text.OLED_close:0000000000000000 OLED_close
-     /tmp/ccQ98FRh.s:342    .text.OLED_Display_Single:0000000000000000 $t
-     /tmp/ccQ98FRh.s:349    .text.OLED_Display_Single:0000000000000000 OLED_Display_Single
-     /tmp/ccQ98FRh.s:417    .text.OLED_Display_Single:0000000000000040 $d
-     /tmp/ccQ98FRh.s:428    .data.Init_Data:0000000000000000 Init_Data
-     /tmp/ccQ98FRh.s:458    .rodata.ASCII_8x16:0000000000000000 ASCII_8x16
-     /tmp/ccQ98FRh.s:424    .data.Init_Data:0000000000000000 $d
-     /tmp/ccQ98FRh.s:454    .rodata.ASCII_8x16:0000000000000000 $d
+     /tmp/ccdul9sQ.s:16     .text.OLED_Write_Order:0000000000000000 $t
+     /tmp/ccdul9sQ.s:23     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
+     /tmp/ccdul9sQ.s:61     .text.OLED_Write_Order:0000000000000028 $d
+     /tmp/ccdul9sQ.s:66     .text.OLED_Write_Data:0000000000000000 $t
+     /tmp/ccdul9sQ.s:73     .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
+     /tmp/ccdul9sQ.s:110    .text.OLED_Write_Data:0000000000000028 $d
+     /tmp/ccdul9sQ.s:115    .text.OLED_Init:0000000000000000 $t
+     /tmp/ccdul9sQ.s:122    .text.OLED_Init:0000000000000000 OLED_Init
+     /tmp/ccdul9sQ.s:180    .text.OLED_Init:0000000000000034 $d
+     /tmp/ccdul9sQ.s:186    .text.OLED_clear:0000000000000000 $t
+     /tmp/ccdul9sQ.s:193    .text.OLED_clear:0000000000000000 OLED_clear
+     /tmp/ccdul9sQ.s:264    .text.OLED_open:0000000000000000 $t
+     /tmp/ccdul9sQ.s:271    .text.OLED_open:0000000000000000 OLED_open
+     /tmp/ccdul9sQ.s:303    .text.OLED_close:0000000000000000 $t
+     /tmp/ccdul9sQ.s:310    .text.OLED_close:0000000000000000 OLED_close
+     /tmp/ccdul9sQ.s:342    .text.OLED_Display_Single:0000000000000000 $t
+     /tmp/ccdul9sQ.s:349    .text.OLED_Display_Single:0000000000000000 OLED_Display_Single
+     /tmp/ccdul9sQ.s:417    .text.OLED_Display_Single:0000000000000040 $d
+     /tmp/ccdul9sQ.s:428    .data.Init_Data:0000000000000000 Init_Data
+     /tmp/ccdul9sQ.s:458    .rodata.ASCII_8x16:0000000000000000 ASCII_8x16
+     /tmp/ccdul9sQ.s:424    .data.Init_Data:0000000000000000 $d
+     /tmp/ccdul9sQ.s:454    .rodata.ASCII_8x16:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

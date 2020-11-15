@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc7LvQ9d.s 			page 1
+ARM GAS  /tmp/ccYYQELy.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc7LvQ9d.s 			page 1
   31:Src/main.c    **** 
   32:Src/main.c    **** /* Private typedef -----------------------------------------------------------*/
   33:Src/main.c    **** /* USER CODE BEGIN PTD */
-ARM GAS  /tmp/cc7LvQ9d.s 			page 2
+ARM GAS  /tmp/ccYYQELy.s 			page 2
 
 
   34:Src/main.c    **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc7LvQ9d.s 			page 1
   88:Src/main.c    **** 
   89:Src/main.c    ****   /* Initialize all configured peripherals */
   90:Src/main.c    ****   MX_GPIO_Init();
-ARM GAS  /tmp/cc7LvQ9d.s 			page 3
+ARM GAS  /tmp/ccYYQELy.s 			page 3
 
 
   91:Src/main.c    ****   MX_I2C1_Init();
@@ -126,28 +126,29 @@ ARM GAS  /tmp/cc7LvQ9d.s 			page 1
   93:Src/main.c    **** 
   94:Src/main.c    ****   OLED_Init();
   95:Src/main.c    **** 	OLED_open();
-  96:Src/main.c    **** 
-  97:Src/main.c    ****   /* USER CODE END 2 */
-  98:Src/main.c    **** 
-  99:Src/main.c    ****   /* Infinite loop */
- 100:Src/main.c    ****   /* USER CODE BEGIN WHILE */
- 101:Src/main.c    ****   while (1)
- 102:Src/main.c    ****   {
- 103:Src/main.c    ****     /* USER CODE END WHILE */
- 104:Src/main.c    **** 
- 105:Src/main.c    ****     /* USER CODE BEGIN 3 */
- 106:Src/main.c    ****     OLED_Display_Single(0, 0, '5');
- 107:Src/main.c    ****   }
- 108:Src/main.c    ****   /* USER CODE END 3 */
- 109:Src/main.c    **** }
- 110:Src/main.c    **** 
- 111:Src/main.c    **** /**
- 112:Src/main.c    ****   * @brief System Clock Configuration
- 113:Src/main.c    ****   * @retval None
- 114:Src/main.c    ****   */
- 115:Src/main.c    **** void SystemClock_Config(void)
- 116:Src/main.c    **** {
-  26              		.loc 1 116 0
+  96:Src/main.c    ****   OLED_clear();
+  97:Src/main.c    **** 
+  98:Src/main.c    ****   /* USER CODE END 2 */
+  99:Src/main.c    **** 
+ 100:Src/main.c    ****   /* Infinite loop */
+ 101:Src/main.c    ****   /* USER CODE BEGIN WHILE */
+ 102:Src/main.c    ****   while (1)
+ 103:Src/main.c    ****   {
+ 104:Src/main.c    ****     /* USER CODE END WHILE */
+ 105:Src/main.c    **** 
+ 106:Src/main.c    ****     /* USER CODE BEGIN 3 */
+ 107:Src/main.c    ****     //OLED_Display_Single(0, 0, '5');
+ 108:Src/main.c    ****   }
+ 109:Src/main.c    ****   /* USER CODE END 3 */
+ 110:Src/main.c    **** }
+ 111:Src/main.c    **** 
+ 112:Src/main.c    **** /**
+ 113:Src/main.c    ****   * @brief System Clock Configuration
+ 114:Src/main.c    ****   * @retval None
+ 115:Src/main.c    ****   */
+ 116:Src/main.c    **** void SystemClock_Config(void)
+ 117:Src/main.c    **** {
+  26              		.loc 1 117 0
   27              		.cfi_startproc
   28              		@ args = 0, pretend = 0, frame = 64
   29              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -160,93 +161,93 @@ ARM GAS  /tmp/cc7LvQ9d.s 			page 1
   36 0002 91B0     		sub	sp, sp, #68
   37              	.LCFI1:
   38              		.cfi_def_cfa_offset 80
- 117:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  39              		.loc 1 117 0
+ 118:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  39              		.loc 1 118 0
   40 0004 2822     		movs	r2, #40
   41 0006 0021     		movs	r1, #0
   42 0008 06A8     		add	r0, sp, #24
   43 000a FFF7FEFF 		bl	memset
   44              	.LVL0:
- 118:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  45              		.loc 1 118 0
+ 119:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  45              		.loc 1 119 0
   46 000e 0024     		movs	r4, #0
   47 0010 0194     		str	r4, [sp, #4]
   48 0012 0294     		str	r4, [sp, #8]
   49 0014 0394     		str	r4, [sp, #12]
   50 0016 0494     		str	r4, [sp, #16]
   51 0018 0594     		str	r4, [sp, #20]
- 119:Src/main.c    **** 
- 120:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
- 121:Src/main.c    ****   */
-ARM GAS  /tmp/cc7LvQ9d.s 			page 4
+ 120:Src/main.c    **** 
+ 121:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
+ARM GAS  /tmp/ccYYQELy.s 			page 4
 
 
- 122:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  52              		.loc 1 122 0
+ 122:Src/main.c    ****   */
+ 123:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  52              		.loc 1 123 0
   53 001a 0122     		movs	r2, #1
   54 001c 0692     		str	r2, [sp, #24]
- 123:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  55              		.loc 1 123 0
+ 124:Src/main.c    ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  55              		.loc 1 124 0
   56 001e 4FF48033 		mov	r3, #65536
   57 0022 0793     		str	r3, [sp, #28]
- 124:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
- 125:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  58              		.loc 1 125 0
+ 125:Src/main.c    ****   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+ 126:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  58              		.loc 1 126 0
   59 0024 0A92     		str	r2, [sp, #40]
- 126:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  60              		.loc 1 126 0
+ 127:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  60              		.loc 1 127 0
   61 0026 0225     		movs	r5, #2
   62 0028 0D95     		str	r5, [sp, #52]
- 127:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  63              		.loc 1 127 0
+ 128:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  63              		.loc 1 128 0
   64 002a 0E93     		str	r3, [sp, #56]
- 128:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
-  65              		.loc 1 128 0
+ 129:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+  65              		.loc 1 129 0
   66 002c 4FF4E013 		mov	r3, #1835008
   67 0030 0F93     		str	r3, [sp, #60]
- 129:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  68              		.loc 1 129 0
+ 130:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  68              		.loc 1 130 0
   69 0032 06A8     		add	r0, sp, #24
   70 0034 FFF7FEFF 		bl	HAL_RCC_OscConfig
   71              	.LVL1:
- 130:Src/main.c    ****   {
- 131:Src/main.c    ****     Error_Handler();
- 132:Src/main.c    ****   }
- 133:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
- 134:Src/main.c    ****   */
- 135:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-  72              		.loc 1 135 0
+ 131:Src/main.c    ****   {
+ 132:Src/main.c    ****     Error_Handler();
+ 133:Src/main.c    ****   }
+ 134:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
+ 135:Src/main.c    ****   */
+ 136:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+  72              		.loc 1 136 0
   73 0038 0F23     		movs	r3, #15
   74 003a 0193     		str	r3, [sp, #4]
- 136:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
- 137:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  75              		.loc 1 137 0
+ 137:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 138:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  75              		.loc 1 138 0
   76 003c 0295     		str	r5, [sp, #8]
- 138:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  77              		.loc 1 138 0
+ 139:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  77              		.loc 1 139 0
   78 003e 0394     		str	r4, [sp, #12]
- 139:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  79              		.loc 1 139 0
+ 140:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  79              		.loc 1 140 0
   80 0040 4FF48063 		mov	r3, #1024
   81 0044 0493     		str	r3, [sp, #16]
- 140:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-  82              		.loc 1 140 0
+ 141:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  82              		.loc 1 141 0
   83 0046 0594     		str	r4, [sp, #20]
- 141:Src/main.c    **** 
- 142:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  84              		.loc 1 142 0
+ 142:Src/main.c    **** 
+ 143:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  84              		.loc 1 143 0
   85 0048 2946     		mov	r1, r5
   86 004a 01A8     		add	r0, sp, #4
+ARM GAS  /tmp/ccYYQELy.s 			page 5
+
+
   87 004c FFF7FEFF 		bl	HAL_RCC_ClockConfig
-ARM GAS  /tmp/cc7LvQ9d.s 			page 5
-
-
   88              	.LVL2:
- 143:Src/main.c    ****   {
- 144:Src/main.c    ****     Error_Handler();
- 145:Src/main.c    ****   }
- 146:Src/main.c    **** }
-  89              		.loc 1 146 0
+ 144:Src/main.c    ****   {
+ 145:Src/main.c    ****     Error_Handler();
+ 146:Src/main.c    ****   }
+ 147:Src/main.c    **** }
+  89              		.loc 1 147 0
   90 0050 11B0     		add	sp, sp, #68
   91              	.LCFI2:
   92              		.cfi_def_cfa_offset 12
@@ -294,79 +295,76 @@ ARM GAS  /tmp/cc7LvQ9d.s 			page 1
  130              		.loc 1 94 0
  131 0012 FFF7FEFF 		bl	OLED_Init
  132              	.LVL7:
-  95:Src/main.c    **** 
+  95:Src/main.c    ****   OLED_clear();
  133              		.loc 1 95 0
  134 0016 FFF7FEFF 		bl	OLED_open
+ARM GAS  /tmp/ccYYQELy.s 			page 6
+
+
  135              	.LVL8:
-ARM GAS  /tmp/cc7LvQ9d.s 			page 6
-
-
- 136              	.L4:
- 106:Src/main.c    ****   }
- 137              		.loc 1 106 0 discriminator 1
- 138 001a 3522     		movs	r2, #53
- 139 001c 0021     		movs	r1, #0
- 140 001e 0846     		mov	r0, r1
- 141 0020 FFF7FEFF 		bl	OLED_Display_Single
- 142              	.LVL9:
- 143 0024 F9E7     		b	.L4
- 144              		.cfi_endproc
- 145              	.LFE65:
- 147              		.section	.text.Error_Handler,"ax",%progbits
- 148              		.align	1
- 149              		.global	Error_Handler
- 150              		.syntax unified
- 151              		.thumb
- 152              		.thumb_func
- 153              		.fpu softvfp
- 155              	Error_Handler:
- 156              	.LFB67:
- 147:Src/main.c    **** 
- 148:Src/main.c    **** /* USER CODE BEGIN 4 */
- 149:Src/main.c    **** 
- 150:Src/main.c    **** /* USER CODE END 4 */
- 151:Src/main.c    **** 
- 152:Src/main.c    **** /**
- 153:Src/main.c    ****   * @brief  This function is executed in case of error occurrence.
- 154:Src/main.c    ****   * @retval None
- 155:Src/main.c    ****   */
- 156:Src/main.c    **** void Error_Handler(void)
- 157:Src/main.c    **** {
- 157              		.loc 1 157 0
- 158              		.cfi_startproc
- 159              		@ args = 0, pretend = 0, frame = 0
- 160              		@ frame_needed = 0, uses_anonymous_args = 0
- 161              		@ link register save eliminated.
- 162 0000 7047     		bx	lr
- 163              		.cfi_endproc
- 164              	.LFE67:
- 166              		.text
- 167              	.Letext0:
- 168              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 169              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 170              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 171              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 172              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
- 173              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 174              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
- 175              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
- 176              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 177              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 178              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 179              		.file 13 "Inc/i2c.h"
- 180              		.file 14 "Inc/gpio.h"
- 181              		.file 15 "Inc/OLED_SSD1306.h"
-ARM GAS  /tmp/cc7LvQ9d.s 			page 7
+  96:Src/main.c    **** 
+ 136              		.loc 1 96 0
+ 137 001a FFF7FEFF 		bl	OLED_clear
+ 138              	.LVL9:
+ 139              	.L4:
+ 140 001e FEE7     		b	.L4
+ 141              		.cfi_endproc
+ 142              	.LFE65:
+ 144              		.section	.text.Error_Handler,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	Error_Handler
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 150              		.fpu softvfp
+ 152              	Error_Handler:
+ 153              	.LFB67:
+ 148:Src/main.c    **** 
+ 149:Src/main.c    **** /* USER CODE BEGIN 4 */
+ 150:Src/main.c    **** 
+ 151:Src/main.c    **** /* USER CODE END 4 */
+ 152:Src/main.c    **** 
+ 153:Src/main.c    **** /**
+ 154:Src/main.c    ****   * @brief  This function is executed in case of error occurrence.
+ 155:Src/main.c    ****   * @retval None
+ 156:Src/main.c    ****   */
+ 157:Src/main.c    **** void Error_Handler(void)
+ 158:Src/main.c    **** {
+ 154              		.loc 1 158 0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+ 159 0000 7047     		bx	lr
+ 160              		.cfi_endproc
+ 161              	.LFE67:
+ 163              		.text
+ 164              	.Letext0:
+ 165              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 166              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 167              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 168              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 169              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 170              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 171              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 172              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
+ 173              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 174              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 175              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 176              		.file 13 "Inc/i2c.h"
+ 177              		.file 14 "Inc/gpio.h"
+ 178              		.file 15 "Inc/OLED_SSD1306.h"
+ARM GAS  /tmp/ccYYQELy.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/cc7LvQ9d.s:16     .text.SystemClock_Config:0000000000000000 $t
-     /tmp/cc7LvQ9d.s:23     .text.SystemClock_Config:0000000000000000 SystemClock_Config
-     /tmp/cc7LvQ9d.s:99     .text.main:0000000000000000 $t
-     /tmp/cc7LvQ9d.s:106    .text.main:0000000000000000 main
-     /tmp/cc7LvQ9d.s:148    .text.Error_Handler:0000000000000000 $t
-     /tmp/cc7LvQ9d.s:155    .text.Error_Handler:0000000000000000 Error_Handler
+     /tmp/ccYYQELy.s:16     .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccYYQELy.s:23     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccYYQELy.s:99     .text.main:0000000000000000 $t
+     /tmp/ccYYQELy.s:106    .text.main:0000000000000000 main
+     /tmp/ccYYQELy.s:145    .text.Error_Handler:0000000000000000 $t
+     /tmp/ccYYQELy.s:152    .text.Error_Handler:0000000000000000 Error_Handler
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
@@ -378,4 +376,4 @@ MX_GPIO_Init
 MX_I2C1_Init
 OLED_Init
 OLED_open
-OLED_Display_Single
+OLED_clear
