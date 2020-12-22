@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccN5zEC2.s 			page 1
+ARM GAS  /tmp/cc9KfcX1.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -15,688 +15,815 @@ ARM GAS  /tmp/ccN5zEC2.s 			page 1
   12              		.text
   13              	.Ltext0:
   14              		.cfi_sections	.debug_frame
-  15              		.section	.text.OLED_Init,"ax",%progbits
+  15              		.section	.text.OLED_Write_Order,"ax",%progbits
   16              		.align	1
-  17              		.global	OLED_Init
+  17              		.global	OLED_Write_Order
   18              		.syntax unified
   19              		.thumb
   20              		.thumb_func
   21              		.fpu softvfp
-  23              	OLED_Init:
+  23              	OLED_Write_Order:
   24              	.LFB65:
   25              		.file 1 "Src/OLED_SSD1306.c"
    1:Src/OLED_SSD1306.c **** #include "OLED_SSD1306.h"
-   2:Src/OLED_SSD1306.c **** #include "ASCII_8X16.h"
+   2:Src/OLED_SSD1306.c **** #include "ASCII.h"
    3:Src/OLED_SSD1306.c **** 
    4:Src/OLED_SSD1306.c **** uint8_t Init_Data[] = {
-   5:Src/OLED_SSD1306.c **** 	0xAE, 0x00, 0x10, 0x40, 0xB0, 0x81, 0xA1, 0xA6, 
-   6:Src/OLED_SSD1306.c **** 	0xA8, 0x3F, 0xC8, 0xD3, 0x00, 0xD5, 0x80, 0xD9, 
-   7:Src/OLED_SSD1306.c **** 	0xDA, 0x12, 0xDB, 0x30,	0x8D, 0x10, 0xAF
+   5:Src/OLED_SSD1306.c **** 	0xAE, 0x00, 0x10, 0x40, 0xB0, 0x81, 0xA1, 0xA4,
+   6:Src/OLED_SSD1306.c **** 	0xA6, 0xA8, 0x3F, 0xC8, 0xD3, 0x00, 0xD5, 0x80, 
+   7:Src/OLED_SSD1306.c **** 	0xD9, 0xDA, 0x12, 0xDB, 0x30, 0x8D, 0x10, 0xAF
    8:Src/OLED_SSD1306.c **** 	};
    9:Src/OLED_SSD1306.c **** 
-  10:Src/OLED_SSD1306.c **** //OLED初始化
-  11:Src/OLED_SSD1306.c **** void OLED_Init()
-  12:Src/OLED_SSD1306.c **** {	
+  10:Src/OLED_SSD1306.c **** //向OLED进行写命令操作
+  11:Src/OLED_SSD1306.c **** void OLED_Write_Order(uint8_t Order)
+  12:Src/OLED_SSD1306.c **** {
   26              		.loc 1 12 0
   27              		.cfi_startproc
-  28              		@ args = 0, pretend = 0, frame = 0
+  28              		@ args = 0, pretend = 0, frame = 8
   29              		@ frame_needed = 0, uses_anonymous_args = 0
-  30 0000 10B5     		push	{r4, lr}
-  31              	.LCFI0:
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 4, -8
+  30              	.LVL0:
+  31 0000 00B5     		push	{lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 4
   34              		.cfi_offset 14, -4
-  35 0002 84B0     		sub	sp, sp, #16
+  35 0002 87B0     		sub	sp, sp, #28
   36              	.LCFI1:
-  37              		.cfi_def_cfa_offset 24
-  38              	.LVL0:
-  39              	.LBB2:
-  13:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<25; i++)
+  37              		.cfi_def_cfa_offset 32
+  38 0004 06AA     		add	r2, sp, #24
+  39 0006 02F8010D 		strb	r0, [r2, #-1]!
+  13:Src/OLED_SSD1306.c **** 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0x100);
   40              		.loc 1 13 0
-  41 0004 0024     		movs	r4, #0
-  42 0006 11E0     		b	.L2
-  43              	.LVL1:
-  44              	.L3:
-  14:Src/OLED_SSD1306.c **** 	{
-ARM GAS  /tmp/ccN5zEC2.s 			page 2
+  41 000a 4FF48073 		mov	r3, #256
+  42 000e 0293     		str	r3, [sp, #8]
+  43 0010 0123     		movs	r3, #1
+  44 0012 0193     		str	r3, [sp, #4]
+  45 0014 0092     		str	r2, [sp]
+ARM GAS  /tmp/cc9KfcX1.s 			page 2
 
 
-  15:Src/OLED_SSD1306.c **** 		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0x100);
-  45              		.loc 1 15 0 discriminator 3
-  46 0008 4FF48073 		mov	r3, #256
-  47 000c 0293     		str	r3, [sp, #8]
-  48 000e 0123     		movs	r3, #1
-  49 0010 0193     		str	r3, [sp, #4]
-  50 0012 084A     		ldr	r2, .L5
-  51 0014 2244     		add	r2, r2, r4
-  52 0016 0092     		str	r2, [sp]
-  53 0018 0022     		movs	r2, #0
-  54 001a 7821     		movs	r1, #120
-  55 001c 0648     		ldr	r0, .L5+4
-  56 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write
-  57              	.LVL2:
-  16:Src/OLED_SSD1306.c **** 		HAL_Delay(100);
-  58              		.loc 1 16 0 discriminator 3
-  59 0022 6420     		movs	r0, #100
-  60 0024 FFF7FEFF 		bl	HAL_Delay
-  61              	.LVL3:
-  13:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<25; i++)
-  62              		.loc 1 13 0 discriminator 3
-  63 0028 0134     		adds	r4, r4, #1
-  64              	.LVL4:
-  65 002a E4B2     		uxtb	r4, r4
-  66              	.LVL5:
-  67              	.L2:
-  13:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<25; i++)
-  68              		.loc 1 13 0 is_stmt 0 discriminator 1
-  69 002c 182C     		cmp	r4, #24
-  70 002e EBD9     		bls	.L3
-  71              	.LBE2:
-  17:Src/OLED_SSD1306.c **** 	}
-  18:Src/OLED_SSD1306.c **** }
-  72              		.loc 1 18 0 is_stmt 1
-  73 0030 04B0     		add	sp, sp, #16
-  74              	.LCFI2:
-  75              		.cfi_def_cfa_offset 8
-  76              		@ sp needed
-  77 0032 10BD     		pop	{r4, pc}
-  78              	.LVL6:
-  79              	.L6:
-  80              		.align	2
-  81              	.L5:
-  82 0034 00000000 		.word	.LANCHOR0
-  83 0038 00000000 		.word	hi2c1
-  84              		.cfi_endproc
-  85              	.LFE65:
-  87              		.section	.text.OLED_Write_Order,"ax",%progbits
-  88              		.align	1
-  89              		.global	OLED_Write_Order
-  90              		.syntax unified
-  91              		.thumb
-  92              		.thumb_func
-  93              		.fpu softvfp
-  95              	OLED_Write_Order:
-  96              	.LFB66:
-  19:Src/OLED_SSD1306.c **** 
-ARM GAS  /tmp/ccN5zEC2.s 			page 3
+  46 0016 0022     		movs	r2, #0
+  47 0018 7821     		movs	r1, #120
+  48 001a 0348     		ldr	r0, .L3
+  49              	.LVL1:
+  50 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
+  51              	.LVL2:
+  14:Src/OLED_SSD1306.c **** }
+  52              		.loc 1 14 0
+  53 0020 07B0     		add	sp, sp, #28
+  54              	.LCFI2:
+  55              		.cfi_def_cfa_offset 4
+  56              		@ sp needed
+  57 0022 5DF804FB 		ldr	pc, [sp], #4
+  58              	.L4:
+  59 0026 00BF     		.align	2
+  60              	.L3:
+  61 0028 00000000 		.word	hi2c1
+  62              		.cfi_endproc
+  63              	.LFE65:
+  65              		.section	.text.OLED_Write_Data,"ax",%progbits
+  66              		.align	1
+  67              		.global	OLED_Write_Data
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  71              		.fpu softvfp
+  73              	OLED_Write_Data:
+  74              	.LFB66:
+  15:Src/OLED_SSD1306.c **** 
+  16:Src/OLED_SSD1306.c **** //向OLED进行写数据操作
+  17:Src/OLED_SSD1306.c **** void OLED_Write_Data(uint8_t Data)
+  18:Src/OLED_SSD1306.c **** {
+  75              		.loc 1 18 0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 8
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79              	.LVL3:
+  80 0000 00B5     		push	{lr}
+  81              	.LCFI3:
+  82              		.cfi_def_cfa_offset 4
+  83              		.cfi_offset 14, -4
+  84 0002 87B0     		sub	sp, sp, #28
+  85              	.LCFI4:
+  86              		.cfi_def_cfa_offset 32
+  87 0004 06AA     		add	r2, sp, #24
+  88 0006 02F8010D 		strb	r0, [r2, #-1]!
+  19:Src/OLED_SSD1306.c **** 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0x100);
+  89              		.loc 1 19 0
+  90 000a 4FF48073 		mov	r3, #256
+  91 000e 0293     		str	r3, [sp, #8]
+  92 0010 0123     		movs	r3, #1
+  93 0012 0193     		str	r3, [sp, #4]
+  94 0014 0092     		str	r2, [sp]
+  95 0016 4022     		movs	r2, #64
+  96 0018 7821     		movs	r1, #120
+  97 001a 0348     		ldr	r0, .L7
+  98              	.LVL4:
+ARM GAS  /tmp/cc9KfcX1.s 			page 3
 
 
-  20:Src/OLED_SSD1306.c **** //向OLED进行写命令操作
-  21:Src/OLED_SSD1306.c **** void OLED_Write_Order(uint8_t Order)
-  22:Src/OLED_SSD1306.c **** {
-  97              		.loc 1 22 0
-  98              		.cfi_startproc
-  99              		@ args = 0, pretend = 0, frame = 8
- 100              		@ frame_needed = 0, uses_anonymous_args = 0
- 101              	.LVL7:
- 102 0000 00B5     		push	{lr}
- 103              	.LCFI3:
+  99 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 100              	.LVL5:
+  20:Src/OLED_SSD1306.c **** }
+ 101              		.loc 1 20 0
+ 102 0020 07B0     		add	sp, sp, #28
+ 103              	.LCFI5:
  104              		.cfi_def_cfa_offset 4
- 105              		.cfi_offset 14, -4
- 106 0002 87B0     		sub	sp, sp, #28
- 107              	.LCFI4:
- 108              		.cfi_def_cfa_offset 32
- 109 0004 06AA     		add	r2, sp, #24
- 110 0006 02F8010D 		strb	r0, [r2, #-1]!
-  23:Src/OLED_SSD1306.c **** 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, &Order, 1, 0x100);
- 111              		.loc 1 23 0
- 112 000a 4FF48073 		mov	r3, #256
- 113 000e 0293     		str	r3, [sp, #8]
- 114 0010 0123     		movs	r3, #1
- 115 0012 0193     		str	r3, [sp, #4]
- 116 0014 0092     		str	r2, [sp]
- 117 0016 0022     		movs	r2, #0
- 118 0018 7821     		movs	r1, #120
- 119 001a 0348     		ldr	r0, .L9
- 120              	.LVL8:
- 121 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
- 122              	.LVL9:
-  24:Src/OLED_SSD1306.c **** }
- 123              		.loc 1 24 0
- 124 0020 07B0     		add	sp, sp, #28
- 125              	.LCFI5:
- 126              		.cfi_def_cfa_offset 4
- 127              		@ sp needed
- 128 0022 5DF804FB 		ldr	pc, [sp], #4
- 129              	.L10:
- 130 0026 00BF     		.align	2
- 131              	.L9:
- 132 0028 00000000 		.word	hi2c1
- 133              		.cfi_endproc
- 134              	.LFE66:
- 136              		.section	.text.OLED_Write_Data,"ax",%progbits
- 137              		.align	1
- 138              		.global	OLED_Write_Data
- 139              		.syntax unified
- 140              		.thumb
- 141              		.thumb_func
- 142              		.fpu softvfp
- 144              	OLED_Write_Data:
- 145              	.LFB67:
-  25:Src/OLED_SSD1306.c **** 
-  26:Src/OLED_SSD1306.c **** //向OLED进行写数据操作
-  27:Src/OLED_SSD1306.c **** void OLED_Write_Data(uint8_t Data)
-  28:Src/OLED_SSD1306.c **** {
- 146              		.loc 1 28 0
-ARM GAS  /tmp/ccN5zEC2.s 			page 4
+ 105              		@ sp needed
+ 106 0022 5DF804FB 		ldr	pc, [sp], #4
+ 107              	.L8:
+ 108 0026 00BF     		.align	2
+ 109              	.L7:
+ 110 0028 00000000 		.word	hi2c1
+ 111              		.cfi_endproc
+ 112              	.LFE66:
+ 114              		.section	.text.OLED_Init,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	OLED_Init
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.fpu softvfp
+ 122              	OLED_Init:
+ 123              	.LFB67:
+  21:Src/OLED_SSD1306.c **** 
+  22:Src/OLED_SSD1306.c **** //OLED初始化
+  23:Src/OLED_SSD1306.c **** void OLED_Init()
+  24:Src/OLED_SSD1306.c **** {	
+ 124              		.loc 1 24 0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128 0000 10B5     		push	{r4, lr}
+ 129              	.LCFI6:
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 4, -8
+ 132              		.cfi_offset 14, -4
+ 133 0002 84B0     		sub	sp, sp, #16
+ 134              	.LCFI7:
+ 135              		.cfi_def_cfa_offset 24
+ 136              	.LVL6:
+ 137              	.LBB2:
+  25:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<24; i++)
+ 138              		.loc 1 25 0
+ 139 0004 0024     		movs	r4, #0
+ 140 0006 11E0     		b	.L10
+ 141              	.LVL7:
+ 142              	.L11:
+  26:Src/OLED_SSD1306.c **** 	{
+  27:Src/OLED_SSD1306.c **** 		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0x100);
+ 143              		.loc 1 27 0 discriminator 3
+ 144 0008 4FF48073 		mov	r3, #256
+ 145 000c 0293     		str	r3, [sp, #8]
+ 146 000e 0123     		movs	r3, #1
+ 147 0010 0193     		str	r3, [sp, #4]
+ 148 0012 084A     		ldr	r2, .L13
+ 149 0014 2244     		add	r2, r2, r4
+ARM GAS  /tmp/cc9KfcX1.s 			page 4
 
 
- 147              		.cfi_startproc
- 148              		@ args = 0, pretend = 0, frame = 8
- 149              		@ frame_needed = 0, uses_anonymous_args = 0
- 150              	.LVL10:
- 151 0000 00B5     		push	{lr}
- 152              	.LCFI6:
- 153              		.cfi_def_cfa_offset 4
- 154              		.cfi_offset 14, -4
- 155 0002 87B0     		sub	sp, sp, #28
- 156              	.LCFI7:
- 157              		.cfi_def_cfa_offset 32
- 158 0004 06AA     		add	r2, sp, #24
- 159 0006 02F8010D 		strb	r0, [r2, #-1]!
-  29:Src/OLED_SSD1306.c **** 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0x100);
- 160              		.loc 1 29 0
- 161 000a 4FF48073 		mov	r3, #256
- 162 000e 0293     		str	r3, [sp, #8]
- 163 0010 0123     		movs	r3, #1
- 164 0012 0193     		str	r3, [sp, #4]
- 165 0014 0092     		str	r2, [sp]
- 166 0016 4022     		movs	r2, #64
- 167 0018 7821     		movs	r1, #120
- 168 001a 0348     		ldr	r0, .L13
- 169              	.LVL11:
- 170 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
- 171              	.LVL12:
+ 150 0016 0092     		str	r2, [sp]
+ 151 0018 0022     		movs	r2, #0
+ 152 001a 7821     		movs	r1, #120
+ 153 001c 0648     		ldr	r0, .L13+4
+ 154 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 155              	.LVL8:
+  28:Src/OLED_SSD1306.c **** 		HAL_Delay(100);
+ 156              		.loc 1 28 0 discriminator 3
+ 157 0022 6420     		movs	r0, #100
+ 158 0024 FFF7FEFF 		bl	HAL_Delay
+ 159              	.LVL9:
+  25:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<24; i++)
+ 160              		.loc 1 25 0 discriminator 3
+ 161 0028 0134     		adds	r4, r4, #1
+ 162              	.LVL10:
+ 163 002a E4B2     		uxtb	r4, r4
+ 164              	.LVL11:
+ 165              	.L10:
+  25:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<24; i++)
+ 166              		.loc 1 25 0 is_stmt 0 discriminator 1
+ 167 002c 172C     		cmp	r4, #23
+ 168 002e EBD9     		bls	.L11
+ 169              	.LBE2:
+  29:Src/OLED_SSD1306.c **** 	}
   30:Src/OLED_SSD1306.c **** }
- 172              		.loc 1 30 0
- 173 0020 07B0     		add	sp, sp, #28
- 174              	.LCFI8:
- 175              		.cfi_def_cfa_offset 4
- 176              		@ sp needed
- 177 0022 5DF804FB 		ldr	pc, [sp], #4
- 178              	.L14:
- 179 0026 00BF     		.align	2
- 180              	.L13:
- 181 0028 00000000 		.word	hi2c1
+ 170              		.loc 1 30 0 is_stmt 1
+ 171 0030 04B0     		add	sp, sp, #16
+ 172              	.LCFI8:
+ 173              		.cfi_def_cfa_offset 8
+ 174              		@ sp needed
+ 175 0032 10BD     		pop	{r4, pc}
+ 176              	.LVL12:
+ 177              	.L14:
+ 178              		.align	2
+ 179              	.L13:
+ 180 0034 00000000 		.word	.LANCHOR0
+ 181 0038 00000000 		.word	hi2c1
  182              		.cfi_endproc
  183              	.LFE67:
- 185              		.section	.text.OLED_open,"ax",%progbits
+ 185              		.section	.text.OLED_clear,"ax",%progbits
  186              		.align	1
- 187              		.global	OLED_open
+ 187              		.global	OLED_clear
  188              		.syntax unified
  189              		.thumb
  190              		.thumb_func
  191              		.fpu softvfp
- 193              	OLED_open:
+ 193              	OLED_clear:
  194              	.LFB68:
   31:Src/OLED_SSD1306.c **** 
-  32:Src/OLED_SSD1306.c **** //打开OLED
-  33:Src/OLED_SSD1306.c **** void OLED_open()
+  32:Src/OLED_SSD1306.c **** //清屏
+  33:Src/OLED_SSD1306.c **** void OLED_clear(void)
   34:Src/OLED_SSD1306.c **** {
  195              		.loc 1 34 0
  196              		.cfi_startproc
  197              		@ args = 0, pretend = 0, frame = 0
  198              		@ frame_needed = 0, uses_anonymous_args = 0
- 199 0000 08B5     		push	{r3, lr}
-ARM GAS  /tmp/ccN5zEC2.s 			page 5
+ 199 0000 38B5     		push	{r3, r4, r5, lr}
+ARM GAS  /tmp/cc9KfcX1.s 			page 5
 
 
  200              	.LCFI9:
- 201              		.cfi_def_cfa_offset 8
- 202              		.cfi_offset 3, -8
- 203              		.cfi_offset 14, -4
-  35:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xA4);
- 204              		.loc 1 35 0
- 205 0002 A420     		movs	r0, #164
- 206 0004 FFF7FEFF 		bl	OLED_Write_Order
- 207              	.LVL13:
-  36:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xAE);
- 208              		.loc 1 36 0
- 209 0008 AE20     		movs	r0, #174
- 210 000a FFF7FEFF 		bl	OLED_Write_Order
+ 201              		.cfi_def_cfa_offset 16
+ 202              		.cfi_offset 3, -16
+ 203              		.cfi_offset 4, -12
+ 204              		.cfi_offset 5, -8
+ 205              		.cfi_offset 14, -4
+ 206              	.LVL13:
+ 207              	.LBB3:
+  35:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<8; i++)
+ 208              		.loc 1 35 0
+ 209 0002 0025     		movs	r5, #0
+ 210 0004 09E0     		b	.L16
  211              	.LVL14:
- 212 000e 08BD     		pop	{r3, pc}
- 213              		.cfi_endproc
- 214              	.LFE68:
- 216              		.section	.text.OLED_close,"ax",%progbits
- 217              		.align	1
- 218              		.global	OLED_close
- 219              		.syntax unified
- 220              		.thumb
- 221              		.thumb_func
- 222              		.fpu softvfp
- 224              	OLED_close:
- 225              	.LFB69:
-  37:Src/OLED_SSD1306.c **** }
-  38:Src/OLED_SSD1306.c **** 
-  39:Src/OLED_SSD1306.c **** //关闭OLED
-  40:Src/OLED_SSD1306.c **** void OLED_close()
-  41:Src/OLED_SSD1306.c **** {
- 226              		.loc 1 41 0
- 227              		.cfi_startproc
- 228              		@ args = 0, pretend = 0, frame = 0
- 229              		@ frame_needed = 0, uses_anonymous_args = 0
- 230 0000 08B5     		push	{r3, lr}
- 231              	.LCFI10:
- 232              		.cfi_def_cfa_offset 8
- 233              		.cfi_offset 3, -8
- 234              		.cfi_offset 14, -4
-  42:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xA5);
- 235              		.loc 1 42 0
- 236 0002 A520     		movs	r0, #165
- 237 0004 FFF7FEFF 		bl	OLED_Write_Order
- 238              	.LVL15:
-  43:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xAF);
- 239              		.loc 1 43 0
- 240 0008 AF20     		movs	r0, #175
- 241 000a FFF7FEFF 		bl	OLED_Write_Order
- 242              	.LVL16:
- 243 000e 08BD     		pop	{r3, pc}
- 244              		.cfi_endproc
- 245              	.LFE69:
- 247              		.section	.text.OLED_Display,"ax",%progbits
- 248              		.align	1
- 249              		.global	OLED_Display
- 250              		.syntax unified
-ARM GAS  /tmp/ccN5zEC2.s 			page 6
+ 212              	.L18:
+ 213              	.LBB4:
+  36:Src/OLED_SSD1306.c **** 	{
+  37:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0xB0+i);
+  38:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x00);
+  39:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x10);
+  40:Src/OLED_SSD1306.c **** 		for (uint8_t j=0; j<128; j++)
+  41:Src/OLED_SSD1306.c **** 		{
+  42:Src/OLED_SSD1306.c **** 			OLED_Write_Data(0);
+ 214              		.loc 1 42 0 discriminator 3
+ 215 0006 0020     		movs	r0, #0
+ 216 0008 FFF7FEFF 		bl	OLED_Write_Data
+ 217              	.LVL15:
+  40:Src/OLED_SSD1306.c **** 		{
+ 218              		.loc 1 40 0 discriminator 3
+ 219 000c 0134     		adds	r4, r4, #1
+ 220              	.LVL16:
+ 221 000e E4B2     		uxtb	r4, r4
+ 222              	.LVL17:
+ 223              	.L17:
+  40:Src/OLED_SSD1306.c **** 		{
+ 224              		.loc 1 40 0 is_stmt 0 discriminator 1
+ 225 0010 14F0800F 		tst	r4, #128
+ 226 0014 F7D0     		beq	.L18
+ 227              	.LBE4:
+  35:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<8; i++)
+ 228              		.loc 1 35 0 is_stmt 1 discriminator 2
+ 229 0016 0135     		adds	r5, r5, #1
+ 230              	.LVL18:
+ 231 0018 EDB2     		uxtb	r5, r5
+ 232              	.LVL19:
+ 233              	.L16:
+  35:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<8; i++)
+ 234              		.loc 1 35 0 is_stmt 0 discriminator 1
+ 235 001a 072D     		cmp	r5, #7
+ 236 001c 0CD8     		bhi	.L21
+  37:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x00);
+ 237              		.loc 1 37 0 is_stmt 1
+ 238 001e A5F15000 		sub	r0, r5, #80
+ 239 0022 C0B2     		uxtb	r0, r0
+ 240 0024 FFF7FEFF 		bl	OLED_Write_Order
+ 241              	.LVL20:
+  38:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x10);
+ 242              		.loc 1 38 0
+ARM GAS  /tmp/cc9KfcX1.s 			page 6
 
 
- 251              		.thumb
- 252              		.thumb_func
- 253              		.fpu softvfp
- 255              	OLED_Display:
- 256              	.LFB70:
-  44:Src/OLED_SSD1306.c **** }
-  45:Src/OLED_SSD1306.c **** 
-  46:Src/OLED_SSD1306.c **** //指定位置显示字符
-  47:Src/OLED_SSD1306.c **** void OLED_Display(uint8_t String)
-  48:Src/OLED_SSD1306.c **** {
- 257              		.loc 1 48 0
- 258              		.cfi_startproc
- 259              		@ args = 0, pretend = 0, frame = 0
- 260              		@ frame_needed = 0, uses_anonymous_args = 0
- 261              	.LVL17:
- 262 0000 38B5     		push	{r3, r4, r5, lr}
- 263              	.LCFI11:
- 264              		.cfi_def_cfa_offset 16
- 265              		.cfi_offset 3, -16
- 266              		.cfi_offset 4, -12
- 267              		.cfi_offset 5, -8
- 268              		.cfi_offset 14, -4
-  49:Src/OLED_SSD1306.c **** 	uint8_t  Data = String - '0';
- 269              		.loc 1 49 0
- 270 0002 3038     		subs	r0, r0, #48
- 271              	.LVL18:
- 272 0004 C5B2     		uxtb	r5, r0
- 273              	.LVL19:
- 274              	.LBB3:
-  50:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<16; i++)
- 275              		.loc 1 50 0
- 276 0006 0024     		movs	r4, #0
- 277 0008 07E0     		b	.L20
- 278              	.LVL20:
- 279              	.L21:
-  51:Src/OLED_SSD1306.c **** 		OLED_Write_Data(ASCII_8_16[Data][i]);
- 280              		.loc 1 51 0 discriminator 3
- 281 000a 054B     		ldr	r3, .L23
- 282 000c 03EB0513 		add	r3, r3, r5, lsl #4
- 283 0010 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
- 284 0012 FFF7FEFF 		bl	OLED_Write_Data
- 285              	.LVL21:
-  50:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<16; i++)
- 286              		.loc 1 50 0 discriminator 3
- 287 0016 0134     		adds	r4, r4, #1
- 288              	.LVL22:
- 289 0018 E4B2     		uxtb	r4, r4
- 290              	.LVL23:
- 291              	.L20:
-  50:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<16; i++)
- 292              		.loc 1 50 0 is_stmt 0 discriminator 1
- 293 001a 0F2C     		cmp	r4, #15
- 294 001c F5D9     		bls	.L21
- 295              	.LBE3:
-  52:Src/OLED_SSD1306.c **** }
- 296              		.loc 1 52 0 is_stmt 1
- 297 001e 38BD     		pop	{r3, r4, r5, pc}
-ARM GAS  /tmp/ccN5zEC2.s 			page 7
+ 243 0028 0020     		movs	r0, #0
+ 244 002a FFF7FEFF 		bl	OLED_Write_Order
+ 245              	.LVL21:
+  39:Src/OLED_SSD1306.c **** 		for (uint8_t j=0; j<128; j++)
+ 246              		.loc 1 39 0
+ 247 002e 1020     		movs	r0, #16
+ 248 0030 FFF7FEFF 		bl	OLED_Write_Order
+ 249              	.LVL22:
+ 250              	.LBB5:
+  40:Src/OLED_SSD1306.c **** 		{
+ 251              		.loc 1 40 0
+ 252 0034 0024     		movs	r4, #0
+ 253 0036 EBE7     		b	.L17
+ 254              	.LVL23:
+ 255              	.L21:
+ 256              	.LBE5:
+ 257              	.LBE3:
+  43:Src/OLED_SSD1306.c **** 		}
+  44:Src/OLED_SSD1306.c **** 		
+  45:Src/OLED_SSD1306.c **** 	}
+  46:Src/OLED_SSD1306.c **** }
+ 258              		.loc 1 46 0
+ 259 0038 38BD     		pop	{r3, r4, r5, pc}
+ 260              		.cfi_endproc
+ 261              	.LFE68:
+ 263              		.section	.text.OLED_open,"ax",%progbits
+ 264              		.align	1
+ 265              		.global	OLED_open
+ 266              		.syntax unified
+ 267              		.thumb
+ 268              		.thumb_func
+ 269              		.fpu softvfp
+ 271              	OLED_open:
+ 272              	.LFB69:
+  47:Src/OLED_SSD1306.c **** 
+  48:Src/OLED_SSD1306.c **** //打开OLED
+  49:Src/OLED_SSD1306.c **** //0x8D VCC电源设置
+  50:Src/OLED_SSD1306.c **** //0x14 DCDC ON
+  51:Src/OLED_SSD1306.c **** //0xA4 打开整个显示
+  52:Src/OLED_SSD1306.c **** //0xAF 开启显示
+  53:Src/OLED_SSD1306.c **** void OLED_open(void)
+  54:Src/OLED_SSD1306.c **** {
+ 273              		.loc 1 54 0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 0
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277 0000 08B5     		push	{r3, lr}
+ 278              	.LCFI10:
+ 279              		.cfi_def_cfa_offset 8
+ 280              		.cfi_offset 3, -8
+ 281              		.cfi_offset 14, -4
+  55:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x8D);
+ 282              		.loc 1 55 0
+ 283 0002 8D20     		movs	r0, #141
+ 284 0004 FFF7FEFF 		bl	OLED_Write_Order
+ 285              	.LVL24:
+  56:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x14);
+ARM GAS  /tmp/cc9KfcX1.s 			page 7
 
 
- 298              	.LVL24:
- 299              	.L24:
- 300              		.align	2
- 301              	.L23:
- 302 0020 00000000 		.word	.LANCHOR1
- 303              		.cfi_endproc
- 304              	.LFE70:
- 306              		.section	.text.OLED_Display_String,"ax",%progbits
- 307              		.align	1
- 308              		.global	OLED_Display_String
- 309              		.syntax unified
- 310              		.thumb
- 311              		.thumb_func
- 312              		.fpu softvfp
- 314              	OLED_Display_String:
- 315              	.LFB71:
-  53:Src/OLED_SSD1306.c **** 
-  54:Src/OLED_SSD1306.c **** //指定位置显示字符串
-  55:Src/OLED_SSD1306.c **** //Page_Add		页地址
-  56:Src/OLED_SSD1306.c **** //Column_Add	列地址	范围：00h ~ 1Fh
-  57:Src/OLED_SSD1306.c **** void OLED_Display_String(uint8_t Page_Add, uint8_t Column_Add, char *pString, uint8_t Lingth)
-  58:Src/OLED_SSD1306.c **** {
- 316              		.loc 1 58 0
- 317              		.cfi_startproc
- 318              		@ args = 0, pretend = 0, frame = 0
- 319              		@ frame_needed = 0, uses_anonymous_args = 0
- 320              	.LVL25:
- 321 0000 70B5     		push	{r4, r5, r6, lr}
- 322              	.LCFI12:
- 323              		.cfi_def_cfa_offset 16
- 324              		.cfi_offset 4, -16
- 325              		.cfi_offset 5, -12
- 326              		.cfi_offset 6, -8
- 327              		.cfi_offset 14, -4
- 328 0002 1646     		mov	r6, r2
- 329 0004 1D46     		mov	r5, r3
-  59:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xB0 + Page_Add);
- 330              		.loc 1 59 0
- 331 0006 5038     		subs	r0, r0, #80
- 332              	.LVL26:
- 333 0008 C0B2     		uxtb	r0, r0
- 334 000a FFF7FEFF 		bl	OLED_Write_Order
- 335              	.LVL27:
-  60:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x00);
- 336              		.loc 1 60 0
- 337 000e 0020     		movs	r0, #0
- 338 0010 FFF7FEFF 		bl	OLED_Write_Order
- 339              	.LVL28:
-  61:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x10);
- 340              		.loc 1 61 0
- 341 0014 1020     		movs	r0, #16
- 342 0016 FFF7FEFF 		bl	OLED_Write_Order
- 343              	.LVL29:
- 344              	.LBB4:
-  62:Src/OLED_SSD1306.c **** 	
-  63:Src/OLED_SSD1306.c **** 	for(uint8_t j=0; j<=Lingth; j++)
- 345              		.loc 1 63 0
-ARM GAS  /tmp/ccN5zEC2.s 			page 8
+ 286              		.loc 1 56 0
+ 287 0008 1420     		movs	r0, #20
+ 288 000a FFF7FEFF 		bl	OLED_Write_Order
+ 289              	.LVL25:
+  57:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xA4);
+ 290              		.loc 1 57 0
+ 291 000e A420     		movs	r0, #164
+ 292 0010 FFF7FEFF 		bl	OLED_Write_Order
+ 293              	.LVL26:
+  58:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xAF);
+ 294              		.loc 1 58 0
+ 295 0014 AF20     		movs	r0, #175
+ 296 0016 FFF7FEFF 		bl	OLED_Write_Order
+ 297              	.LVL27:
+ 298 001a 08BD     		pop	{r3, pc}
+ 299              		.cfi_endproc
+ 300              	.LFE69:
+ 302              		.section	.text.OLED_close,"ax",%progbits
+ 303              		.align	1
+ 304              		.global	OLED_close
+ 305              		.syntax unified
+ 306              		.thumb
+ 307              		.thumb_func
+ 308              		.fpu softvfp
+ 310              	OLED_close:
+ 311              	.LFB70:
+  59:Src/OLED_SSD1306.c **** }
+  60:Src/OLED_SSD1306.c **** 
+  61:Src/OLED_SSD1306.c **** //关闭OLED
+  62:Src/OLED_SSD1306.c **** void OLED_close(void)
+  63:Src/OLED_SSD1306.c **** {
+ 312              		.loc 1 63 0
+ 313              		.cfi_startproc
+ 314              		@ args = 0, pretend = 0, frame = 0
+ 315              		@ frame_needed = 0, uses_anonymous_args = 0
+ 316 0000 08B5     		push	{r3, lr}
+ 317              	.LCFI11:
+ 318              		.cfi_def_cfa_offset 8
+ 319              		.cfi_offset 3, -8
+ 320              		.cfi_offset 14, -4
+  64:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x8D);
+ 321              		.loc 1 64 0
+ 322 0002 8D20     		movs	r0, #141
+ 323 0004 FFF7FEFF 		bl	OLED_Write_Order
+ 324              	.LVL28:
+  65:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x10);
+ 325              		.loc 1 65 0
+ 326 0008 1020     		movs	r0, #16
+ 327 000a FFF7FEFF 		bl	OLED_Write_Order
+ 328              	.LVL29:
+  66:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xA5);
+ 329              		.loc 1 66 0
+ 330 000e A520     		movs	r0, #165
+ 331 0010 FFF7FEFF 		bl	OLED_Write_Order
+ 332              	.LVL30:
+  67:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xAE);
+ 333              		.loc 1 67 0
+ARM GAS  /tmp/cc9KfcX1.s 			page 8
 
 
- 346 001a 0024     		movs	r4, #0
- 347 001c 04E0     		b	.L26
- 348              	.LVL30:
- 349              	.L27:
-  64:Src/OLED_SSD1306.c **** 	{
-  65:Src/OLED_SSD1306.c **** 		OLED_Display( pString[j]);
- 350              		.loc 1 65 0 discriminator 3
- 351 001e 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
- 352 0020 FFF7FEFF 		bl	OLED_Display
- 353              	.LVL31:
-  63:Src/OLED_SSD1306.c **** 	{
- 354              		.loc 1 63 0 discriminator 3
- 355 0024 0134     		adds	r4, r4, #1
- 356              	.LVL32:
- 357 0026 E4B2     		uxtb	r4, r4
- 358              	.LVL33:
- 359              	.L26:
-  63:Src/OLED_SSD1306.c **** 	{
- 360              		.loc 1 63 0 is_stmt 0 discriminator 1
- 361 0028 AC42     		cmp	r4, r5
- 362 002a F8D9     		bls	.L27
- 363              	.LBE4:
-  66:Src/OLED_SSD1306.c **** 	}
-  67:Src/OLED_SSD1306.c **** }...
- 364              		.loc 1 67 0 is_stmt 1
- 365 002c 70BD     		pop	{r4, r5, r6, pc}
- 366              		.cfi_endproc
- 367              	.LFE71:
- 369              		.global	Init_Data
- 370              		.global	ASCII_8_16
- 371              		.section	.data.Init_Data,"aw",%progbits
- 372              		.align	2
- 373              		.set	.LANCHOR0,. + 0
- 376              	Init_Data:
- 377 0000 AE       		.byte	-82
- 378 0001 00       		.byte	0
- 379 0002 10       		.byte	16
- 380 0003 40       		.byte	64
- 381 0004 B0       		.byte	-80
- 382 0005 81       		.byte	-127
- 383 0006 A1       		.byte	-95
- 384 0007 A6       		.byte	-90
- 385 0008 A8       		.byte	-88
- 386 0009 3F       		.byte	63
- 387 000a C8       		.byte	-56
- 388 000b D3       		.byte	-45
- 389 000c 00       		.byte	0
- 390 000d D5       		.byte	-43
- 391 000e 80       		.byte	-128
- 392 000f D9       		.byte	-39
- 393 0010 DA       		.byte	-38
- 394 0011 12       		.byte	18
- 395 0012 DB       		.byte	-37
- 396 0013 30       		.byte	48
- 397 0014 8D       		.byte	-115
- 398 0015 10       		.byte	16
- 399 0016 AF       		.byte	-81
-ARM GAS  /tmp/ccN5zEC2.s 			page 9
+ 334 0014 AE20     		movs	r0, #174
+ 335 0016 FFF7FEFF 		bl	OLED_Write_Order
+ 336              	.LVL31:
+ 337 001a 08BD     		pop	{r3, pc}
+ 338              		.cfi_endproc
+ 339              	.LFE70:
+ 341              		.section	.text.OLED_Display_String,"ax",%progbits
+ 342              		.align	1
+ 343              		.global	OLED_Display_String
+ 344              		.syntax unified
+ 345              		.thumb
+ 346              		.thumb_func
+ 347              		.fpu softvfp
+ 349              	OLED_Display_String:
+ 350              	.LFB71:
+  68:Src/OLED_SSD1306.c **** }
+  69:Src/OLED_SSD1306.c **** 
+  70:Src/OLED_SSD1306.c **** // //指定位置显示字符
+  71:Src/OLED_SSD1306.c **** // void OLED_Display(uint8_t String)
+  72:Src/OLED_SSD1306.c **** // {
+  73:Src/OLED_SSD1306.c **** // 	uint8_t  Data = String - '0';
+  74:Src/OLED_SSD1306.c **** // 	for(uint8_t i=0; i<16; i++)
+  75:Src/OLED_SSD1306.c **** // 		OLED_Write_Data(ASCII_8_16[Data][i]);
+  76:Src/OLED_SSD1306.c **** // }
+  77:Src/OLED_SSD1306.c **** 
+  78:Src/OLED_SSD1306.c **** //指定位置显示英文数字
+  79:Src/OLED_SSD1306.c **** //x		页地址
+  80:Src/OLED_SSD1306.c **** //y		列地址	范围：00h ~ 1Fh
+  81:Src/OLED_SSD1306.c **** void OLED_Display_String(uint8_t x, uint8_t y, char *pString, uint8_t Lingth)
+  82:Src/OLED_SSD1306.c **** {
+ 351              		.loc 1 82 0
+ 352              		.cfi_startproc
+ 353              		@ args = 0, pretend = 0, frame = 0
+ 354              		@ frame_needed = 0, uses_anonymous_args = 0
+ 355              	.LVL32:
+ 356 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 357              	.LCFI12:
+ 358              		.cfi_def_cfa_offset 24
+ 359              		.cfi_offset 4, -24
+ 360              		.cfi_offset 5, -20
+ 361              		.cfi_offset 6, -16
+ 362              		.cfi_offset 7, -12
+ 363              		.cfi_offset 8, -8
+ 364              		.cfi_offset 14, -4
+ 365 0004 0746     		mov	r7, r0
+  83:Src/OLED_SSD1306.c **** 	y = y+2;
+ 366              		.loc 1 83 0
+ 367 0006 0231     		adds	r1, r1, #2
+ 368              	.LVL33:
+ 369 0008 5FFA81F8 		uxtb	r8, r1
+ 370              	.LVL34:
+  84:Src/OLED_SSD1306.c **** 	uint8_t  Data = *pString - '0';
+ 371              		.loc 1 84 0
+ 372 000c 1578     		ldrb	r5, [r2]	@ zero_extendqisi2
+ 373 000e 303D     		subs	r5, r5, #48
+ 374 0010 EDB2     		uxtb	r5, r5
+ 375              	.LVL35:
+ARM GAS  /tmp/cc9KfcX1.s 			page 9
 
 
- 400              		.section	.rodata.ASCII_8_16,"a",%progbits
- 401              		.align	2
- 402              		.set	.LANCHOR1,. + 0
- 405              	ASCII_8_16:
- 406 0000 F8       		.byte	-8
- 407 0001 FC       		.byte	-4
- 408 0002 04       		.byte	4
- 409 0003 C4       		.byte	-60
- 410 0004 24       		.byte	36
- 411 0005 FC       		.byte	-4
- 412 0006 F8       		.byte	-8
- 413 0007 00       		.byte	0
- 414 0008 07       		.byte	7
- 415 0009 0F       		.byte	15
- 416 000a 09       		.byte	9
- 417 000b 08       		.byte	8
- 418 000c 08       		.byte	8
- 419 000d 0F       		.byte	15
- 420 000e 07       		.byte	7
- 421 000f 00       		.byte	0
- 422 0010 00       		.byte	0
- 423 0011 10       		.byte	16
- 424 0012 18       		.byte	24
- 425 0013 FC       		.byte	-4
- 426 0014 FC       		.byte	-4
- 427 0015 00       		.byte	0
- 428 0016 00       		.byte	0
- 429 0017 00       		.byte	0
- 430 0018 00       		.byte	0
- 431 0019 08       		.byte	8
- 432 001a 08       		.byte	8
- 433 001b 0F       		.byte	15
- 434 001c 0F       		.byte	15
- 435 001d 08       		.byte	8
- 436 001e 08       		.byte	8
- 437 001f 00       		.byte	0
- 438 0020 08       		.byte	8
- 439 0021 0C       		.byte	12
- 440 0022 84       		.byte	-124
- 441 0023 C4       		.byte	-60
- 442 0024 64       		.byte	100
- 443 0025 3C       		.byte	60
- 444 0026 18       		.byte	24
- 445 0027 00       		.byte	0
- 446 0028 0E       		.byte	14
- 447 0029 0F       		.byte	15
- 448 002a 09       		.byte	9
- 449 002b 08       		.byte	8
- 450 002c 08       		.byte	8
- 451 002d 0C       		.byte	12
- 452 002e 0C       		.byte	12
- 453 002f 00       		.byte	0
- 454 0030 08       		.byte	8
- 455 0031 0C       		.byte	12
- 456 0032 44       		.byte	68
- 457 0033 44       		.byte	68
- 458 0034 44       		.byte	68
-ARM GAS  /tmp/ccN5zEC2.s 			page 10
+ 376              	.LBB6:
+  85:Src/OLED_SSD1306.c **** 
+  86:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<2; i++)
+ 377              		.loc 1 86 0
+ 378 0012 0026     		movs	r6, #0
+ 379 0014 0DE0     		b	.L27
+ 380              	.LVL36:
+ 381              	.L29:
+ 382              	.LBB7:
+  87:Src/OLED_SSD1306.c **** 	{
+  88:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0xB0 + x);
+  89:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y/16 + 0x10);
+  90:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y%16);
+  91:Src/OLED_SSD1306.c **** 
+  92:Src/OLED_SSD1306.c **** 		for(uint8_t j=0; j<16; j++)
+  93:Src/OLED_SSD1306.c **** 		{
+  94:Src/OLED_SSD1306.c **** 			OLED_Write_Data(ASCII_8x16[Data][j]);
+ 383              		.loc 1 94 0 discriminator 3
+ 384 0016 114B     		ldr	r3, .L33
+ 385 0018 03EB0513 		add	r3, r3, r5, lsl #4
+ 386 001c 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
+ 387 001e FFF7FEFF 		bl	OLED_Write_Data
+ 388              	.LVL37:
+  92:Src/OLED_SSD1306.c **** 		{
+ 389              		.loc 1 92 0 discriminator 3
+ 390 0022 0134     		adds	r4, r4, #1
+ 391              	.LVL38:
+ 392 0024 E4B2     		uxtb	r4, r4
+ 393              	.LVL39:
+ 394              	.L28:
+  92:Src/OLED_SSD1306.c **** 		{
+ 395              		.loc 1 92 0 is_stmt 0 discriminator 1
+ 396 0026 0F2C     		cmp	r4, #15
+ 397 0028 F5D9     		bls	.L29
+ 398              	.LBE7:
+  95:Src/OLED_SSD1306.c **** 		}
+  96:Src/OLED_SSD1306.c **** 		x++;
+ 399              		.loc 1 96 0 is_stmt 1 discriminator 2
+ 400 002a 0137     		adds	r7, r7, #1
+ 401              	.LVL40:
+ 402 002c FFB2     		uxtb	r7, r7
+ 403              	.LVL41:
+  86:Src/OLED_SSD1306.c **** 	{
+ 404              		.loc 1 86 0 discriminator 2
+ 405 002e 0136     		adds	r6, r6, #1
+ 406              	.LVL42:
+ 407 0030 F6B2     		uxtb	r6, r6
+ 408              	.LVL43:
+ 409              	.L27:
+  86:Src/OLED_SSD1306.c **** 	{
+ 410              		.loc 1 86 0 is_stmt 0 discriminator 1
+ 411 0032 012E     		cmp	r6, #1
+ 412 0034 0FD8     		bhi	.L32
+  88:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y/16 + 0x10);
+ 413              		.loc 1 88 0 is_stmt 1
+ 414 0036 A7F15000 		sub	r0, r7, #80
+ 415 003a C0B2     		uxtb	r0, r0
+ARM GAS  /tmp/cc9KfcX1.s 			page 10
 
 
- 459 0035 FC       		.byte	-4
- 460 0036 B8       		.byte	-72
- 461 0037 00       		.byte	0
- 462 0038 04       		.byte	4
- 463 0039 0C       		.byte	12
- 464 003a 08       		.byte	8
- 465 003b 08       		.byte	8
- 466 003c 08       		.byte	8
- 467 003d 0F       		.byte	15
- 468 003e 07       		.byte	7
- 469 003f 00       		.byte	0
- 470 0040 C0       		.byte	-64
- 471 0041 E0       		.byte	-32
- 472 0042 B0       		.byte	-80
- 473 0043 98       		.byte	-104
- 474 0044 FC       		.byte	-4
- 475 0045 FC       		.byte	-4
- 476 0046 80       		.byte	-128
- 477 0047 00       		.byte	0
- 478 0048 00       		.byte	0
- 479 0049 00       		.byte	0
- 480 004a 00       		.byte	0
- 481 004b 08       		.byte	8
- 482 004c 0F       		.byte	15
- 483 004d 0F       		.byte	15
- 484 004e 08       		.byte	8
- 485 004f 00       		.byte	0
- 486 0050 7C       		.byte	124
- 487 0051 7C       		.byte	124
- 488 0052 44       		.byte	68
- 489 0053 44       		.byte	68
- 490 0054 C4       		.byte	-60
- 491 0055 C4       		.byte	-60
- 492 0056 84       		.byte	-124
- 493 0057 00       		.byte	0
- 494 0058 04       		.byte	4
- 495 0059 0C       		.byte	12
- 496 005a 08       		.byte	8
- 497 005b 08       		.byte	8
- 498 005c 08       		.byte	8
- 499 005d 0F       		.byte	15
- 500 005e 07       		.byte	7
- 501 005f 00       		.byte	0
- 502 0060 F0       		.byte	-16
- 503 0061 F8       		.byte	-8
- 504 0062 4C       		.byte	76
- 505 0063 44       		.byte	68
- 506 0064 44       		.byte	68
- 507 0065 C0       		.byte	-64
- 508 0066 80       		.byte	-128
- 509 0067 00       		.byte	0
- 510 0068 07       		.byte	7
- 511 0069 0F       		.byte	15
- 512 006a 08       		.byte	8
- 513 006b 08       		.byte	8
- 514 006c 08       		.byte	8
- 515 006d 0F       		.byte	15
-ARM GAS  /tmp/ccN5zEC2.s 			page 11
+ 416 003c FFF7FEFF 		bl	OLED_Write_Order
+ 417              	.LVL44:
+  89:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y%16);
+ 418              		.loc 1 89 0
+ 419 0040 4FEA1810 		lsr	r0, r8, #4
+ 420 0044 1030     		adds	r0, r0, #16
+ 421 0046 FFF7FEFF 		bl	OLED_Write_Order
+ 422              	.LVL45:
+  90:Src/OLED_SSD1306.c **** 
+ 423              		.loc 1 90 0
+ 424 004a 08F00F00 		and	r0, r8, #15
+ 425 004e FFF7FEFF 		bl	OLED_Write_Order
+ 426              	.LVL46:
+ 427              	.LBB8:
+  92:Src/OLED_SSD1306.c **** 		{
+ 428              		.loc 1 92 0
+ 429 0052 0024     		movs	r4, #0
+ 430 0054 E7E7     		b	.L28
+ 431              	.LVL47:
+ 432              	.L32:
+ 433              	.LBE8:
+ 434              	.LBE6:
+  97:Src/OLED_SSD1306.c **** 	}
+  98:Src/OLED_SSD1306.c **** 	
+  99:Src/OLED_SSD1306.c **** }...
+ 435              		.loc 1 99 0
+ 436 0056 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 437              	.LVL48:
+ 438              	.L34:
+ 439 005a 00BF     		.align	2
+ 440              	.L33:
+ 441 005c 00000000 		.word	.LANCHOR1
+ 442              		.cfi_endproc
+ 443              	.LFE71:
+ 445              		.global	Init_Data
+ 446              		.global	ASCII_8x16
+ 447              		.section	.data.Init_Data,"aw",%progbits
+ 448              		.align	2
+ 449              		.set	.LANCHOR0,. + 0
+ 452              	Init_Data:
+ 453 0000 AE       		.byte	-82
+ 454 0001 00       		.byte	0
+ 455 0002 10       		.byte	16
+ 456 0003 40       		.byte	64
+ 457 0004 B0       		.byte	-80
+ 458 0005 81       		.byte	-127
+ 459 0006 A1       		.byte	-95
+ 460 0007 A4       		.byte	-92
+ 461 0008 A6       		.byte	-90
+ 462 0009 A8       		.byte	-88
+ 463 000a 3F       		.byte	63
+ 464 000b C8       		.byte	-56
+ 465 000c D3       		.byte	-45
+ 466 000d 00       		.byte	0
+ 467 000e D5       		.byte	-43
+ 468 000f 80       		.byte	-128
+ 469 0010 D9       		.byte	-39
+ARM GAS  /tmp/cc9KfcX1.s 			page 11
 
 
- 516 006e 07       		.byte	7
- 517 006f 00       		.byte	0
- 518 0070 0C       		.byte	12
- 519 0071 0C       		.byte	12
- 520 0072 04       		.byte	4
- 521 0073 84       		.byte	-124
- 522 0074 C4       		.byte	-60
- 523 0075 7C       		.byte	124
- 524 0076 3C       		.byte	60
- 525 0077 00       		.byte	0
- 526 0078 00       		.byte	0
- 527 0079 00       		.byte	0
- 528 007a 0F       		.byte	15
- 529 007b 0F       		.byte	15
- 530 007c 00       		.byte	0
- 531 007d 00       		.byte	0
- 532 007e 00       		.byte	0
- 533 007f 00       		.byte	0
- 534 0080 B8       		.byte	-72
- 535 0081 FC       		.byte	-4
- 536 0082 44       		.byte	68
- 537 0083 44       		.byte	68
- 538 0084 44       		.byte	68
- 539 0085 FC       		.byte	-4
- 540 0086 B8       		.byte	-72
- 541 0087 00       		.byte	0
- 542 0088 07       		.byte	7
- 543 0089 0F       		.byte	15
- 544 008a 08       		.byte	8
- 545 008b 08       		.byte	8
- 546 008c 08       		.byte	8
- 547 008d 0F       		.byte	15
- 548 008e 07       		.byte	7
- 549 008f 00       		.byte	0
- 550 0090 38       		.byte	56
- 551 0091 7C       		.byte	124
- 552 0092 44       		.byte	68
- 553 0093 44       		.byte	68
- 554 0094 44       		.byte	68
- 555 0095 FC       		.byte	-4
- 556 0096 F8       		.byte	-8
- 557 0097 00       		.byte	0
- 558 0098 00       		.byte	0
- 559 0099 08       		.byte	8
- 560 009a 08       		.byte	8
- 561 009b 08       		.byte	8
- 562 009c 0C       		.byte	12
- 563 009d 07       		.byte	7
- 564 009e 03       		.byte	3
- 565 009f 00       		.byte	0
- 566              		.text
- 567              	.Letext0:
- 568              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 569              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 570              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 571              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 572              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
-ARM GAS  /tmp/ccN5zEC2.s 			page 12
+ 470 0011 DA       		.byte	-38
+ 471 0012 12       		.byte	18
+ 472 0013 DB       		.byte	-37
+ 473 0014 30       		.byte	48
+ 474 0015 8D       		.byte	-115
+ 475 0016 10       		.byte	16
+ 476 0017 AF       		.byte	-81
+ 477              		.section	.rodata.ASCII_8x16,"a",%progbits
+ 478              		.align	2
+ 479              		.set	.LANCHOR1,. + 0
+ 482              	ASCII_8x16:
+ 483 0000 F8       		.byte	-8
+ 484 0001 FC       		.byte	-4
+ 485 0002 04       		.byte	4
+ 486 0003 C4       		.byte	-60
+ 487 0004 24       		.byte	36
+ 488 0005 FC       		.byte	-4
+ 489 0006 F8       		.byte	-8
+ 490 0007 00       		.byte	0
+ 491 0008 07       		.byte	7
+ 492 0009 0F       		.byte	15
+ 493 000a 09       		.byte	9
+ 494 000b 08       		.byte	8
+ 495 000c 08       		.byte	8
+ 496 000d 0F       		.byte	15
+ 497 000e 07       		.byte	7
+ 498 000f 00       		.byte	0
+ 499 0010 00       		.byte	0
+ 500 0011 10       		.byte	16
+ 501 0012 18       		.byte	24
+ 502 0013 FC       		.byte	-4
+ 503 0014 FC       		.byte	-4
+ 504 0015 00       		.byte	0
+ 505 0016 00       		.byte	0
+ 506 0017 00       		.byte	0
+ 507 0018 00       		.byte	0
+ 508 0019 08       		.byte	8
+ 509 001a 08       		.byte	8
+ 510 001b 0F       		.byte	15
+ 511 001c 0F       		.byte	15
+ 512 001d 08       		.byte	8
+ 513 001e 08       		.byte	8
+ 514 001f 00       		.byte	0
+ 515 0020 08       		.byte	8
+ 516 0021 0C       		.byte	12
+ 517 0022 84       		.byte	-124
+ 518 0023 C4       		.byte	-60
+ 519 0024 64       		.byte	100
+ 520 0025 3C       		.byte	60
+ 521 0026 18       		.byte	24
+ 522 0027 00       		.byte	0
+ 523 0028 0E       		.byte	14
+ 524 0029 0F       		.byte	15
+ 525 002a 09       		.byte	9
+ 526 002b 08       		.byte	8
+ 527 002c 08       		.byte	8
+ 528 002d 0C       		.byte	12
+ARM GAS  /tmp/cc9KfcX1.s 			page 12
 
 
- 573              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 574              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 575              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 576              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 577              		.file 11 "Inc/i2c.h"
- 578              		.file 12 "Inc/ASCII_8X16.h"
-ARM GAS  /tmp/ccN5zEC2.s 			page 13
+ 529 002e 0C       		.byte	12
+ 530 002f 00       		.byte	0
+ 531 0030 08       		.byte	8
+ 532 0031 0C       		.byte	12
+ 533 0032 44       		.byte	68
+ 534 0033 44       		.byte	68
+ 535 0034 44       		.byte	68
+ 536 0035 FC       		.byte	-4
+ 537 0036 B8       		.byte	-72
+ 538 0037 00       		.byte	0
+ 539 0038 04       		.byte	4
+ 540 0039 0C       		.byte	12
+ 541 003a 08       		.byte	8
+ 542 003b 08       		.byte	8
+ 543 003c 08       		.byte	8
+ 544 003d 0F       		.byte	15
+ 545 003e 07       		.byte	7
+ 546 003f 00       		.byte	0
+ 547 0040 C0       		.byte	-64
+ 548 0041 E0       		.byte	-32
+ 549 0042 B0       		.byte	-80
+ 550 0043 98       		.byte	-104
+ 551 0044 FC       		.byte	-4
+ 552 0045 FC       		.byte	-4
+ 553 0046 80       		.byte	-128
+ 554 0047 00       		.byte	0
+ 555 0048 00       		.byte	0
+ 556 0049 00       		.byte	0
+ 557 004a 00       		.byte	0
+ 558 004b 08       		.byte	8
+ 559 004c 0F       		.byte	15
+ 560 004d 0F       		.byte	15
+ 561 004e 08       		.byte	8
+ 562 004f 00       		.byte	0
+ 563 0050 7C       		.byte	124
+ 564 0051 7C       		.byte	124
+ 565 0052 44       		.byte	68
+ 566 0053 44       		.byte	68
+ 567 0054 C4       		.byte	-60
+ 568 0055 C4       		.byte	-60
+ 569 0056 84       		.byte	-124
+ 570 0057 00       		.byte	0
+ 571 0058 04       		.byte	4
+ 572 0059 0C       		.byte	12
+ 573 005a 08       		.byte	8
+ 574 005b 08       		.byte	8
+ 575 005c 08       		.byte	8
+ 576 005d 0F       		.byte	15
+ 577 005e 07       		.byte	7
+ 578 005f 00       		.byte	0
+ 579 0060 F0       		.byte	-16
+ 580 0061 F8       		.byte	-8
+ 581 0062 4C       		.byte	76
+ 582 0063 44       		.byte	68
+ 583 0064 44       		.byte	68
+ 584 0065 C0       		.byte	-64
+ 585 0066 80       		.byte	-128
+ARM GAS  /tmp/cc9KfcX1.s 			page 13
+
+
+ 586 0067 00       		.byte	0
+ 587 0068 07       		.byte	7
+ 588 0069 0F       		.byte	15
+ 589 006a 08       		.byte	8
+ 590 006b 08       		.byte	8
+ 591 006c 08       		.byte	8
+ 592 006d 0F       		.byte	15
+ 593 006e 07       		.byte	7
+ 594 006f 00       		.byte	0
+ 595 0070 0C       		.byte	12
+ 596 0071 0C       		.byte	12
+ 597 0072 04       		.byte	4
+ 598 0073 84       		.byte	-124
+ 599 0074 C4       		.byte	-60
+ 600 0075 7C       		.byte	124
+ 601 0076 3C       		.byte	60
+ 602 0077 00       		.byte	0
+ 603 0078 00       		.byte	0
+ 604 0079 00       		.byte	0
+ 605 007a 0F       		.byte	15
+ 606 007b 0F       		.byte	15
+ 607 007c 00       		.byte	0
+ 608 007d 00       		.byte	0
+ 609 007e 00       		.byte	0
+ 610 007f 00       		.byte	0
+ 611 0080 B8       		.byte	-72
+ 612 0081 FC       		.byte	-4
+ 613 0082 44       		.byte	68
+ 614 0083 44       		.byte	68
+ 615 0084 44       		.byte	68
+ 616 0085 FC       		.byte	-4
+ 617 0086 B8       		.byte	-72
+ 618 0087 00       		.byte	0
+ 619 0088 07       		.byte	7
+ 620 0089 0F       		.byte	15
+ 621 008a 08       		.byte	8
+ 622 008b 08       		.byte	8
+ 623 008c 08       		.byte	8
+ 624 008d 0F       		.byte	15
+ 625 008e 07       		.byte	7
+ 626 008f 00       		.byte	0
+ 627 0090 38       		.byte	56
+ 628 0091 7C       		.byte	124
+ 629 0092 44       		.byte	68
+ 630 0093 44       		.byte	68
+ 631 0094 44       		.byte	68
+ 632 0095 FC       		.byte	-4
+ 633 0096 F8       		.byte	-8
+ 634 0097 00       		.byte	0
+ 635 0098 00       		.byte	0
+ 636 0099 08       		.byte	8
+ 637 009a 08       		.byte	8
+ 638 009b 08       		.byte	8
+ 639 009c 0C       		.byte	12
+ 640 009d 07       		.byte	7
+ 641 009e 03       		.byte	3
+ 642 009f 00       		.byte	0
+ARM GAS  /tmp/cc9KfcX1.s 			page 14
+
+
+ 643              		.text
+ 644              	.Letext0:
+ 645              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 646              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 647              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 648              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 649              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 650              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 651              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 652              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 653              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 654              		.file 11 "Inc/i2c.h"
+ 655              		.file 12 "Inc/ASCII.h"
+ARM GAS  /tmp/cc9KfcX1.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 OLED_SSD1306.c
-     /tmp/ccN5zEC2.s:16     .text.OLED_Init:0000000000000000 $t
-     /tmp/ccN5zEC2.s:23     .text.OLED_Init:0000000000000000 OLED_Init
-     /tmp/ccN5zEC2.s:82     .text.OLED_Init:0000000000000034 $d
-     /tmp/ccN5zEC2.s:88     .text.OLED_Write_Order:0000000000000000 $t
-     /tmp/ccN5zEC2.s:95     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
-     /tmp/ccN5zEC2.s:132    .text.OLED_Write_Order:0000000000000028 $d
-     /tmp/ccN5zEC2.s:137    .text.OLED_Write_Data:0000000000000000 $t
-     /tmp/ccN5zEC2.s:144    .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
-     /tmp/ccN5zEC2.s:181    .text.OLED_Write_Data:0000000000000028 $d
-     /tmp/ccN5zEC2.s:186    .text.OLED_open:0000000000000000 $t
-     /tmp/ccN5zEC2.s:193    .text.OLED_open:0000000000000000 OLED_open
-     /tmp/ccN5zEC2.s:217    .text.OLED_close:0000000000000000 $t
-     /tmp/ccN5zEC2.s:224    .text.OLED_close:0000000000000000 OLED_close
-     /tmp/ccN5zEC2.s:248    .text.OLED_Display:0000000000000000 $t
-     /tmp/ccN5zEC2.s:255    .text.OLED_Display:0000000000000000 OLED_Display
-     /tmp/ccN5zEC2.s:302    .text.OLED_Display:0000000000000020 $d
-     /tmp/ccN5zEC2.s:307    .text.OLED_Display_String:0000000000000000 $t
-     /tmp/ccN5zEC2.s:314    .text.OLED_Display_String:0000000000000000 OLED_Display_String
-     /tmp/ccN5zEC2.s:376    .data.Init_Data:0000000000000000 Init_Data
-     /tmp/ccN5zEC2.s:405    .rodata.ASCII_8_16:0000000000000000 ASCII_8_16
-     /tmp/ccN5zEC2.s:372    .data.Init_Data:0000000000000000 $d
-     /tmp/ccN5zEC2.s:401    .rodata.ASCII_8_16:0000000000000000 $d
+     /tmp/cc9KfcX1.s:16     .text.OLED_Write_Order:0000000000000000 $t
+     /tmp/cc9KfcX1.s:23     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
+     /tmp/cc9KfcX1.s:61     .text.OLED_Write_Order:0000000000000028 $d
+     /tmp/cc9KfcX1.s:66     .text.OLED_Write_Data:0000000000000000 $t
+     /tmp/cc9KfcX1.s:73     .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
+     /tmp/cc9KfcX1.s:110    .text.OLED_Write_Data:0000000000000028 $d
+     /tmp/cc9KfcX1.s:115    .text.OLED_Init:0000000000000000 $t
+     /tmp/cc9KfcX1.s:122    .text.OLED_Init:0000000000000000 OLED_Init
+     /tmp/cc9KfcX1.s:180    .text.OLED_Init:0000000000000034 $d
+     /tmp/cc9KfcX1.s:186    .text.OLED_clear:0000000000000000 $t
+     /tmp/cc9KfcX1.s:193    .text.OLED_clear:0000000000000000 OLED_clear
+     /tmp/cc9KfcX1.s:264    .text.OLED_open:0000000000000000 $t
+     /tmp/cc9KfcX1.s:271    .text.OLED_open:0000000000000000 OLED_open
+     /tmp/cc9KfcX1.s:303    .text.OLED_close:0000000000000000 $t
+     /tmp/cc9KfcX1.s:310    .text.OLED_close:0000000000000000 OLED_close
+     /tmp/cc9KfcX1.s:342    .text.OLED_Display_String:0000000000000000 $t
+     /tmp/cc9KfcX1.s:349    .text.OLED_Display_String:0000000000000000 OLED_Display_String
+     /tmp/cc9KfcX1.s:441    .text.OLED_Display_String:000000000000005c $d
+     /tmp/cc9KfcX1.s:452    .data.Init_Data:0000000000000000 Init_Data
+     /tmp/cc9KfcX1.s:482    .rodata.ASCII_8x16:0000000000000000 ASCII_8x16
+     /tmp/cc9KfcX1.s:448    .data.Init_Data:0000000000000000 $d
+     /tmp/cc9KfcX1.s:478    .rodata.ASCII_8x16:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write
-HAL_Delay
 hi2c1
+HAL_Delay

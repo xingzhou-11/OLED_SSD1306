@@ -67,25 +67,34 @@ void OLED_close(void)
 	OLED_Write_Order(0xAE);
 }
 
-//指定位置显示字符
-void OLED_Display(uint8_t String)
-{
-	uint8_t  Data = String - '0';
-	for(uint8_t i=0; i<16; i++)
-		OLED_Write_Data(ASCII_8_16[Data][i]);
-}
+// //指定位置显示字符
+// void OLED_Display(uint8_t String)
+// {
+// 	uint8_t  Data = String - '0';
+// 	for(uint8_t i=0; i<16; i++)
+// 		OLED_Write_Data(ASCII_8_16[Data][i]);
+// }
 
-//指定位置显示字符串
-//Page_Add		页地址
-//Column_Add	列地址	范围：00h ~ 1Fh
-void OLED_Display_String(uint8_t Page_Add, uint8_t Column_Add, char *pString, uint8_t Lingth)
+//指定位置显示英文数字
+//x		页地址
+//y		列地址	范围：00h ~ 1Fh
+//*pString	数据
+void OLED_Display_String(uint8_t x, uint8_t y, char *pString)
 {
-	OLED_Write_Order(0xB0 + Page_Add);
-	OLED_Write_Order(0x00);
-	OLED_Write_Order(0x10);
-	
-	for(uint8_t j=0; j<=Lingth; j++)
+	y = y+2;
+	uint8_t  Data = *pString - '0';
+
+	for(uint8_t i=0; i<2; i++)
 	{
-		OLED_Display( pString[j]);
+		OLED_Write_Order(0xB0 + x);
+		OLED_Write_Order(y/16 + 0x10);
+		OLED_Write_Order(y%16);
+
+		for(uint8_t j=0; j<16; j++)
+		{
+			OLED_Write_Data(ASCII_8x16[Data][j]);
+		}
+		x++;
 	}
+	
 }

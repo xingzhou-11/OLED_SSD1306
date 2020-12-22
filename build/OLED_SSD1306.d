@@ -19,7 +19,7 @@ build/OLED_SSD1306.o: Src/OLED_SSD1306.c Inc/OLED_SSD1306.h Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h Inc/i2c.h \
- Inc/ASCII_8X16.h
+ Inc/ASCII.h
 
 Inc/OLED_SSD1306.h:
 
@@ -71,4 +71,4 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 
 Inc/i2c.h:
 
-Inc/ASCII_8X16.h:
+Inc/ASCII.h:
