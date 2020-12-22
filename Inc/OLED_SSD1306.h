@@ -6,8 +6,8 @@
 
 void OLED_Init(void);
 void OLED_open(void);
-void OLED_clear(void);
 void OLED_close(void);
-void OLED_Display_String(uint8_t Page_Add, uint8_t Column_Add, char *pString, uint8_t Lingth);
+void OLED_clear(void);
+void OLED_Display_Single(uint8_t x, uint8_t y, char Single);
 
 #endif
