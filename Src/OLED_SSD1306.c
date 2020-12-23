@@ -92,7 +92,7 @@ void OLED_Display_String(uint8_t x, uint8_t y, char *pString)
 
 		for(uint8_t j=0; j<16; j++)
 		{
-			OLED_Write_Data(ASCII_8x16[Data][j]);
+			OLED_Write_Data(ASCII_8x16[Data][]);
 		}
 		x++;
 	}
