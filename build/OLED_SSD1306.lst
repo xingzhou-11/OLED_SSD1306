@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccIYzuRL.s 			page 1
+ARM GAS  /tmp/ccNvcmBO.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
   43 0010 0123     		movs	r3, #1
   44 0012 0193     		str	r3, [sp, #4]
   45 0014 0092     		str	r2, [sp]
-ARM GAS  /tmp/ccIYzuRL.s 			page 2
+ARM GAS  /tmp/ccNvcmBO.s 			page 2
 
 
   46 0016 0022     		movs	r2, #0
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
   96 0018 7821     		movs	r1, #120
   97 001a 0348     		ldr	r0, .L7
   98              	.LVL4:
-ARM GAS  /tmp/ccIYzuRL.s 			page 3
+ARM GAS  /tmp/ccNvcmBO.s 			page 3
 
 
   99 001c FFF7FEFF 		bl	HAL_I2C_Mem_Write
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  147 0010 0193     		str	r3, [sp, #4]
  148 0012 084A     		ldr	r2, .L13
  149 0014 2244     		add	r2, r2, r4
-ARM GAS  /tmp/ccIYzuRL.s 			page 4
+ARM GAS  /tmp/ccNvcmBO.s 			page 4
 
 
  150 0016 0092     		str	r2, [sp]
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  197              		@ args = 0, pretend = 0, frame = 0
  198              		@ frame_needed = 0, uses_anonymous_args = 0
  199 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  /tmp/ccIYzuRL.s 			page 5
+ARM GAS  /tmp/ccNvcmBO.s 			page 5
 
 
  200              	.LCFI9:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  241              	.LVL20:
   38:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0x10);
  242              		.loc 1 38 0
-ARM GAS  /tmp/ccIYzuRL.s 			page 6
+ARM GAS  /tmp/ccNvcmBO.s 			page 6
 
 
  243 0028 0020     		movs	r0, #0
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  284 0004 FFF7FEFF 		bl	OLED_Write_Order
  285              	.LVL24:
   56:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0x14);
-ARM GAS  /tmp/ccIYzuRL.s 			page 7
+ARM GAS  /tmp/ccNvcmBO.s 			page 7
 
 
  286              		.loc 1 56 0
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  332              	.LVL30:
   67:Src/OLED_SSD1306.c **** 	OLED_Write_Order(0xAE);
  333              		.loc 1 67 0
-ARM GAS  /tmp/ccIYzuRL.s 			page 8
+ARM GAS  /tmp/ccNvcmBO.s 			page 8
 
 
  334 0014 AE20     		movs	r0, #174
@@ -427,32 +427,24 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  337 001a 08BD     		pop	{r3, pc}
  338              		.cfi_endproc
  339              	.LFE70:
- 341              		.section	.text.OLED_Display_String,"ax",%progbits
+ 341              		.section	.text.OLED_Display_Character,"ax",%progbits
  342              		.align	1
- 343              		.global	OLED_Display_String
+ 343              		.global	OLED_Display_Character
  344              		.syntax unified
  345              		.thumb
  346              		.thumb_func
  347              		.fpu softvfp
- 349              	OLED_Display_String:
+ 349              	OLED_Display_Character:
  350              	.LFB71:
   68:Src/OLED_SSD1306.c **** }
   69:Src/OLED_SSD1306.c **** 
-  70:Src/OLED_SSD1306.c **** // //指定位置显示字符
-  71:Src/OLED_SSD1306.c **** // void OLED_Display(uint8_t String)
-  72:Src/OLED_SSD1306.c **** // {
-  73:Src/OLED_SSD1306.c **** // 	uint8_t  Data = String - '0';
-  74:Src/OLED_SSD1306.c **** // 	for(uint8_t i=0; i<16; i++)
-  75:Src/OLED_SSD1306.c **** // 		OLED_Write_Data(ASCII_8_16[Data][i]);
-  76:Src/OLED_SSD1306.c **** // }
-  77:Src/OLED_SSD1306.c **** 
-  78:Src/OLED_SSD1306.c **** //指定位置显示英文数字
-  79:Src/OLED_SSD1306.c **** //x		页地址
-  80:Src/OLED_SSD1306.c **** //y		列地址	范围：00h ~ 1Fh
-  81:Src/OLED_SSD1306.c **** //*pString	数据
-  82:Src/OLED_SSD1306.c **** void OLED_Display_String(uint8_t x, uint8_t y, char *pString)
-  83:Src/OLED_SSD1306.c **** {
- 351              		.loc 1 83 0
+  70:Src/OLED_SSD1306.c **** //指定位置显示英文数字
+  71:Src/OLED_SSD1306.c **** //x		页地址
+  72:Src/OLED_SSD1306.c **** //y		列地址	范围：00h ~ 1Fh
+  73:Src/OLED_SSD1306.c **** //*pCharacter	数据
+  74:Src/OLED_SSD1306.c **** void OLED_Display_Character(uint8_t x, uint8_t y, char *pCharacter)
+  75:Src/OLED_SSD1306.c **** {
+ 351              		.loc 1 75 0
  352              		.cfi_startproc
  353              		@ args = 0, pretend = 0, frame = 0
  354              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -467,361 +459,1890 @@ ARM GAS  /tmp/ccIYzuRL.s 			page 1
  363              		.cfi_offset 8, -8
  364              		.cfi_offset 14, -4
  365 0004 0746     		mov	r7, r0
-  84:Src/OLED_SSD1306.c **** 	y = y+2;
- 366              		.loc 1 84 0
+  76:Src/OLED_SSD1306.c **** 	y = y+2;
+ 366              		.loc 1 76 0
  367 0006 0231     		adds	r1, r1, #2
  368              	.LVL33:
  369 0008 5FFA81F8 		uxtb	r8, r1
  370              	.LVL34:
-  85:Src/OLED_SSD1306.c **** 	uint8_t  Data = *pString - '0';
- 371              		.loc 1 85 0
- 372 000c 1578     		ldrb	r5, [r2]	@ zero_extendqisi2
- 373 000e 303D     		subs	r5, r5, #48
- 374 0010 EDB2     		uxtb	r5, r5
-ARM GAS  /tmp/ccIYzuRL.s 			page 9
+  77:Src/OLED_SSD1306.c **** 	uint8_t  Data = pCharacter - " ";
+ 371              		.loc 1 77 0
+ 372 000c 134D     		ldr	r5, .L33
+ 373 000e 551B     		subs	r5, r2, r5
+ 374              	.LVL35:
+ 375              	.LBB6:
+  78:Src/OLED_SSD1306.c **** 
+  79:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<2; i++)
+ 376              		.loc 1 79 0
+ 377 0010 0026     		movs	r6, #0
+ 378 0012 0EE0     		b	.L27
+ 379              	.LVL36:
+ 380              	.L29:
+ARM GAS  /tmp/ccNvcmBO.s 			page 9
 
 
- 375              	.LVL35:
- 376              	.LBB6:
-  86:Src/OLED_SSD1306.c **** 
-  87:Src/OLED_SSD1306.c **** 	for(uint8_t i=0; i<2; i++)
- 377              		.loc 1 87 0
- 378 0012 0026     		movs	r6, #0
- 379 0014 0DE0     		b	.L27
- 380              	.LVL36:
- 381              	.L29:
- 382              	.LBB7:
-  88:Src/OLED_SSD1306.c **** 	{
-  89:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0xB0 + x);
-  90:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y/16 + 0x10);
-  91:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y%16);
-  92:Src/OLED_SSD1306.c **** 
-  93:Src/OLED_SSD1306.c **** 		for(uint8_t j=0; j<16; j++)
-  94:Src/OLED_SSD1306.c **** 		{
-  95:Src/OLED_SSD1306.c **** 			OLED_Write_Data(ASCII_8x16[Data][j]);
- 383              		.loc 1 95 0 discriminator 3
- 384 0016 114B     		ldr	r3, .L33
- 385 0018 03EB0513 		add	r3, r3, r5, lsl #4
+ 381              	.LBB7:
+  80:Src/OLED_SSD1306.c **** 	{
+  81:Src/OLED_SSD1306.c **** 		OLED_Write_Order(0xB0 + x);
+  82:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y/16 + 0x10);
+  83:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y%16);
+  84:Src/OLED_SSD1306.c **** 
+  85:Src/OLED_SSD1306.c **** 		for(uint8_t j=0; j<16; j++)
+  86:Src/OLED_SSD1306.c **** 		{
+  87:Src/OLED_SSD1306.c **** 			OLED_Write_Data(ASCII_8x16[Data][j]);
+ 382              		.loc 1 87 0 discriminator 3
+ 383 0014 EBB2     		uxtb	r3, r5
+ 384 0016 124A     		ldr	r2, .L33+4
+ 385 0018 02EB0313 		add	r3, r2, r3, lsl #4
  386 001c 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
  387 001e FFF7FEFF 		bl	OLED_Write_Data
  388              	.LVL37:
-  93:Src/OLED_SSD1306.c **** 		{
- 389              		.loc 1 93 0 discriminator 3
+  85:Src/OLED_SSD1306.c **** 		{
+ 389              		.loc 1 85 0 discriminator 3
  390 0022 0134     		adds	r4, r4, #1
  391              	.LVL38:
  392 0024 E4B2     		uxtb	r4, r4
  393              	.LVL39:
  394              	.L28:
-  93:Src/OLED_SSD1306.c **** 		{
- 395              		.loc 1 93 0 is_stmt 0 discriminator 1
+  85:Src/OLED_SSD1306.c **** 		{
+ 395              		.loc 1 85 0 is_stmt 0 discriminator 1
  396 0026 0F2C     		cmp	r4, #15
- 397 0028 F5D9     		bls	.L29
+ 397 0028 F4D9     		bls	.L29
  398              	.LBE7:
-  96:Src/OLED_SSD1306.c **** 		}
-  97:Src/OLED_SSD1306.c **** 		x++;
- 399              		.loc 1 97 0 is_stmt 1 discriminator 2
+  88:Src/OLED_SSD1306.c **** 		}
+  89:Src/OLED_SSD1306.c **** 		x++;
+ 399              		.loc 1 89 0 is_stmt 1 discriminator 2
  400 002a 0137     		adds	r7, r7, #1
  401              	.LVL40:
  402 002c FFB2     		uxtb	r7, r7
  403              	.LVL41:
-  87:Src/OLED_SSD1306.c **** 	{
- 404              		.loc 1 87 0 discriminator 2
+  79:Src/OLED_SSD1306.c **** 	{
+ 404              		.loc 1 79 0 discriminator 2
  405 002e 0136     		adds	r6, r6, #1
  406              	.LVL42:
  407 0030 F6B2     		uxtb	r6, r6
  408              	.LVL43:
  409              	.L27:
-  87:Src/OLED_SSD1306.c **** 	{
- 410              		.loc 1 87 0 is_stmt 0 discriminator 1
+  79:Src/OLED_SSD1306.c **** 	{
+ 410              		.loc 1 79 0 is_stmt 0 discriminator 1
  411 0032 012E     		cmp	r6, #1
  412 0034 0FD8     		bhi	.L32
-  89:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y/16 + 0x10);
- 413              		.loc 1 89 0 is_stmt 1
+  81:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y/16 + 0x10);
+ 413              		.loc 1 81 0 is_stmt 1
  414 0036 A7F15000 		sub	r0, r7, #80
-ARM GAS  /tmp/ccIYzuRL.s 			page 10
-
-
  415 003a C0B2     		uxtb	r0, r0
  416 003c FFF7FEFF 		bl	OLED_Write_Order
  417              	.LVL44:
-  90:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y%16);
- 418              		.loc 1 90 0
+  82:Src/OLED_SSD1306.c **** 		OLED_Write_Order(y%16);
+ 418              		.loc 1 82 0
  419 0040 4FEA1810 		lsr	r0, r8, #4
  420 0044 1030     		adds	r0, r0, #16
  421 0046 FFF7FEFF 		bl	OLED_Write_Order
+ARM GAS  /tmp/ccNvcmBO.s 			page 10
+
+
  422              	.LVL45:
-  91:Src/OLED_SSD1306.c **** 
- 423              		.loc 1 91 0
+  83:Src/OLED_SSD1306.c **** 
+ 423              		.loc 1 83 0
  424 004a 08F00F00 		and	r0, r8, #15
  425 004e FFF7FEFF 		bl	OLED_Write_Order
  426              	.LVL46:
  427              	.LBB8:
-  93:Src/OLED_SSD1306.c **** 		{
- 428              		.loc 1 93 0
+  85:Src/OLED_SSD1306.c **** 		{
+ 428              		.loc 1 85 0
  429 0052 0024     		movs	r4, #0
  430 0054 E7E7     		b	.L28
  431              	.LVL47:
  432              	.L32:
  433              	.LBE8:
  434              	.LBE6:
-  98:Src/OLED_SSD1306.c **** 	}
-  99:Src/OLED_SSD1306.c **** 	
- 100:Src/OLED_SSD1306.c **** }
- 435              		.loc 1 100 0
+  90:Src/OLED_SSD1306.c **** 	}
+  91:Src/OLED_SSD1306.c **** 	
+  92:Src/OLED_SSD1306.c **** }
+ 435              		.loc 1 92 0
  436 0056 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
  437              	.LVL48:
  438              	.L34:
  439 005a 00BF     		.align	2
  440              	.L33:
- 441 005c 00000000 		.word	.LANCHOR1
- 442              		.cfi_endproc
- 443              	.LFE71:
- 445              		.global	Init_Data
- 446              		.global	ASCII_8x16
- 447              		.section	.data.Init_Data,"aw",%progbits
- 448              		.align	2
- 449              		.set	.LANCHOR0,. + 0
- 452              	Init_Data:
- 453 0000 AE       		.byte	-82
- 454 0001 00       		.byte	0
- 455 0002 10       		.byte	16
- 456 0003 40       		.byte	64
- 457 0004 B0       		.byte	-80
- 458 0005 81       		.byte	-127
- 459 0006 A1       		.byte	-95
- 460 0007 A4       		.byte	-92
- 461 0008 A6       		.byte	-90
- 462 0009 A8       		.byte	-88
- 463 000a 3F       		.byte	63
- 464 000b C8       		.byte	-56
- 465 000c D3       		.byte	-45
- 466 000d 00       		.byte	0
- 467 000e D5       		.byte	-43
- 468 000f 80       		.byte	-128
-ARM GAS  /tmp/ccIYzuRL.s 			page 11
+ 441 005c 00000000 		.word	.LC0
+ 442 0060 00000000 		.word	.LANCHOR1
+ 443              		.cfi_endproc
+ 444              	.LFE71:
+ 446              		.section	.text.OLED_Display_String,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	OLED_Display_String
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 452              		.fpu softvfp
+ 454              	OLED_Display_String:
+ 455              	.LFB72:
+  93:Src/OLED_SSD1306.c **** 
+  94:Src/OLED_SSD1306.c **** //指定位置显示字符串
+  95:Src/OLED_SSD1306.c **** //x			页地址
+  96:Src/OLED_SSD1306.c **** //*pString	字符串
+  97:Src/OLED_SSD1306.c **** void OLED_Display_String(uint8_t x, char *pString)
+  98:Src/OLED_SSD1306.c **** {
+ 456              		.loc 1 98 0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460              	.LVL49:
+ 461 0000 70B5     		push	{r4, r5, r6, lr}
+ 462              	.LCFI13:
+ 463              		.cfi_def_cfa_offset 16
+ 464              		.cfi_offset 4, -16
+ 465              		.cfi_offset 5, -12
+ 466              		.cfi_offset 6, -8
+ 467              		.cfi_offset 14, -4
+ 468 0002 0646     		mov	r6, r0
+ 469 0004 0A46     		mov	r2, r1
+ARM GAS  /tmp/ccNvcmBO.s 			page 11
 
 
- 469 0010 D9       		.byte	-39
- 470 0011 DA       		.byte	-38
- 471 0012 12       		.byte	18
- 472 0013 DB       		.byte	-37
- 473 0014 30       		.byte	48
- 474 0015 8D       		.byte	-115
- 475 0016 10       		.byte	16
- 476 0017 AF       		.byte	-81
- 477              		.section	.rodata.ASCII_8x16,"a",%progbits
- 478              		.align	2
- 479              		.set	.LANCHOR1,. + 0
- 482              	ASCII_8x16:
- 483 0000 F8       		.byte	-8
- 484 0001 FC       		.byte	-4
- 485 0002 04       		.byte	4
- 486 0003 C4       		.byte	-60
- 487 0004 24       		.byte	36
- 488 0005 FC       		.byte	-4
- 489 0006 F8       		.byte	-8
- 490 0007 00       		.byte	0
- 491 0008 07       		.byte	7
- 492 0009 0F       		.byte	15
- 493 000a 09       		.byte	9
- 494 000b 08       		.byte	8
- 495 000c 08       		.byte	8
- 496 000d 0F       		.byte	15
- 497 000e 07       		.byte	7
- 498 000f 00       		.byte	0
- 499 0010 00       		.byte	0
- 500 0011 10       		.byte	16
- 501 0012 18       		.byte	24
- 502 0013 FC       		.byte	-4
- 503 0014 FC       		.byte	-4
- 504 0015 00       		.byte	0
- 505 0016 00       		.byte	0
- 506 0017 00       		.byte	0
- 507 0018 00       		.byte	0
- 508 0019 08       		.byte	8
- 509 001a 08       		.byte	8
- 510 001b 0F       		.byte	15
- 511 001c 0F       		.byte	15
- 512 001d 08       		.byte	8
- 513 001e 08       		.byte	8
- 514 001f 00       		.byte	0
- 515 0020 08       		.byte	8
- 516 0021 0C       		.byte	12
- 517 0022 84       		.byte	-124
- 518 0023 C4       		.byte	-60
- 519 0024 64       		.byte	100
- 520 0025 3C       		.byte	60
- 521 0026 18       		.byte	24
- 522 0027 00       		.byte	0
- 523 0028 0E       		.byte	14
- 524 0029 0F       		.byte	15
- 525 002a 09       		.byte	9
- 526 002b 08       		.byte	8
- 527 002c 08       		.byte	8
-ARM GAS  /tmp/ccIYzuRL.s 			page 12
+ 470              	.LVL50:
+  99:Src/OLED_SSD1306.c **** 	uint8_t i = 0;
+ 471              		.loc 1 99 0
+ 472 0006 0024     		movs	r4, #0
+ 100:Src/OLED_SSD1306.c **** 	while (*pString != '\0')
+ 473              		.loc 1 100 0
+ 474 0008 07E0     		b	.L36
+ 475              	.LVL51:
+ 476              	.L37:
+ 101:Src/OLED_SSD1306.c **** 	{
+ 102:Src/OLED_SSD1306.c **** 		OLED_Display_Character(x, i, pString++);
+ 477              		.loc 1 102 0
+ 478 000a 551C     		adds	r5, r2, #1
+ 479              	.LVL52:
+ 480 000c 2146     		mov	r1, r4
+ 481 000e 3046     		mov	r0, r6
+ 482 0010 FFF7FEFF 		bl	OLED_Display_Character
+ 483              	.LVL53:
+ 103:Src/OLED_SSD1306.c **** 		i++;
+ 484              		.loc 1 103 0
+ 485 0014 0134     		adds	r4, r4, #1
+ 486              	.LVL54:
+ 487 0016 E4B2     		uxtb	r4, r4
+ 488              	.LVL55:
+ 102:Src/OLED_SSD1306.c **** 		i++;
+ 489              		.loc 1 102 0
+ 490 0018 2A46     		mov	r2, r5
+ 491              	.LVL56:
+ 492              	.L36:
+ 100:Src/OLED_SSD1306.c **** 	{
+ 493              		.loc 1 100 0
+ 494 001a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 495 001c 002B     		cmp	r3, #0
+ 496 001e F4D1     		bne	.L37
+ 104:Src/OLED_SSD1306.c **** 	}
+ 105:Src/OLED_SSD1306.c **** 	
+ 106:Src/OLED_SSD1306.c **** }...
+ 497              		.loc 1 106 0
+ 498 0020 70BD     		pop	{r4, r5, r6, pc}
+ 499              		.cfi_endproc
+ 500              	.LFE72:
+ 502              		.global	Init_Data
+ 503              		.global	ASCII_8x16
+ 504              		.section	.data.Init_Data,"aw",%progbits
+ 505              		.align	2
+ 506              		.set	.LANCHOR0,. + 0
+ 509              	Init_Data:
+ 510 0000 AE       		.byte	-82
+ 511 0001 00       		.byte	0
+ 512 0002 10       		.byte	16
+ 513 0003 40       		.byte	64
+ 514 0004 B0       		.byte	-80
+ 515 0005 81       		.byte	-127
+ 516 0006 A1       		.byte	-95
+ 517 0007 A4       		.byte	-92
+ 518 0008 A6       		.byte	-90
+ 519 0009 A8       		.byte	-88
+ARM GAS  /tmp/ccNvcmBO.s 			page 12
 
 
- 528 002d 0C       		.byte	12
- 529 002e 0C       		.byte	12
- 530 002f 00       		.byte	0
- 531 0030 08       		.byte	8
- 532 0031 0C       		.byte	12
- 533 0032 44       		.byte	68
- 534 0033 44       		.byte	68
- 535 0034 44       		.byte	68
- 536 0035 FC       		.byte	-4
- 537 0036 B8       		.byte	-72
- 538 0037 00       		.byte	0
- 539 0038 04       		.byte	4
- 540 0039 0C       		.byte	12
- 541 003a 08       		.byte	8
- 542 003b 08       		.byte	8
- 543 003c 08       		.byte	8
- 544 003d 0F       		.byte	15
- 545 003e 07       		.byte	7
- 546 003f 00       		.byte	0
- 547 0040 C0       		.byte	-64
- 548 0041 E0       		.byte	-32
- 549 0042 B0       		.byte	-80
- 550 0043 98       		.byte	-104
- 551 0044 FC       		.byte	-4
- 552 0045 FC       		.byte	-4
- 553 0046 80       		.byte	-128
- 554 0047 00       		.byte	0
- 555 0048 00       		.byte	0
- 556 0049 00       		.byte	0
- 557 004a 00       		.byte	0
- 558 004b 08       		.byte	8
- 559 004c 0F       		.byte	15
- 560 004d 0F       		.byte	15
- 561 004e 08       		.byte	8
- 562 004f 00       		.byte	0
- 563 0050 7C       		.byte	124
- 564 0051 7C       		.byte	124
- 565 0052 44       		.byte	68
- 566 0053 44       		.byte	68
- 567 0054 C4       		.byte	-60
- 568 0055 C4       		.byte	-60
- 569 0056 84       		.byte	-124
- 570 0057 00       		.byte	0
- 571 0058 04       		.byte	4
- 572 0059 0C       		.byte	12
- 573 005a 08       		.byte	8
- 574 005b 08       		.byte	8
- 575 005c 08       		.byte	8
- 576 005d 0F       		.byte	15
- 577 005e 07       		.byte	7
- 578 005f 00       		.byte	0
- 579 0060 F0       		.byte	-16
- 580 0061 F8       		.byte	-8
- 581 0062 4C       		.byte	76
- 582 0063 44       		.byte	68
- 583 0064 44       		.byte	68
- 584 0065 C0       		.byte	-64
-ARM GAS  /tmp/ccIYzuRL.s 			page 13
+ 520 000a 3F       		.byte	63
+ 521 000b C8       		.byte	-56
+ 522 000c D3       		.byte	-45
+ 523 000d 00       		.byte	0
+ 524 000e D5       		.byte	-43
+ 525 000f 80       		.byte	-128
+ 526 0010 D9       		.byte	-39
+ 527 0011 DA       		.byte	-38
+ 528 0012 12       		.byte	18
+ 529 0013 DB       		.byte	-37
+ 530 0014 30       		.byte	48
+ 531 0015 8D       		.byte	-115
+ 532 0016 10       		.byte	16
+ 533 0017 AF       		.byte	-81
+ 534              		.section	.rodata.ASCII_8x16,"a",%progbits
+ 535              		.align	2
+ 536              		.set	.LANCHOR1,. + 0
+ 539              	ASCII_8x16:
+ 540 0000 00       		.byte	0
+ 541 0001 00       		.byte	0
+ 542 0002 00       		.byte	0
+ 543 0003 00       		.byte	0
+ 544 0004 00       		.byte	0
+ 545 0005 00       		.byte	0
+ 546 0006 00       		.byte	0
+ 547 0007 00       		.byte	0
+ 548 0008 00       		.byte	0
+ 549 0009 00       		.byte	0
+ 550 000a 00       		.byte	0
+ 551 000b 00       		.byte	0
+ 552 000c 00       		.byte	0
+ 553 000d 00       		.byte	0
+ 554 000e 00       		.byte	0
+ 555 000f 00       		.byte	0
+ 556 0010 00       		.byte	0
+ 557 0011 00       		.byte	0
+ 558 0012 38       		.byte	56
+ 559 0013 FC       		.byte	-4
+ 560 0014 FC       		.byte	-4
+ 561 0015 38       		.byte	56
+ 562 0016 00       		.byte	0
+ 563 0017 00       		.byte	0
+ 564 0018 00       		.byte	0
+ 565 0019 00       		.byte	0
+ 566 001a 00       		.byte	0
+ 567 001b 0D       		.byte	13
+ 568 001c 0D       		.byte	13
+ 569 001d 00       		.byte	0
+ 570 001e 00       		.byte	0
+ 571 001f 00       		.byte	0
+ 572 0020 00       		.byte	0
+ 573 0021 0E       		.byte	14
+ 574 0022 1E       		.byte	30
+ 575 0023 00       		.byte	0
+ 576 0024 00       		.byte	0
+ 577 0025 1E       		.byte	30
+ 578 0026 0E       		.byte	14
+ARM GAS  /tmp/ccNvcmBO.s 			page 13
 
 
- 585 0066 80       		.byte	-128
- 586 0067 00       		.byte	0
- 587 0068 07       		.byte	7
- 588 0069 0F       		.byte	15
- 589 006a 08       		.byte	8
- 590 006b 08       		.byte	8
- 591 006c 08       		.byte	8
- 592 006d 0F       		.byte	15
- 593 006e 07       		.byte	7
- 594 006f 00       		.byte	0
- 595 0070 0C       		.byte	12
- 596 0071 0C       		.byte	12
- 597 0072 04       		.byte	4
- 598 0073 84       		.byte	-124
- 599 0074 C4       		.byte	-60
- 600 0075 7C       		.byte	124
- 601 0076 3C       		.byte	60
- 602 0077 00       		.byte	0
- 603 0078 00       		.byte	0
- 604 0079 00       		.byte	0
- 605 007a 0F       		.byte	15
- 606 007b 0F       		.byte	15
- 607 007c 00       		.byte	0
- 608 007d 00       		.byte	0
- 609 007e 00       		.byte	0
- 610 007f 00       		.byte	0
- 611 0080 B8       		.byte	-72
- 612 0081 FC       		.byte	-4
- 613 0082 44       		.byte	68
- 614 0083 44       		.byte	68
- 615 0084 44       		.byte	68
- 616 0085 FC       		.byte	-4
- 617 0086 B8       		.byte	-72
- 618 0087 00       		.byte	0
- 619 0088 07       		.byte	7
- 620 0089 0F       		.byte	15
- 621 008a 08       		.byte	8
- 622 008b 08       		.byte	8
- 623 008c 08       		.byte	8
- 624 008d 0F       		.byte	15
- 625 008e 07       		.byte	7
- 626 008f 00       		.byte	0
- 627 0090 38       		.byte	56
- 628 0091 7C       		.byte	124
- 629 0092 44       		.byte	68
- 630 0093 44       		.byte	68
- 631 0094 44       		.byte	68
- 632 0095 FC       		.byte	-4
- 633 0096 F8       		.byte	-8
- 634 0097 00       		.byte	0
- 635 0098 00       		.byte	0
- 636 0099 08       		.byte	8
- 637 009a 08       		.byte	8
- 638 009b 08       		.byte	8
- 639 009c 0C       		.byte	12
- 640 009d 07       		.byte	7
- 641 009e 03       		.byte	3
-ARM GAS  /tmp/ccIYzuRL.s 			page 14
+ 579 0027 00       		.byte	0
+ 580 0028 00       		.byte	0
+ 581 0029 00       		.byte	0
+ 582 002a 00       		.byte	0
+ 583 002b 00       		.byte	0
+ 584 002c 00       		.byte	0
+ 585 002d 00       		.byte	0
+ 586 002e 00       		.byte	0
+ 587 002f 00       		.byte	0
+ 588 0030 20       		.byte	32
+ 589 0031 F8       		.byte	-8
+ 590 0032 F8       		.byte	-8
+ 591 0033 20       		.byte	32
+ 592 0034 F8       		.byte	-8
+ 593 0035 F8       		.byte	-8
+ 594 0036 20       		.byte	32
+ 595 0037 00       		.byte	0
+ 596 0038 02       		.byte	2
+ 597 0039 0F       		.byte	15
+ 598 003a 0F       		.byte	15
+ 599 003b 02       		.byte	2
+ 600 003c 0F       		.byte	15
+ 601 003d 0F       		.byte	15
+ 602 003e 02       		.byte	2
+ 603 003f 00       		.byte	0
+ 604 0040 38       		.byte	56
+ 605 0041 7C       		.byte	124
+ 606 0042 44       		.byte	68
+ 607 0043 47       		.byte	71
+ 608 0044 47       		.byte	71
+ 609 0045 CC       		.byte	-52
+ 610 0046 98       		.byte	-104
+ 611 0047 00       		.byte	0
+ 612 0048 03       		.byte	3
+ 613 0049 06       		.byte	6
+ 614 004a 04       		.byte	4
+ 615 004b 1C       		.byte	28
+ 616 004c 1C       		.byte	28
+ 617 004d 07       		.byte	7
+ 618 004e 03       		.byte	3
+ 619 004f 00       		.byte	0
+ 620 0050 30       		.byte	48
+ 621 0051 30       		.byte	48
+ 622 0052 00       		.byte	0
+ 623 0053 80       		.byte	-128
+ 624 0054 C0       		.byte	-64
+ 625 0055 60       		.byte	96
+ 626 0056 30       		.byte	48
+ 627 0057 00       		.byte	0
+ 628 0058 0C       		.byte	12
+ 629 0059 06       		.byte	6
+ 630 005a 03       		.byte	3
+ 631 005b 01       		.byte	1
+ 632 005c 00       		.byte	0
+ 633 005d 0C       		.byte	12
+ 634 005e 0C       		.byte	12
+ 635 005f 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 14
 
 
- 642 009f 00       		.byte	0
- 643              		.text
- 644              	.Letext0:
- 645              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 646              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 647              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 648              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 649              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
- 650              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 651              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 652              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 653              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 654              		.file 11 "Inc/i2c.h"
- 655              		.file 12 "Inc/ASCII.h"
-ARM GAS  /tmp/ccIYzuRL.s 			page 15
+ 636 0060 80       		.byte	-128
+ 637 0061 D8       		.byte	-40
+ 638 0062 7C       		.byte	124
+ 639 0063 E4       		.byte	-28
+ 640 0064 BC       		.byte	-68
+ 641 0065 D8       		.byte	-40
+ 642 0066 40       		.byte	64
+ 643 0067 00       		.byte	0
+ 644 0068 07       		.byte	7
+ 645 0069 0F       		.byte	15
+ 646 006a 08       		.byte	8
+ 647 006b 08       		.byte	8
+ 648 006c 07       		.byte	7
+ 649 006d 0F       		.byte	15
+ 650 006e 08       		.byte	8
+ 651 006f 00       		.byte	0
+ 652 0070 00       		.byte	0
+ 653 0071 10       		.byte	16
+ 654 0072 1E       		.byte	30
+ 655 0073 0E       		.byte	14
+ 656 0074 00       		.byte	0
+ 657 0075 00       		.byte	0
+ 658 0076 00       		.byte	0
+ 659 0077 00       		.byte	0
+ 660 0078 00       		.byte	0
+ 661 0079 00       		.byte	0
+ 662 007a 00       		.byte	0
+ 663 007b 00       		.byte	0
+ 664 007c 00       		.byte	0
+ 665 007d 00       		.byte	0
+ 666 007e 00       		.byte	0
+ 667 007f 00       		.byte	0
+ 668 0080 00       		.byte	0
+ 669 0081 00       		.byte	0
+ 670 0082 F0       		.byte	-16
+ 671 0083 F8       		.byte	-8
+ 672 0084 0C       		.byte	12
+ 673 0085 04       		.byte	4
+ 674 0086 00       		.byte	0
+ 675 0087 00       		.byte	0
+ 676 0088 00       		.byte	0
+ 677 0089 00       		.byte	0
+ 678 008a 03       		.byte	3
+ 679 008b 07       		.byte	7
+ 680 008c 0C       		.byte	12
+ 681 008d 08       		.byte	8
+ 682 008e 00       		.byte	0
+ 683 008f 00       		.byte	0
+ 684 0090 00       		.byte	0
+ 685 0091 00       		.byte	0
+ 686 0092 04       		.byte	4
+ 687 0093 0C       		.byte	12
+ 688 0094 F8       		.byte	-8
+ 689 0095 F0       		.byte	-16
+ 690 0096 00       		.byte	0
+ 691 0097 00       		.byte	0
+ 692 0098 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 15
+
+
+ 693 0099 00       		.byte	0
+ 694 009a 08       		.byte	8
+ 695 009b 0C       		.byte	12
+ 696 009c 07       		.byte	7
+ 697 009d 03       		.byte	3
+ 698 009e 00       		.byte	0
+ 699 009f 00       		.byte	0
+ 700 00a0 80       		.byte	-128
+ 701 00a1 A0       		.byte	-96
+ 702 00a2 E0       		.byte	-32
+ 703 00a3 C0       		.byte	-64
+ 704 00a4 C0       		.byte	-64
+ 705 00a5 E0       		.byte	-32
+ 706 00a6 A0       		.byte	-96
+ 707 00a7 80       		.byte	-128
+ 708 00a8 00       		.byte	0
+ 709 00a9 02       		.byte	2
+ 710 00aa 03       		.byte	3
+ 711 00ab 01       		.byte	1
+ 712 00ac 01       		.byte	1
+ 713 00ad 03       		.byte	3
+ 714 00ae 02       		.byte	2
+ 715 00af 00       		.byte	0
+ 716 00b0 00       		.byte	0
+ 717 00b1 80       		.byte	-128
+ 718 00b2 80       		.byte	-128
+ 719 00b3 E0       		.byte	-32
+ 720 00b4 E0       		.byte	-32
+ 721 00b5 80       		.byte	-128
+ 722 00b6 80       		.byte	-128
+ 723 00b7 00       		.byte	0
+ 724 00b8 00       		.byte	0
+ 725 00b9 00       		.byte	0
+ 726 00ba 00       		.byte	0
+ 727 00bb 03       		.byte	3
+ 728 00bc 03       		.byte	3
+ 729 00bd 00       		.byte	0
+ 730 00be 00       		.byte	0
+ 731 00bf 00       		.byte	0
+ 732 00c0 00       		.byte	0
+ 733 00c1 00       		.byte	0
+ 734 00c2 00       		.byte	0
+ 735 00c3 00       		.byte	0
+ 736 00c4 00       		.byte	0
+ 737 00c5 00       		.byte	0
+ 738 00c6 00       		.byte	0
+ 739 00c7 00       		.byte	0
+ 740 00c8 00       		.byte	0
+ 741 00c9 00       		.byte	0
+ 742 00ca 10       		.byte	16
+ 743 00cb 1E       		.byte	30
+ 744 00cc 0E       		.byte	14
+ 745 00cd 00       		.byte	0
+ 746 00ce 00       		.byte	0
+ 747 00cf 00       		.byte	0
+ 748 00d0 80       		.byte	-128
+ 749 00d1 80       		.byte	-128
+ARM GAS  /tmp/ccNvcmBO.s 			page 16
+
+
+ 750 00d2 80       		.byte	-128
+ 751 00d3 80       		.byte	-128
+ 752 00d4 80       		.byte	-128
+ 753 00d5 80       		.byte	-128
+ 754 00d6 80       		.byte	-128
+ 755 00d7 00       		.byte	0
+ 756 00d8 00       		.byte	0
+ 757 00d9 00       		.byte	0
+ 758 00da 00       		.byte	0
+ 759 00db 00       		.byte	0
+ 760 00dc 00       		.byte	0
+ 761 00dd 00       		.byte	0
+ 762 00de 00       		.byte	0
+ 763 00df 00       		.byte	0
+ 764 00e0 00       		.byte	0
+ 765 00e1 00       		.byte	0
+ 766 00e2 00       		.byte	0
+ 767 00e3 00       		.byte	0
+ 768 00e4 00       		.byte	0
+ 769 00e5 00       		.byte	0
+ 770 00e6 00       		.byte	0
+ 771 00e7 00       		.byte	0
+ 772 00e8 00       		.byte	0
+ 773 00e9 00       		.byte	0
+ 774 00ea 00       		.byte	0
+ 775 00eb 0C       		.byte	12
+ 776 00ec 0C       		.byte	12
+ 777 00ed 00       		.byte	0
+ 778 00ee 00       		.byte	0
+ 779 00ef 00       		.byte	0
+ 780 00f0 00       		.byte	0
+ 781 00f1 00       		.byte	0
+ 782 00f2 00       		.byte	0
+ 783 00f3 80       		.byte	-128
+ 784 00f4 C0       		.byte	-64
+ 785 00f5 60       		.byte	96
+ 786 00f6 30       		.byte	48
+ 787 00f7 00       		.byte	0
+ 788 00f8 0C       		.byte	12
+ 789 00f9 06       		.byte	6
+ 790 00fa 03       		.byte	3
+ 791 00fb 01       		.byte	1
+ 792 00fc 00       		.byte	0
+ 793 00fd 00       		.byte	0
+ 794 00fe 00       		.byte	0
+ 795 00ff 00       		.byte	0
+ 796 0100 F8       		.byte	-8
+ 797 0101 FC       		.byte	-4
+ 798 0102 04       		.byte	4
+ 799 0103 C4       		.byte	-60
+ 800 0104 24       		.byte	36
+ 801 0105 FC       		.byte	-4
+ 802 0106 F8       		.byte	-8
+ 803 0107 00       		.byte	0
+ 804 0108 07       		.byte	7
+ 805 0109 0F       		.byte	15
+ 806 010a 09       		.byte	9
+ARM GAS  /tmp/ccNvcmBO.s 			page 17
+
+
+ 807 010b 08       		.byte	8
+ 808 010c 08       		.byte	8
+ 809 010d 0F       		.byte	15
+ 810 010e 07       		.byte	7
+ 811 010f 00       		.byte	0
+ 812 0110 00       		.byte	0
+ 813 0111 10       		.byte	16
+ 814 0112 18       		.byte	24
+ 815 0113 FC       		.byte	-4
+ 816 0114 FC       		.byte	-4
+ 817 0115 00       		.byte	0
+ 818 0116 00       		.byte	0
+ 819 0117 00       		.byte	0
+ 820 0118 00       		.byte	0
+ 821 0119 08       		.byte	8
+ 822 011a 08       		.byte	8
+ 823 011b 0F       		.byte	15
+ 824 011c 0F       		.byte	15
+ 825 011d 08       		.byte	8
+ 826 011e 08       		.byte	8
+ 827 011f 00       		.byte	0
+ 828 0120 08       		.byte	8
+ 829 0121 0C       		.byte	12
+ 830 0122 84       		.byte	-124
+ 831 0123 C4       		.byte	-60
+ 832 0124 64       		.byte	100
+ 833 0125 3C       		.byte	60
+ 834 0126 18       		.byte	24
+ 835 0127 00       		.byte	0
+ 836 0128 0E       		.byte	14
+ 837 0129 0F       		.byte	15
+ 838 012a 09       		.byte	9
+ 839 012b 08       		.byte	8
+ 840 012c 08       		.byte	8
+ 841 012d 0C       		.byte	12
+ 842 012e 0C       		.byte	12
+ 843 012f 00       		.byte	0
+ 844 0130 08       		.byte	8
+ 845 0131 0C       		.byte	12
+ 846 0132 44       		.byte	68
+ 847 0133 44       		.byte	68
+ 848 0134 44       		.byte	68
+ 849 0135 FC       		.byte	-4
+ 850 0136 B8       		.byte	-72
+ 851 0137 00       		.byte	0
+ 852 0138 04       		.byte	4
+ 853 0139 0C       		.byte	12
+ 854 013a 08       		.byte	8
+ 855 013b 08       		.byte	8
+ 856 013c 08       		.byte	8
+ 857 013d 0F       		.byte	15
+ 858 013e 07       		.byte	7
+ 859 013f 00       		.byte	0
+ 860 0140 C0       		.byte	-64
+ 861 0141 E0       		.byte	-32
+ 862 0142 B0       		.byte	-80
+ 863 0143 98       		.byte	-104
+ARM GAS  /tmp/ccNvcmBO.s 			page 18
+
+
+ 864 0144 FC       		.byte	-4
+ 865 0145 FC       		.byte	-4
+ 866 0146 80       		.byte	-128
+ 867 0147 00       		.byte	0
+ 868 0148 00       		.byte	0
+ 869 0149 00       		.byte	0
+ 870 014a 00       		.byte	0
+ 871 014b 08       		.byte	8
+ 872 014c 0F       		.byte	15
+ 873 014d 0F       		.byte	15
+ 874 014e 08       		.byte	8
+ 875 014f 00       		.byte	0
+ 876 0150 7C       		.byte	124
+ 877 0151 7C       		.byte	124
+ 878 0152 44       		.byte	68
+ 879 0153 44       		.byte	68
+ 880 0154 C4       		.byte	-60
+ 881 0155 C4       		.byte	-60
+ 882 0156 84       		.byte	-124
+ 883 0157 00       		.byte	0
+ 884 0158 04       		.byte	4
+ 885 0159 0C       		.byte	12
+ 886 015a 08       		.byte	8
+ 887 015b 08       		.byte	8
+ 888 015c 08       		.byte	8
+ 889 015d 0F       		.byte	15
+ 890 015e 07       		.byte	7
+ 891 015f 00       		.byte	0
+ 892 0160 F0       		.byte	-16
+ 893 0161 F8       		.byte	-8
+ 894 0162 4C       		.byte	76
+ 895 0163 44       		.byte	68
+ 896 0164 44       		.byte	68
+ 897 0165 C0       		.byte	-64
+ 898 0166 80       		.byte	-128
+ 899 0167 00       		.byte	0
+ 900 0168 07       		.byte	7
+ 901 0169 0F       		.byte	15
+ 902 016a 08       		.byte	8
+ 903 016b 08       		.byte	8
+ 904 016c 08       		.byte	8
+ 905 016d 0F       		.byte	15
+ 906 016e 07       		.byte	7
+ 907 016f 00       		.byte	0
+ 908 0170 0C       		.byte	12
+ 909 0171 0C       		.byte	12
+ 910 0172 04       		.byte	4
+ 911 0173 84       		.byte	-124
+ 912 0174 C4       		.byte	-60
+ 913 0175 7C       		.byte	124
+ 914 0176 3C       		.byte	60
+ 915 0177 00       		.byte	0
+ 916 0178 00       		.byte	0
+ 917 0179 00       		.byte	0
+ 918 017a 0F       		.byte	15
+ 919 017b 0F       		.byte	15
+ 920 017c 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 19
+
+
+ 921 017d 00       		.byte	0
+ 922 017e 00       		.byte	0
+ 923 017f 00       		.byte	0
+ 924 0180 B8       		.byte	-72
+ 925 0181 FC       		.byte	-4
+ 926 0182 44       		.byte	68
+ 927 0183 44       		.byte	68
+ 928 0184 44       		.byte	68
+ 929 0185 FC       		.byte	-4
+ 930 0186 B8       		.byte	-72
+ 931 0187 00       		.byte	0
+ 932 0188 07       		.byte	7
+ 933 0189 0F       		.byte	15
+ 934 018a 08       		.byte	8
+ 935 018b 08       		.byte	8
+ 936 018c 08       		.byte	8
+ 937 018d 0F       		.byte	15
+ 938 018e 07       		.byte	7
+ 939 018f 00       		.byte	0
+ 940 0190 38       		.byte	56
+ 941 0191 7C       		.byte	124
+ 942 0192 44       		.byte	68
+ 943 0193 44       		.byte	68
+ 944 0194 44       		.byte	68
+ 945 0195 FC       		.byte	-4
+ 946 0196 F8       		.byte	-8
+ 947 0197 00       		.byte	0
+ 948 0198 00       		.byte	0
+ 949 0199 08       		.byte	8
+ 950 019a 08       		.byte	8
+ 951 019b 08       		.byte	8
+ 952 019c 0C       		.byte	12
+ 953 019d 07       		.byte	7
+ 954 019e 03       		.byte	3
+ 955 019f 00       		.byte	0
+ 956 01a0 00       		.byte	0
+ 957 01a1 00       		.byte	0
+ 958 01a2 00       		.byte	0
+ 959 01a3 30       		.byte	48
+ 960 01a4 30       		.byte	48
+ 961 01a5 00       		.byte	0
+ 962 01a6 00       		.byte	0
+ 963 01a7 00       		.byte	0
+ 964 01a8 00       		.byte	0
+ 965 01a9 00       		.byte	0
+ 966 01aa 00       		.byte	0
+ 967 01ab 06       		.byte	6
+ 968 01ac 06       		.byte	6
+ 969 01ad 00       		.byte	0
+ 970 01ae 00       		.byte	0
+ 971 01af 00       		.byte	0
+ 972 01b0 00       		.byte	0
+ 973 01b1 00       		.byte	0
+ 974 01b2 00       		.byte	0
+ 975 01b3 30       		.byte	48
+ 976 01b4 30       		.byte	48
+ 977 01b5 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 20
+
+
+ 978 01b6 00       		.byte	0
+ 979 01b7 00       		.byte	0
+ 980 01b8 00       		.byte	0
+ 981 01b9 00       		.byte	0
+ 982 01ba 08       		.byte	8
+ 983 01bb 0E       		.byte	14
+ 984 01bc 06       		.byte	6
+ 985 01bd 00       		.byte	0
+ 986 01be 00       		.byte	0
+ 987 01bf 00       		.byte	0
+ 988 01c0 00       		.byte	0
+ 989 01c1 80       		.byte	-128
+ 990 01c2 C0       		.byte	-64
+ 991 01c3 60       		.byte	96
+ 992 01c4 30       		.byte	48
+ 993 01c5 18       		.byte	24
+ 994 01c6 08       		.byte	8
+ 995 01c7 00       		.byte	0
+ 996 01c8 00       		.byte	0
+ 997 01c9 00       		.byte	0
+ 998 01ca 01       		.byte	1
+ 999 01cb 03       		.byte	3
+ 1000 01cc 06       		.byte	6
+ 1001 01cd 0C       		.byte	12
+ 1002 01ce 08       		.byte	8
+ 1003 01cf 00       		.byte	0
+ 1004 01d0 40       		.byte	64
+ 1005 01d1 40       		.byte	64
+ 1006 01d2 40       		.byte	64
+ 1007 01d3 40       		.byte	64
+ 1008 01d4 40       		.byte	64
+ 1009 01d5 40       		.byte	64
+ 1010 01d6 40       		.byte	64
+ 1011 01d7 00       		.byte	0
+ 1012 01d8 02       		.byte	2
+ 1013 01d9 02       		.byte	2
+ 1014 01da 02       		.byte	2
+ 1015 01db 02       		.byte	2
+ 1016 01dc 02       		.byte	2
+ 1017 01dd 02       		.byte	2
+ 1018 01de 02       		.byte	2
+ 1019 01df 00       		.byte	0
+ 1020 01e0 00       		.byte	0
+ 1021 01e1 08       		.byte	8
+ 1022 01e2 18       		.byte	24
+ 1023 01e3 30       		.byte	48
+ 1024 01e4 60       		.byte	96
+ 1025 01e5 C0       		.byte	-64
+ 1026 01e6 80       		.byte	-128
+ 1027 01e7 00       		.byte	0
+ 1028 01e8 00       		.byte	0
+ 1029 01e9 08       		.byte	8
+ 1030 01ea 0C       		.byte	12
+ 1031 01eb 06       		.byte	6
+ 1032 01ec 03       		.byte	3
+ 1033 01ed 01       		.byte	1
+ 1034 01ee 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 21
+
+
+ 1035 01ef 00       		.byte	0
+ 1036 01f0 18       		.byte	24
+ 1037 01f1 1C       		.byte	28
+ 1038 01f2 04       		.byte	4
+ 1039 01f3 C4       		.byte	-60
+ 1040 01f4 E4       		.byte	-28
+ 1041 01f5 3C       		.byte	60
+ 1042 01f6 18       		.byte	24
+ 1043 01f7 00       		.byte	0
+ 1044 01f8 00       		.byte	0
+ 1045 01f9 00       		.byte	0
+ 1046 01fa 00       		.byte	0
+ 1047 01fb 0D       		.byte	13
+ 1048 01fc 0D       		.byte	13
+ 1049 01fd 00       		.byte	0
+ 1050 01fe 00       		.byte	0
+ 1051 01ff 00       		.byte	0
+ 1052 0200 F0       		.byte	-16
+ 1053 0201 F8       		.byte	-8
+ 1054 0202 08       		.byte	8
+ 1055 0203 C8       		.byte	-56
+ 1056 0204 C8       		.byte	-56
+ 1057 0205 F8       		.byte	-8
+ 1058 0206 F0       		.byte	-16
+ 1059 0207 00       		.byte	0
+ 1060 0208 07       		.byte	7
+ 1061 0209 0F       		.byte	15
+ 1062 020a 08       		.byte	8
+ 1063 020b 0B       		.byte	11
+ 1064 020c 0B       		.byte	11
+ 1065 020d 0B       		.byte	11
+ 1066 020e 01       		.byte	1
+ 1067 020f 00       		.byte	0
+ 1068 0210 E0       		.byte	-32
+ 1069 0211 F0       		.byte	-16
+ 1070 0212 98       		.byte	-104
+ 1071 0213 8C       		.byte	-116
+ 1072 0214 98       		.byte	-104
+ 1073 0215 F0       		.byte	-16
+ 1074 0216 E0       		.byte	-32
+ 1075 0217 00       		.byte	0
+ 1076 0218 0F       		.byte	15
+ 1077 0219 0F       		.byte	15
+ 1078 021a 00       		.byte	0
+ 1079 021b 00       		.byte	0
+ 1080 021c 00       		.byte	0
+ 1081 021d 0F       		.byte	15
+ 1082 021e 0F       		.byte	15
+ 1083 021f 00       		.byte	0
+ 1084 0220 04       		.byte	4
+ 1085 0221 FC       		.byte	-4
+ 1086 0222 FC       		.byte	-4
+ 1087 0223 44       		.byte	68
+ 1088 0224 44       		.byte	68
+ 1089 0225 FC       		.byte	-4
+ 1090 0226 B8       		.byte	-72
+ 1091 0227 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 22
+
+
+ 1092 0228 08       		.byte	8
+ 1093 0229 0F       		.byte	15
+ 1094 022a 0F       		.byte	15
+ 1095 022b 08       		.byte	8
+ 1096 022c 08       		.byte	8
+ 1097 022d 0F       		.byte	15
+ 1098 022e 07       		.byte	7
+ 1099 022f 00       		.byte	0
+ 1100 0230 F0       		.byte	-16
+ 1101 0231 F8       		.byte	-8
+ 1102 0232 0C       		.byte	12
+ 1103 0233 04       		.byte	4
+ 1104 0234 04       		.byte	4
+ 1105 0235 0C       		.byte	12
+ 1106 0236 18       		.byte	24
+ 1107 0237 00       		.byte	0
+ 1108 0238 03       		.byte	3
+ 1109 0239 07       		.byte	7
+ 1110 023a 0C       		.byte	12
+ 1111 023b 08       		.byte	8
+ 1112 023c 08       		.byte	8
+ 1113 023d 0C       		.byte	12
+ 1114 023e 06       		.byte	6
+ 1115 023f 00       		.byte	0
+ 1116 0240 04       		.byte	4
+ 1117 0241 FC       		.byte	-4
+ 1118 0242 FC       		.byte	-4
+ 1119 0243 04       		.byte	4
+ 1120 0244 0C       		.byte	12
+ 1121 0245 F8       		.byte	-8
+ 1122 0246 F0       		.byte	-16
+ 1123 0247 00       		.byte	0
+ 1124 0248 08       		.byte	8
+ 1125 0249 0F       		.byte	15
+ 1126 024a 0F       		.byte	15
+ 1127 024b 08       		.byte	8
+ 1128 024c 0C       		.byte	12
+ 1129 024d 07       		.byte	7
+ 1130 024e 03       		.byte	3
+ 1131 024f 00       		.byte	0
+ 1132 0250 04       		.byte	4
+ 1133 0251 FC       		.byte	-4
+ 1134 0252 FC       		.byte	-4
+ 1135 0253 44       		.byte	68
+ 1136 0254 E4       		.byte	-28
+ 1137 0255 0C       		.byte	12
+ 1138 0256 1C       		.byte	28
+ 1139 0257 00       		.byte	0
+ 1140 0258 08       		.byte	8
+ 1141 0259 0F       		.byte	15
+ 1142 025a 0F       		.byte	15
+ 1143 025b 08       		.byte	8
+ 1144 025c 08       		.byte	8
+ 1145 025d 0C       		.byte	12
+ 1146 025e 0E       		.byte	14
+ 1147 025f 00       		.byte	0
+ 1148 0260 04       		.byte	4
+ARM GAS  /tmp/ccNvcmBO.s 			page 23
+
+
+ 1149 0261 FC       		.byte	-4
+ 1150 0262 FC       		.byte	-4
+ 1151 0263 44       		.byte	68
+ 1152 0264 E4       		.byte	-28
+ 1153 0265 0C       		.byte	12
+ 1154 0266 1C       		.byte	28
+ 1155 0267 00       		.byte	0
+ 1156 0268 08       		.byte	8
+ 1157 0269 0F       		.byte	15
+ 1158 026a 0F       		.byte	15
+ 1159 026b 08       		.byte	8
+ 1160 026c 00       		.byte	0
+ 1161 026d 00       		.byte	0
+ 1162 026e 00       		.byte	0
+ 1163 026f 00       		.byte	0
+ 1164 0270 F0       		.byte	-16
+ 1165 0271 F8       		.byte	-8
+ 1166 0272 0C       		.byte	12
+ 1167 0273 84       		.byte	-124
+ 1168 0274 84       		.byte	-124
+ 1169 0275 8C       		.byte	-116
+ 1170 0276 98       		.byte	-104
+ 1171 0277 00       		.byte	0
+ 1172 0278 03       		.byte	3
+ 1173 0279 07       		.byte	7
+ 1174 027a 0C       		.byte	12
+ 1175 027b 08       		.byte	8
+ 1176 027c 08       		.byte	8
+ 1177 027d 07       		.byte	7
+ 1178 027e 0F       		.byte	15
+ 1179 027f 00       		.byte	0
+ 1180 0280 FC       		.byte	-4
+ 1181 0281 FC       		.byte	-4
+ 1182 0282 40       		.byte	64
+ 1183 0283 40       		.byte	64
+ 1184 0284 40       		.byte	64
+ 1185 0285 FC       		.byte	-4
+ 1186 0286 FC       		.byte	-4
+ 1187 0287 00       		.byte	0
+ 1188 0288 0F       		.byte	15
+ 1189 0289 0F       		.byte	15
+ 1190 028a 00       		.byte	0
+ 1191 028b 00       		.byte	0
+ 1192 028c 00       		.byte	0
+ 1193 028d 0F       		.byte	15
+ 1194 028e 0F       		.byte	15
+ 1195 028f 00       		.byte	0
+ 1196 0290 00       		.byte	0
+ 1197 0291 00       		.byte	0
+ 1198 0292 04       		.byte	4
+ 1199 0293 FC       		.byte	-4
+ 1200 0294 FC       		.byte	-4
+ 1201 0295 04       		.byte	4
+ 1202 0296 00       		.byte	0
+ 1203 0297 00       		.byte	0
+ 1204 0298 00       		.byte	0
+ 1205 0299 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 24
+
+
+ 1206 029a 08       		.byte	8
+ 1207 029b 0F       		.byte	15
+ 1208 029c 0F       		.byte	15
+ 1209 029d 08       		.byte	8
+ 1210 029e 00       		.byte	0
+ 1211 029f 00       		.byte	0
+ 1212 02a0 00       		.byte	0
+ 1213 02a1 00       		.byte	0
+ 1214 02a2 00       		.byte	0
+ 1215 02a3 04       		.byte	4
+ 1216 02a4 FC       		.byte	-4
+ 1217 02a5 FC       		.byte	-4
+ 1218 02a6 04       		.byte	4
+ 1219 02a7 00       		.byte	0
+ 1220 02a8 07       		.byte	7
+ 1221 02a9 0F       		.byte	15
+ 1222 02aa 08       		.byte	8
+ 1223 02ab 08       		.byte	8
+ 1224 02ac 0F       		.byte	15
+ 1225 02ad 07       		.byte	7
+ 1226 02ae 00       		.byte	0
+ 1227 02af 00       		.byte	0
+ 1228 02b0 04       		.byte	4
+ 1229 02b1 FC       		.byte	-4
+ 1230 02b2 FC       		.byte	-4
+ 1231 02b3 C0       		.byte	-64
+ 1232 02b4 F0       		.byte	-16
+ 1233 02b5 3C       		.byte	60
+ 1234 02b6 0C       		.byte	12
+ 1235 02b7 00       		.byte	0
+ 1236 02b8 08       		.byte	8
+ 1237 02b9 0F       		.byte	15
+ 1238 02ba 0F       		.byte	15
+ 1239 02bb 00       		.byte	0
+ 1240 02bc 01       		.byte	1
+ 1241 02bd 0F       		.byte	15
+ 1242 02be 0E       		.byte	14
+ 1243 02bf 00       		.byte	0
+ 1244 02c0 04       		.byte	4
+ 1245 02c1 FC       		.byte	-4
+ 1246 02c2 FC       		.byte	-4
+ 1247 02c3 04       		.byte	4
+ 1248 02c4 00       		.byte	0
+ 1249 02c5 00       		.byte	0
+ 1250 02c6 00       		.byte	0
+ 1251 02c7 00       		.byte	0
+ 1252 02c8 08       		.byte	8
+ 1253 02c9 0F       		.byte	15
+ 1254 02ca 0F       		.byte	15
+ 1255 02cb 08       		.byte	8
+ 1256 02cc 08       		.byte	8
+ 1257 02cd 0C       		.byte	12
+ 1258 02ce 0E       		.byte	14
+ 1259 02cf 00       		.byte	0
+ 1260 02d0 FC       		.byte	-4
+ 1261 02d1 FC       		.byte	-4
+ 1262 02d2 38       		.byte	56
+ARM GAS  /tmp/ccNvcmBO.s 			page 25
+
+
+ 1263 02d3 70       		.byte	112
+ 1264 02d4 38       		.byte	56
+ 1265 02d5 FC       		.byte	-4
+ 1266 02d6 FC       		.byte	-4
+ 1267 02d7 00       		.byte	0
+ 1268 02d8 0F       		.byte	15
+ 1269 02d9 0F       		.byte	15
+ 1270 02da 00       		.byte	0
+ 1271 02db 00       		.byte	0
+ 1272 02dc 00       		.byte	0
+ 1273 02dd 0F       		.byte	15
+ 1274 02de 0F       		.byte	15
+ 1275 02df 00       		.byte	0
+ 1276 02e0 FC       		.byte	-4
+ 1277 02e1 FC       		.byte	-4
+ 1278 02e2 38       		.byte	56
+ 1279 02e3 70       		.byte	112
+ 1280 02e4 E0       		.byte	-32
+ 1281 02e5 FC       		.byte	-4
+ 1282 02e6 FC       		.byte	-4
+ 1283 02e7 00       		.byte	0
+ 1284 02e8 0F       		.byte	15
+ 1285 02e9 0F       		.byte	15
+ 1286 02ea 00       		.byte	0
+ 1287 02eb 00       		.byte	0
+ 1288 02ec 00       		.byte	0
+ 1289 02ed 0F       		.byte	15
+ 1290 02ee 0F       		.byte	15
+ 1291 02ef 00       		.byte	0
+ 1292 02f0 F0       		.byte	-16
+ 1293 02f1 F8       		.byte	-8
+ 1294 02f2 0C       		.byte	12
+ 1295 02f3 04       		.byte	4
+ 1296 02f4 0C       		.byte	12
+ 1297 02f5 F8       		.byte	-8
+ 1298 02f6 F0       		.byte	-16
+ 1299 02f7 00       		.byte	0
+ 1300 02f8 03       		.byte	3
+ 1301 02f9 07       		.byte	7
+ 1302 02fa 0C       		.byte	12
+ 1303 02fb 08       		.byte	8
+ 1304 02fc 0C       		.byte	12
+ 1305 02fd 07       		.byte	7
+ 1306 02fe 03       		.byte	3
+ 1307 02ff 00       		.byte	0
+ 1308 0300 04       		.byte	4
+ 1309 0301 FC       		.byte	-4
+ 1310 0302 FC       		.byte	-4
+ 1311 0303 44       		.byte	68
+ 1312 0304 44       		.byte	68
+ 1313 0305 7C       		.byte	124
+ 1314 0306 38       		.byte	56
+ 1315 0307 00       		.byte	0
+ 1316 0308 08       		.byte	8
+ 1317 0309 0F       		.byte	15
+ 1318 030a 0F       		.byte	15
+ 1319 030b 08       		.byte	8
+ARM GAS  /tmp/ccNvcmBO.s 			page 26
+
+
+ 1320 030c 00       		.byte	0
+ 1321 030d 00       		.byte	0
+ 1322 030e 00       		.byte	0
+ 1323 030f 00       		.byte	0
+ 1324 0310 F8       		.byte	-8
+ 1325 0311 FC       		.byte	-4
+ 1326 0312 04       		.byte	4
+ 1327 0313 04       		.byte	4
+ 1328 0314 04       		.byte	4
+ 1329 0315 FC       		.byte	-4
+ 1330 0316 F8       		.byte	-8
+ 1331 0317 00       		.byte	0
+ 1332 0318 07       		.byte	7
+ 1333 0319 0F       		.byte	15
+ 1334 031a 08       		.byte	8
+ 1335 031b 0E       		.byte	14
+ 1336 031c 3C       		.byte	60
+ 1337 031d 3F       		.byte	63
+ 1338 031e 27       		.byte	39
+ 1339 031f 00       		.byte	0
+ 1340 0320 04       		.byte	4
+ 1341 0321 FC       		.byte	-4
+ 1342 0322 FC       		.byte	-4
+ 1343 0323 44       		.byte	68
+ 1344 0324 C4       		.byte	-60
+ 1345 0325 FC       		.byte	-4
+ 1346 0326 38       		.byte	56
+ 1347 0327 00       		.byte	0
+ 1348 0328 08       		.byte	8
+ 1349 0329 0F       		.byte	15
+ 1350 032a 0F       		.byte	15
+ 1351 032b 00       		.byte	0
+ 1352 032c 00       		.byte	0
+ 1353 032d 0F       		.byte	15
+ 1354 032e 0F       		.byte	15
+ 1355 032f 00       		.byte	0
+ 1356 0330 18       		.byte	24
+ 1357 0331 3C       		.byte	60
+ 1358 0332 64       		.byte	100
+ 1359 0333 44       		.byte	68
+ 1360 0334 C4       		.byte	-60
+ 1361 0335 9C       		.byte	-100
+ 1362 0336 18       		.byte	24
+ 1363 0337 00       		.byte	0
+ 1364 0338 06       		.byte	6
+ 1365 0339 0E       		.byte	14
+ 1366 033a 08       		.byte	8
+ 1367 033b 08       		.byte	8
+ 1368 033c 08       		.byte	8
+ 1369 033d 0F       		.byte	15
+ 1370 033e 07       		.byte	7
+ 1371 033f 00       		.byte	0
+ 1372 0340 00       		.byte	0
+ 1373 0341 1C       		.byte	28
+ 1374 0342 0C       		.byte	12
+ 1375 0343 FC       		.byte	-4
+ 1376 0344 FC       		.byte	-4
+ARM GAS  /tmp/ccNvcmBO.s 			page 27
+
+
+ 1377 0345 0C       		.byte	12
+ 1378 0346 1C       		.byte	28
+ 1379 0347 00       		.byte	0
+ 1380 0348 00       		.byte	0
+ 1381 0349 00       		.byte	0
+ 1382 034a 08       		.byte	8
+ 1383 034b 0F       		.byte	15
+ 1384 034c 0F       		.byte	15
+ 1385 034d 08       		.byte	8
+ 1386 034e 00       		.byte	0
+ 1387 034f 00       		.byte	0
+ 1388 0350 FC       		.byte	-4
+ 1389 0351 FC       		.byte	-4
+ 1390 0352 00       		.byte	0
+ 1391 0353 00       		.byte	0
+ 1392 0354 00       		.byte	0
+ 1393 0355 FC       		.byte	-4
+ 1394 0356 FC       		.byte	-4
+ 1395 0357 00       		.byte	0
+ 1396 0358 07       		.byte	7
+ 1397 0359 0F       		.byte	15
+ 1398 035a 08       		.byte	8
+ 1399 035b 08       		.byte	8
+ 1400 035c 08       		.byte	8
+ 1401 035d 0F       		.byte	15
+ 1402 035e 07       		.byte	7
+ 1403 035f 00       		.byte	0
+ 1404 0360 FC       		.byte	-4
+ 1405 0361 FC       		.byte	-4
+ 1406 0362 00       		.byte	0
+ 1407 0363 00       		.byte	0
+ 1408 0364 00       		.byte	0
+ 1409 0365 FC       		.byte	-4
+ 1410 0366 FC       		.byte	-4
+ 1411 0367 00       		.byte	0
+ 1412 0368 01       		.byte	1
+ 1413 0369 03       		.byte	3
+ 1414 036a 06       		.byte	6
+ 1415 036b 0C       		.byte	12
+ 1416 036c 06       		.byte	6
+ 1417 036d 03       		.byte	3
+ 1418 036e 01       		.byte	1
+ 1419 036f 00       		.byte	0
+ 1420 0370 FC       		.byte	-4
+ 1421 0371 FC       		.byte	-4
+ 1422 0372 00       		.byte	0
+ 1423 0373 80       		.byte	-128
+ 1424 0374 00       		.byte	0
+ 1425 0375 FC       		.byte	-4
+ 1426 0376 FC       		.byte	-4
+ 1427 0377 00       		.byte	0
+ 1428 0378 03       		.byte	3
+ 1429 0379 0F       		.byte	15
+ 1430 037a 0E       		.byte	14
+ 1431 037b 03       		.byte	3
+ 1432 037c 0E       		.byte	14
+ 1433 037d 0F       		.byte	15
+ARM GAS  /tmp/ccNvcmBO.s 			page 28
+
+
+ 1434 037e 03       		.byte	3
+ 1435 037f 00       		.byte	0
+ 1436 0380 0C       		.byte	12
+ 1437 0381 3C       		.byte	60
+ 1438 0382 F0       		.byte	-16
+ 1439 0383 C0       		.byte	-64
+ 1440 0384 F0       		.byte	-16
+ 1441 0385 3C       		.byte	60
+ 1442 0386 0C       		.byte	12
+ 1443 0387 00       		.byte	0
+ 1444 0388 0C       		.byte	12
+ 1445 0389 0F       		.byte	15
+ 1446 038a 03       		.byte	3
+ 1447 038b 00       		.byte	0
+ 1448 038c 03       		.byte	3
+ 1449 038d 0F       		.byte	15
+ 1450 038e 0C       		.byte	12
+ 1451 038f 00       		.byte	0
+ 1452 0390 00       		.byte	0
+ 1453 0391 3C       		.byte	60
+ 1454 0392 7C       		.byte	124
+ 1455 0393 C0       		.byte	-64
+ 1456 0394 C0       		.byte	-64
+ 1457 0395 7C       		.byte	124
+ 1458 0396 3C       		.byte	60
+ 1459 0397 00       		.byte	0
+ 1460 0398 00       		.byte	0
+ 1461 0399 00       		.byte	0
+ 1462 039a 08       		.byte	8
+ 1463 039b 0F       		.byte	15
+ 1464 039c 0F       		.byte	15
+ 1465 039d 08       		.byte	8
+ 1466 039e 00       		.byte	0
+ 1467 039f 00       		.byte	0
+ 1468 03a0 1C       		.byte	28
+ 1469 03a1 0C       		.byte	12
+ 1470 03a2 84       		.byte	-124
+ 1471 03a3 C4       		.byte	-60
+ 1472 03a4 64       		.byte	100
+ 1473 03a5 3C       		.byte	60
+ 1474 03a6 1C       		.byte	28
+ 1475 03a7 00       		.byte	0
+ 1476 03a8 0E       		.byte	14
+ 1477 03a9 0F       		.byte	15
+ 1478 03aa 09       		.byte	9
+ 1479 03ab 08       		.byte	8
+ 1480 03ac 08       		.byte	8
+ 1481 03ad 0C       		.byte	12
+ 1482 03ae 0E       		.byte	14
+ 1483 03af 00       		.byte	0
+ 1484 03b0 00       		.byte	0
+ 1485 03b1 00       		.byte	0
+ 1486 03b2 FC       		.byte	-4
+ 1487 03b3 FC       		.byte	-4
+ 1488 03b4 04       		.byte	4
+ 1489 03b5 04       		.byte	4
+ 1490 03b6 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 29
+
+
+ 1491 03b7 00       		.byte	0
+ 1492 03b8 00       		.byte	0
+ 1493 03b9 00       		.byte	0
+ 1494 03ba 0F       		.byte	15
+ 1495 03bb 0F       		.byte	15
+ 1496 03bc 08       		.byte	8
+ 1497 03bd 08       		.byte	8
+ 1498 03be 00       		.byte	0
+ 1499 03bf 00       		.byte	0
+ 1500 03c0 38       		.byte	56
+ 1501 03c1 70       		.byte	112
+ 1502 03c2 E0       		.byte	-32
+ 1503 03c3 C0       		.byte	-64
+ 1504 03c4 80       		.byte	-128
+ 1505 03c5 00       		.byte	0
+ 1506 03c6 00       		.byte	0
+ 1507 03c7 00       		.byte	0
+ 1508 03c8 00       		.byte	0
+ 1509 03c9 00       		.byte	0
+ 1510 03ca 00       		.byte	0
+ 1511 03cb 01       		.byte	1
+ 1512 03cc 03       		.byte	3
+ 1513 03cd 07       		.byte	7
+ 1514 03ce 0E       		.byte	14
+ 1515 03cf 00       		.byte	0
+ 1516 03d0 00       		.byte	0
+ 1517 03d1 00       		.byte	0
+ 1518 03d2 04       		.byte	4
+ 1519 03d3 04       		.byte	4
+ 1520 03d4 FC       		.byte	-4
+ 1521 03d5 FC       		.byte	-4
+ 1522 03d6 00       		.byte	0
+ 1523 03d7 00       		.byte	0
+ 1524 03d8 00       		.byte	0
+ 1525 03d9 00       		.byte	0
+ 1526 03da 08       		.byte	8
+ 1527 03db 08       		.byte	8
+ 1528 03dc 0F       		.byte	15
+ 1529 03dd 0F       		.byte	15
+ 1530 03de 00       		.byte	0
+ 1531 03df 00       		.byte	0
+ 1532 03e0 08       		.byte	8
+ 1533 03e1 0C       		.byte	12
+ 1534 03e2 06       		.byte	6
+ 1535 03e3 03       		.byte	3
+ 1536 03e4 06       		.byte	6
+ 1537 03e5 0C       		.byte	12
+ 1538 03e6 08       		.byte	8
+ 1539 03e7 00       		.byte	0
+ 1540 03e8 00       		.byte	0
+ 1541 03e9 00       		.byte	0
+ 1542 03ea 00       		.byte	0
+ 1543 03eb 00       		.byte	0
+ 1544 03ec 00       		.byte	0
+ 1545 03ed 00       		.byte	0
+ 1546 03ee 00       		.byte	0
+ 1547 03ef 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 30
+
+
+ 1548 03f0 00       		.byte	0
+ 1549 03f1 00       		.byte	0
+ 1550 03f2 00       		.byte	0
+ 1551 03f3 00       		.byte	0
+ 1552 03f4 00       		.byte	0
+ 1553 03f5 00       		.byte	0
+ 1554 03f6 00       		.byte	0
+ 1555 03f7 00       		.byte	0
+ 1556 03f8 20       		.byte	32
+ 1557 03f9 20       		.byte	32
+ 1558 03fa 20       		.byte	32
+ 1559 03fb 20       		.byte	32
+ 1560 03fc 20       		.byte	32
+ 1561 03fd 20       		.byte	32
+ 1562 03fe 20       		.byte	32
+ 1563 03ff 20       		.byte	32
+ 1564 0400 00       		.byte	0
+ 1565 0401 00       		.byte	0
+ 1566 0402 03       		.byte	3
+ 1567 0403 07       		.byte	7
+ 1568 0404 04       		.byte	4
+ 1569 0405 00       		.byte	0
+ 1570 0406 00       		.byte	0
+ 1571 0407 00       		.byte	0
+ 1572 0408 00       		.byte	0
+ 1573 0409 00       		.byte	0
+ 1574 040a 00       		.byte	0
+ 1575 040b 00       		.byte	0
+ 1576 040c 00       		.byte	0
+ 1577 040d 00       		.byte	0
+ 1578 040e 00       		.byte	0
+ 1579 040f 00       		.byte	0
+ 1580 0410 00       		.byte	0
+ 1581 0411 A0       		.byte	-96
+ 1582 0412 A0       		.byte	-96
+ 1583 0413 A0       		.byte	-96
+ 1584 0414 E0       		.byte	-32
+ 1585 0415 C0       		.byte	-64
+ 1586 0416 00       		.byte	0
+ 1587 0417 00       		.byte	0
+ 1588 0418 07       		.byte	7
+ 1589 0419 0F       		.byte	15
+ 1590 041a 08       		.byte	8
+ 1591 041b 08       		.byte	8
+ 1592 041c 07       		.byte	7
+ 1593 041d 0F       		.byte	15
+ 1594 041e 08       		.byte	8
+ 1595 041f 00       		.byte	0
+ 1596 0420 04       		.byte	4
+ 1597 0421 FC       		.byte	-4
+ 1598 0422 FC       		.byte	-4
+ 1599 0423 20       		.byte	32
+ 1600 0424 60       		.byte	96
+ 1601 0425 C0       		.byte	-64
+ 1602 0426 80       		.byte	-128
+ 1603 0427 00       		.byte	0
+ 1604 0428 08       		.byte	8
+ARM GAS  /tmp/ccNvcmBO.s 			page 31
+
+
+ 1605 0429 0F       		.byte	15
+ 1606 042a 07       		.byte	7
+ 1607 042b 08       		.byte	8
+ 1608 042c 08       		.byte	8
+ 1609 042d 0F       		.byte	15
+ 1610 042e 07       		.byte	7
+ 1611 042f 00       		.byte	0
+ 1612 0430 C0       		.byte	-64
+ 1613 0431 E0       		.byte	-32
+ 1614 0432 20       		.byte	32
+ 1615 0433 20       		.byte	32
+ 1616 0434 20       		.byte	32
+ 1617 0435 60       		.byte	96
+ 1618 0436 40       		.byte	64
+ 1619 0437 00       		.byte	0
+ 1620 0438 07       		.byte	7
+ 1621 0439 0F       		.byte	15
+ 1622 043a 08       		.byte	8
+ 1623 043b 08       		.byte	8
+ 1624 043c 08       		.byte	8
+ 1625 043d 0C       		.byte	12
+ 1626 043e 04       		.byte	4
+ 1627 043f 00       		.byte	0
+ 1628 0440 80       		.byte	-128
+ 1629 0441 C0       		.byte	-64
+ 1630 0442 60       		.byte	96
+ 1631 0443 24       		.byte	36
+ 1632 0444 FC       		.byte	-4
+ 1633 0445 FC       		.byte	-4
+ 1634 0446 00       		.byte	0
+ 1635 0447 00       		.byte	0
+ 1636 0448 07       		.byte	7
+ 1637 0449 0F       		.byte	15
+ 1638 044a 08       		.byte	8
+ 1639 044b 08       		.byte	8
+ 1640 044c 07       		.byte	7
+ 1641 044d 0F       		.byte	15
+ 1642 044e 08       		.byte	8
+ 1643 044f 00       		.byte	0
+ 1644 0450 C0       		.byte	-64
+ 1645 0451 E0       		.byte	-32
+ 1646 0452 A0       		.byte	-96
+ 1647 0453 A0       		.byte	-96
+ 1648 0454 A0       		.byte	-96
+ 1649 0455 E0       		.byte	-32
+ 1650 0456 C0       		.byte	-64
+ 1651 0457 00       		.byte	0
+ 1652 0458 07       		.byte	7
+ 1653 0459 0F       		.byte	15
+ 1654 045a 08       		.byte	8
+ 1655 045b 08       		.byte	8
+ 1656 045c 08       		.byte	8
+ 1657 045d 0C       		.byte	12
+ 1658 045e 04       		.byte	4
+ 1659 045f 00       		.byte	0
+ 1660 0460 40       		.byte	64
+ 1661 0461 F8       		.byte	-8
+ARM GAS  /tmp/ccNvcmBO.s 			page 32
+
+
+ 1662 0462 FC       		.byte	-4
+ 1663 0463 44       		.byte	68
+ 1664 0464 0C       		.byte	12
+ 1665 0465 18       		.byte	24
+ 1666 0466 00       		.byte	0
+ 1667 0467 00       		.byte	0
+ 1668 0468 08       		.byte	8
+ 1669 0469 0F       		.byte	15
+ 1670 046a 0F       		.byte	15
+ 1671 046b 08       		.byte	8
+ 1672 046c 00       		.byte	0
+ 1673 046d 00       		.byte	0
+ 1674 046e 00       		.byte	0
+ 1675 046f 00       		.byte	0
+ 1676 0470 C0       		.byte	-64
+ 1677 0471 E0       		.byte	-32
+ 1678 0472 20       		.byte	32
+ 1679 0473 20       		.byte	32
+ 1680 0474 C0       		.byte	-64
+ 1681 0475 E0       		.byte	-32
+ 1682 0476 20       		.byte	32
+ 1683 0477 00       		.byte	0
+ 1684 0478 27       		.byte	39
+ 1685 0479 6F       		.byte	111
+ 1686 047a 48       		.byte	72
+ 1687 047b 48       		.byte	72
+ 1688 047c 7F       		.byte	127
+ 1689 047d 3F       		.byte	63
+ 1690 047e 00       		.byte	0
+ 1691 047f 00       		.byte	0
+ 1692 0480 04       		.byte	4
+ 1693 0481 FC       		.byte	-4
+ 1694 0482 FC       		.byte	-4
+ 1695 0483 40       		.byte	64
+ 1696 0484 20       		.byte	32
+ 1697 0485 E0       		.byte	-32
+ 1698 0486 C0       		.byte	-64
+ 1699 0487 00       		.byte	0
+ 1700 0488 08       		.byte	8
+ 1701 0489 0F       		.byte	15
+ 1702 048a 0F       		.byte	15
+ 1703 048b 00       		.byte	0
+ 1704 048c 00       		.byte	0
+ 1705 048d 0F       		.byte	15
+ 1706 048e 0F       		.byte	15
+ 1707 048f 00       		.byte	0
+ 1708 0490 00       		.byte	0
+ 1709 0491 00       		.byte	0
+ 1710 0492 20       		.byte	32
+ 1711 0493 EC       		.byte	-20
+ 1712 0494 EC       		.byte	-20
+ 1713 0495 00       		.byte	0
+ 1714 0496 00       		.byte	0
+ 1715 0497 00       		.byte	0
+ 1716 0498 00       		.byte	0
+ 1717 0499 00       		.byte	0
+ 1718 049a 08       		.byte	8
+ARM GAS  /tmp/ccNvcmBO.s 			page 33
+
+
+ 1719 049b 0F       		.byte	15
+ 1720 049c 0F       		.byte	15
+ 1721 049d 08       		.byte	8
+ 1722 049e 00       		.byte	0
+ 1723 049f 00       		.byte	0
+ 1724 04a0 00       		.byte	0
+ 1725 04a1 00       		.byte	0
+ 1726 04a2 00       		.byte	0
+ 1727 04a3 00       		.byte	0
+ 1728 04a4 20       		.byte	32
+ 1729 04a5 EC       		.byte	-20
+ 1730 04a6 EC       		.byte	-20
+ 1731 04a7 00       		.byte	0
+ 1732 04a8 00       		.byte	0
+ 1733 04a9 30       		.byte	48
+ 1734 04aa 70       		.byte	112
+ 1735 04ab 40       		.byte	64
+ 1736 04ac 40       		.byte	64
+ 1737 04ad 7F       		.byte	127
+ 1738 04ae 3F       		.byte	63
+ 1739 04af 00       		.byte	0
+ 1740 04b0 04       		.byte	4
+ 1741 04b1 FC       		.byte	-4
+ 1742 04b2 FC       		.byte	-4
+ 1743 04b3 80       		.byte	-128
+ 1744 04b4 C0       		.byte	-64
+ 1745 04b5 60       		.byte	96
+ 1746 04b6 20       		.byte	32
+ 1747 04b7 00       		.byte	0
+ 1748 04b8 08       		.byte	8
+ 1749 04b9 0F       		.byte	15
+ 1750 04ba 0F       		.byte	15
+ 1751 04bb 01       		.byte	1
+ 1752 04bc 03       		.byte	3
+ 1753 04bd 0E       		.byte	14
+ 1754 04be 0C       		.byte	12
+ 1755 04bf 00       		.byte	0
+ 1756 04c0 00       		.byte	0
+ 1757 04c1 00       		.byte	0
+ 1758 04c2 04       		.byte	4
+ 1759 04c3 FC       		.byte	-4
+ 1760 04c4 FC       		.byte	-4
+ 1761 04c5 00       		.byte	0
+ 1762 04c6 00       		.byte	0
+ 1763 04c7 00       		.byte	0
+ 1764 04c8 00       		.byte	0
+ 1765 04c9 00       		.byte	0
+ 1766 04ca 08       		.byte	8
+ 1767 04cb 0F       		.byte	15
+ 1768 04cc 0F       		.byte	15
+ 1769 04cd 08       		.byte	8
+ 1770 04ce 00       		.byte	0
+ 1771 04cf 00       		.byte	0
+ 1772 04d0 E0       		.byte	-32
+ 1773 04d1 E0       		.byte	-32
+ 1774 04d2 60       		.byte	96
+ 1775 04d3 C0       		.byte	-64
+ARM GAS  /tmp/ccNvcmBO.s 			page 34
+
+
+ 1776 04d4 60       		.byte	96
+ 1777 04d5 E0       		.byte	-32
+ 1778 04d6 C0       		.byte	-64
+ 1779 04d7 00       		.byte	0
+ 1780 04d8 0F       		.byte	15
+ 1781 04d9 0F       		.byte	15
+ 1782 04da 00       		.byte	0
+ 1783 04db 0F       		.byte	15
+ 1784 04dc 00       		.byte	0
+ 1785 04dd 0F       		.byte	15
+ 1786 04de 0F       		.byte	15
+ 1787 04df 00       		.byte	0
+ 1788 04e0 20       		.byte	32
+ 1789 04e1 E0       		.byte	-32
+ 1790 04e2 C0       		.byte	-64
+ 1791 04e3 20       		.byte	32
+ 1792 04e4 20       		.byte	32
+ 1793 04e5 E0       		.byte	-32
+ 1794 04e6 C0       		.byte	-64
+ 1795 04e7 00       		.byte	0
+ 1796 04e8 00       		.byte	0
+ 1797 04e9 0F       		.byte	15
+ 1798 04ea 0F       		.byte	15
+ 1799 04eb 00       		.byte	0
+ 1800 04ec 00       		.byte	0
+ 1801 04ed 0F       		.byte	15
+ 1802 04ee 0F       		.byte	15
+ 1803 04ef 00       		.byte	0
+ 1804 04f0 C0       		.byte	-64
+ 1805 04f1 E0       		.byte	-32
+ 1806 04f2 20       		.byte	32
+ 1807 04f3 20       		.byte	32
+ 1808 04f4 20       		.byte	32
+ 1809 04f5 E0       		.byte	-32
+ 1810 04f6 C0       		.byte	-64
+ 1811 04f7 00       		.byte	0
+ 1812 04f8 07       		.byte	7
+ 1813 04f9 0F       		.byte	15
+ 1814 04fa 08       		.byte	8
+ 1815 04fb 08       		.byte	8
+ 1816 04fc 08       		.byte	8
+ 1817 04fd 0F       		.byte	15
+ 1818 04fe 07       		.byte	7
+ 1819 04ff 00       		.byte	0
+ 1820 0500 20       		.byte	32
+ 1821 0501 E0       		.byte	-32
+ 1822 0502 C0       		.byte	-64
+ 1823 0503 20       		.byte	32
+ 1824 0504 20       		.byte	32
+ 1825 0505 E0       		.byte	-32
+ 1826 0506 C0       		.byte	-64
+ 1827 0507 00       		.byte	0
+ 1828 0508 40       		.byte	64
+ 1829 0509 7F       		.byte	127
+ 1830 050a 7F       		.byte	127
+ 1831 050b 48       		.byte	72
+ 1832 050c 08       		.byte	8
+ARM GAS  /tmp/ccNvcmBO.s 			page 35
+
+
+ 1833 050d 0F       		.byte	15
+ 1834 050e 07       		.byte	7
+ 1835 050f 00       		.byte	0
+ 1836 0510 C0       		.byte	-64
+ 1837 0511 E0       		.byte	-32
+ 1838 0512 20       		.byte	32
+ 1839 0513 20       		.byte	32
+ 1840 0514 C0       		.byte	-64
+ 1841 0515 E0       		.byte	-32
+ 1842 0516 20       		.byte	32
+ 1843 0517 00       		.byte	0
+ 1844 0518 07       		.byte	7
+ 1845 0519 0F       		.byte	15
+ 1846 051a 08       		.byte	8
+ 1847 051b 48       		.byte	72
+ 1848 051c 7F       		.byte	127
+ 1849 051d 7F       		.byte	127
+ 1850 051e 40       		.byte	64
+ 1851 051f 00       		.byte	0
+ 1852 0520 20       		.byte	32
+ 1853 0521 E0       		.byte	-32
+ 1854 0522 C0       		.byte	-64
+ 1855 0523 60       		.byte	96
+ 1856 0524 20       		.byte	32
+ 1857 0525 60       		.byte	96
+ 1858 0526 C0       		.byte	-64
+ 1859 0527 00       		.byte	0
+ 1860 0528 08       		.byte	8
+ 1861 0529 0F       		.byte	15
+ 1862 052a 0F       		.byte	15
+ 1863 052b 08       		.byte	8
+ 1864 052c 00       		.byte	0
+ 1865 052d 00       		.byte	0
+ 1866 052e 00       		.byte	0
+ 1867 052f 00       		.byte	0
+ 1868 0530 40       		.byte	64
+ 1869 0531 E0       		.byte	-32
+ 1870 0532 A0       		.byte	-96
+ 1871 0533 20       		.byte	32
+ 1872 0534 20       		.byte	32
+ 1873 0535 60       		.byte	96
+ 1874 0536 40       		.byte	64
+ 1875 0537 00       		.byte	0
+ 1876 0538 04       		.byte	4
+ 1877 0539 0C       		.byte	12
+ 1878 053a 09       		.byte	9
+ 1879 053b 09       		.byte	9
+ 1880 053c 0B       		.byte	11
+ 1881 053d 0E       		.byte	14
+ 1882 053e 04       		.byte	4
+ 1883 053f 00       		.byte	0
+ 1884 0540 20       		.byte	32
+ 1885 0541 20       		.byte	32
+ 1886 0542 F8       		.byte	-8
+ 1887 0543 FC       		.byte	-4
+ 1888 0544 20       		.byte	32
+ 1889 0545 20       		.byte	32
+ARM GAS  /tmp/ccNvcmBO.s 			page 36
+
+
+ 1890 0546 00       		.byte	0
+ 1891 0547 00       		.byte	0
+ 1892 0548 00       		.byte	0
+ 1893 0549 00       		.byte	0
+ 1894 054a 07       		.byte	7
+ 1895 054b 0F       		.byte	15
+ 1896 054c 08       		.byte	8
+ 1897 054d 0C       		.byte	12
+ 1898 054e 04       		.byte	4
+ 1899 054f 00       		.byte	0
+ 1900 0550 E0       		.byte	-32
+ 1901 0551 E0       		.byte	-32
+ 1902 0552 00       		.byte	0
+ 1903 0553 00       		.byte	0
+ 1904 0554 E0       		.byte	-32
+ 1905 0555 E0       		.byte	-32
+ 1906 0556 00       		.byte	0
+ 1907 0557 00       		.byte	0
+ 1908 0558 07       		.byte	7
+ 1909 0559 0F       		.byte	15
+ 1910 055a 08       		.byte	8
+ 1911 055b 08       		.byte	8
+ 1912 055c 07       		.byte	7
+ 1913 055d 0F       		.byte	15
+ 1914 055e 08       		.byte	8
+ 1915 055f 00       		.byte	0
+ 1916 0560 00       		.byte	0
+ 1917 0561 E0       		.byte	-32
+ 1918 0562 E0       		.byte	-32
+ 1919 0563 00       		.byte	0
+ 1920 0564 00       		.byte	0
+ 1921 0565 E0       		.byte	-32
+ 1922 0566 E0       		.byte	-32
+ 1923 0567 00       		.byte	0
+ 1924 0568 00       		.byte	0
+ 1925 0569 03       		.byte	3
+ 1926 056a 07       		.byte	7
+ 1927 056b 0C       		.byte	12
+ 1928 056c 0C       		.byte	12
+ 1929 056d 07       		.byte	7
+ 1930 056e 03       		.byte	3
+ 1931 056f 00       		.byte	0
+ 1932 0570 E0       		.byte	-32
+ 1933 0571 E0       		.byte	-32
+ 1934 0572 00       		.byte	0
+ 1935 0573 00       		.byte	0
+ 1936 0574 00       		.byte	0
+ 1937 0575 E0       		.byte	-32
+ 1938 0576 E0       		.byte	-32
+ 1939 0577 00       		.byte	0
+ 1940 0578 07       		.byte	7
+ 1941 0579 0F       		.byte	15
+ 1942 057a 0C       		.byte	12
+ 1943 057b 07       		.byte	7
+ 1944 057c 0C       		.byte	12
+ 1945 057d 0F       		.byte	15
+ 1946 057e 07       		.byte	7
+ARM GAS  /tmp/ccNvcmBO.s 			page 37
+
+
+ 1947 057f 00       		.byte	0
+ 1948 0580 20       		.byte	32
+ 1949 0581 60       		.byte	96
+ 1950 0582 C0       		.byte	-64
+ 1951 0583 80       		.byte	-128
+ 1952 0584 C0       		.byte	-64
+ 1953 0585 60       		.byte	96
+ 1954 0586 20       		.byte	32
+ 1955 0587 00       		.byte	0
+ 1956 0588 08       		.byte	8
+ 1957 0589 0C       		.byte	12
+ 1958 058a 07       		.byte	7
+ 1959 058b 03       		.byte	3
+ 1960 058c 07       		.byte	7
+ 1961 058d 0C       		.byte	12
+ 1962 058e 08       		.byte	8
+ 1963 058f 00       		.byte	0
+ 1964 0590 E0       		.byte	-32
+ 1965 0591 E0       		.byte	-32
+ 1966 0592 00       		.byte	0
+ 1967 0593 00       		.byte	0
+ 1968 0594 00       		.byte	0
+ 1969 0595 E0       		.byte	-32
+ 1970 0596 E0       		.byte	-32
+ 1971 0597 00       		.byte	0
+ 1972 0598 47       		.byte	71
+ 1973 0599 4F       		.byte	79
+ 1974 059a 48       		.byte	72
+ 1975 059b 48       		.byte	72
+ 1976 059c 68       		.byte	104
+ 1977 059d 3F       		.byte	63
+ 1978 059e 1F       		.byte	31
+ 1979 059f 00       		.byte	0
+ 1980 05a0 60       		.byte	96
+ 1981 05a1 60       		.byte	96
+ 1982 05a2 20       		.byte	32
+ 1983 05a3 A0       		.byte	-96
+ 1984 05a4 E0       		.byte	-32
+ 1985 05a5 60       		.byte	96
+ 1986 05a6 20       		.byte	32
+ 1987 05a7 00       		.byte	0
+ 1988 05a8 0C       		.byte	12
+ 1989 05a9 0E       		.byte	14
+ 1990 05aa 0B       		.byte	11
+ 1991 05ab 09       		.byte	9
+ 1992 05ac 08       		.byte	8
+ 1993 05ad 0C       		.byte	12
+ 1994 05ae 0C       		.byte	12
+ 1995 05af 00       		.byte	0
+ 1996 05b0 00       		.byte	0
+ 1997 05b1 40       		.byte	64
+ 1998 05b2 40       		.byte	64
+ 1999 05b3 F8       		.byte	-8
+ 2000 05b4 BC       		.byte	-68
+ 2001 05b5 04       		.byte	4
+ 2002 05b6 04       		.byte	4
+ 2003 05b7 00       		.byte	0
+ARM GAS  /tmp/ccNvcmBO.s 			page 38
+
+
+ 2004 05b8 00       		.byte	0
+ 2005 05b9 00       		.byte	0
+ 2006 05ba 00       		.byte	0
+ 2007 05bb 07       		.byte	7
+ 2008 05bc 0F       		.byte	15
+ 2009 05bd 08       		.byte	8
+ 2010 05be 08       		.byte	8
+ 2011 05bf 00       		.byte	0
+ 2012 05c0 00       		.byte	0
+ 2013 05c1 00       		.byte	0
+ 2014 05c2 00       		.byte	0
+ 2015 05c3 BC       		.byte	-68
+ 2016 05c4 BC       		.byte	-68
+ 2017 05c5 00       		.byte	0
+ 2018 05c6 00       		.byte	0
+ 2019 05c7 00       		.byte	0
+ 2020 05c8 00       		.byte	0
+ 2021 05c9 00       		.byte	0
+ 2022 05ca 00       		.byte	0
+ 2023 05cb 0F       		.byte	15
+ 2024 05cc 0F       		.byte	15
+ 2025 05cd 00       		.byte	0
+ 2026 05ce 00       		.byte	0
+ 2027 05cf 00       		.byte	0
+ 2028 05d0 00       		.byte	0
+ 2029 05d1 04       		.byte	4
+ 2030 05d2 04       		.byte	4
+ 2031 05d3 BC       		.byte	-68
+ 2032 05d4 F8       		.byte	-8
+ 2033 05d5 40       		.byte	64
+ 2034 05d6 40       		.byte	64
+ 2035 05d7 00       		.byte	0
+ 2036 05d8 00       		.byte	0
+ 2037 05d9 08       		.byte	8
+ 2038 05da 08       		.byte	8
+ 2039 05db 0F       		.byte	15
+ 2040 05dc 07       		.byte	7
+ 2041 05dd 00       		.byte	0
+ 2042 05de 00       		.byte	0
+ 2043 05df 00       		.byte	0
+ 2044 05e0 08       		.byte	8
+ 2045 05e1 0C       		.byte	12
+ 2046 05e2 04       		.byte	4
+ 2047 05e3 0C       		.byte	12
+ 2048 05e4 08       		.byte	8
+ 2049 05e5 0C       		.byte	12
+ 2050 05e6 04       		.byte	4
+ 2051 05e7 00       		.byte	0
+ 2052 05e8 00       		.byte	0
+ 2053 05e9 00       		.byte	0
+ 2054 05ea 00       		.byte	0
+ 2055 05eb 00       		.byte	0
+ 2056 05ec 00       		.byte	0
+ 2057 05ed 00       		.byte	0
+ 2058 05ee 00       		.byte	0
+ 2059 05ef 00       		.byte	0
+ 2060 05f0 80       		.byte	-128
+ARM GAS  /tmp/ccNvcmBO.s 			page 39
+
+
+ 2061 05f1 C0       		.byte	-64
+ 2062 05f2 60       		.byte	96
+ 2063 05f3 30       		.byte	48
+ 2064 05f4 60       		.byte	96
+ 2065 05f5 C0       		.byte	-64
+ 2066 05f6 80       		.byte	-128
+ 2067 05f7 00       		.byte	0
+ 2068 05f8 07       		.byte	7
+ 2069 05f9 07       		.byte	7
+ 2070 05fa 04       		.byte	4
+ 2071 05fb 04       		.byte	4
+ 2072 05fc 04       		.byte	4
+ 2073 05fd 07       		.byte	7
+ 2074 05fe 07       		.byte	7
+ 2075 05ff 00       		.byte	0
+ 2076              		.section	.rodata.OLED_Display_Character.str1.4,"aMS",%progbits,1
+ 2077              		.align	2
+ 2078              	.LC0:
+ 2079 0000 2000     		.ascii	" \000"
+ 2080              		.text
+ 2081              	.Letext0:
+ 2082              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 2083              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 2084              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 2085              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 2086              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 2087              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 2088              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 2089              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 2090              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 2091              		.file 11 "Inc/i2c.h"
+ 2092              		.file 12 "Inc/ASCII.h"
+ARM GAS  /tmp/ccNvcmBO.s 			page 40
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 OLED_SSD1306.c
-     /tmp/ccIYzuRL.s:16     .text.OLED_Write_Order:0000000000000000 $t
-     /tmp/ccIYzuRL.s:23     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
-     /tmp/ccIYzuRL.s:61     .text.OLED_Write_Order:0000000000000028 $d
-     /tmp/ccIYzuRL.s:66     .text.OLED_Write_Data:0000000000000000 $t
-     /tmp/ccIYzuRL.s:73     .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
-     /tmp/ccIYzuRL.s:110    .text.OLED_Write_Data:0000000000000028 $d
-     /tmp/ccIYzuRL.s:115    .text.OLED_Init:0000000000000000 $t
-     /tmp/ccIYzuRL.s:122    .text.OLED_Init:0000000000000000 OLED_Init
-     /tmp/ccIYzuRL.s:180    .text.OLED_Init:0000000000000034 $d
-     /tmp/ccIYzuRL.s:186    .text.OLED_clear:0000000000000000 $t
-     /tmp/ccIYzuRL.s:193    .text.OLED_clear:0000000000000000 OLED_clear
-     /tmp/ccIYzuRL.s:264    .text.OLED_open:0000000000000000 $t
-     /tmp/ccIYzuRL.s:271    .text.OLED_open:0000000000000000 OLED_open
-     /tmp/ccIYzuRL.s:303    .text.OLED_close:0000000000000000 $t
-     /tmp/ccIYzuRL.s:310    .text.OLED_close:0000000000000000 OLED_close
-     /tmp/ccIYzuRL.s:342    .text.OLED_Display_String:0000000000000000 $t
-     /tmp/ccIYzuRL.s:349    .text.OLED_Display_String:0000000000000000 OLED_Display_String
-     /tmp/ccIYzuRL.s:441    .text.OLED_Display_String:000000000000005c $d
-     /tmp/ccIYzuRL.s:452    .data.Init_Data:0000000000000000 Init_Data
-     /tmp/ccIYzuRL.s:482    .rodata.ASCII_8x16:0000000000000000 ASCII_8x16
-     /tmp/ccIYzuRL.s:448    .data.Init_Data:0000000000000000 $d
-     /tmp/ccIYzuRL.s:478    .rodata.ASCII_8x16:0000000000000000 $d
+     /tmp/ccNvcmBO.s:16     .text.OLED_Write_Order:0000000000000000 $t
+     /tmp/ccNvcmBO.s:23     .text.OLED_Write_Order:0000000000000000 OLED_Write_Order
+     /tmp/ccNvcmBO.s:61     .text.OLED_Write_Order:0000000000000028 $d
+     /tmp/ccNvcmBO.s:66     .text.OLED_Write_Data:0000000000000000 $t
+     /tmp/ccNvcmBO.s:73     .text.OLED_Write_Data:0000000000000000 OLED_Write_Data
+     /tmp/ccNvcmBO.s:110    .text.OLED_Write_Data:0000000000000028 $d
+     /tmp/ccNvcmBO.s:115    .text.OLED_Init:0000000000000000 $t
+     /tmp/ccNvcmBO.s:122    .text.OLED_Init:0000000000000000 OLED_Init
+     /tmp/ccNvcmBO.s:180    .text.OLED_Init:0000000000000034 $d
+     /tmp/ccNvcmBO.s:186    .text.OLED_clear:0000000000000000 $t
+     /tmp/ccNvcmBO.s:193    .text.OLED_clear:0000000000000000 OLED_clear
+     /tmp/ccNvcmBO.s:264    .text.OLED_open:0000000000000000 $t
+     /tmp/ccNvcmBO.s:271    .text.OLED_open:0000000000000000 OLED_open
+     /tmp/ccNvcmBO.s:303    .text.OLED_close:0000000000000000 $t
+     /tmp/ccNvcmBO.s:310    .text.OLED_close:0000000000000000 OLED_close
+     /tmp/ccNvcmBO.s:342    .text.OLED_Display_Character:0000000000000000 $t
+     /tmp/ccNvcmBO.s:349    .text.OLED_Display_Character:0000000000000000 OLED_Display_Character
+     /tmp/ccNvcmBO.s:441    .text.OLED_Display_Character:000000000000005c $d
+     /tmp/ccNvcmBO.s:447    .text.OLED_Display_String:0000000000000000 $t
+     /tmp/ccNvcmBO.s:454    .text.OLED_Display_String:0000000000000000 OLED_Display_String
+     /tmp/ccNvcmBO.s:509    .data.Init_Data:0000000000000000 Init_Data
+     /tmp/ccNvcmBO.s:539    .rodata.ASCII_8x16:0000000000000000 ASCII_8x16
+     /tmp/ccNvcmBO.s:505    .data.Init_Data:0000000000000000 $d
+     /tmp/ccNvcmBO.s:535    .rodata.ASCII_8x16:0000000000000000 $d
+     /tmp/ccNvcmBO.s:2077   .rodata.OLED_Display_Character.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

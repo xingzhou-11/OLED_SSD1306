@@ -74,7 +74,7 @@ void OLED_close(void)
 void OLED_Display_Character(uint8_t x, uint8_t y, char *pCharacter)
 {
 	y = y+2;
-	uint8_t  Data = *pString - 32;
+	uint8_t  Data = pCharacter - " ";
 
 	for(uint8_t i=0; i<2; i++)
 	{
@@ -97,9 +97,9 @@ void OLED_Display_Character(uint8_t x, uint8_t y, char *pCharacter)
 void OLED_Display_String(uint8_t x, char *pString)
 {
 	uint8_t i = 0;
-	while (*pString != '/0')
+	while (*pString != '\0')
 	{
-		void OLED_Display_Character(x, i, *pString++)
+		OLED_Display_Character(x, i, pString++);
 		i++;
 	}
 	
