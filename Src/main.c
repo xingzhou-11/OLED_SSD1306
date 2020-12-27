@@ -95,7 +95,7 @@ int main(void)
 	OLED_open();
   OLED_clear();
 
-  OLED_Display_String(0, "tinayi");
+  OLED_Display_String(2, "tinayi");
 
   /* USER CODE END 2 */
 
