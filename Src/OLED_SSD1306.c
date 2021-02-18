@@ -7,6 +7,16 @@ uint8_t Init_Data[] = {
 	0xD9, 0xF1, 0xDA, 0x12, 0xD8, 0x30, 0x8D, 0x14, 0xAF
 	};
 
+//OLED初始化
+void OLED_Init()
+{	
+	uint8_t i = 0;
+	for(i=0; i<27; i++)
+	{
+		HAL_I2C_Mem_Write(&hi2c1 ,0x78,0x00,I2C_MEMADD_SIZE_8BIT,Init_Data+i,1,0x100);
+	}
+}
+
 //向OLED进行写命令操作
 void OLED_Write_Order(uint8_t Order)
 {
@@ -17,17 +27,6 @@ void OLED_Write_Order(uint8_t Order)
 void OLED_Write_Data(uint8_t Data)
 {
 	HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x40, I2C_MEMADD_SIZE_8BIT, &Data, 1, 0x100);
-}
-
-//OLED初始化
-void OLED_Init()
-{	
-	uint8_t i = 0;
-	for(i=0; i<27; i++)
-	{
-		HAL_I2C_Mem_Write(&hi2c1, 0x78, 0x00, I2C_MEMADD_SIZE_8BIT, Init_Data+i, 1, 0x100);
-		HAL_Delay(100);
-	}
 }
 
 //清屏
@@ -70,11 +69,11 @@ void OLED_close(void)
 //x		页地址
 //y		列地址	范围：00h ~ 1Fh
 //*pCharacter	数据
-void OLED_Display_Character(uint8_t x, uint8_t y, char *pCharacter)
+void OLED_Display_Char(uint8_t x, uint8_t y, char Character)
 {
-	y = y+2;
-	uint8_t  data = pCharacter - " ";
+	uint8_t  data = Character - " ";
 
+	y = y+2;
 	for(uint8_t i=0; i<2; i++)
 	{
 		OLED_Write_Order(0xB0 + x);
@@ -108,8 +107,7 @@ void OLED_Display_String(uint8_t x, char *pString)
 	uint8_t i = 0;
 	while (*pString != '\0')
 	{
-		OLED_Display_Character(x, i, pString++);
+		OLED_Display_Char(x, i*8, pString++);
 		i++;
 	}
-	
 }

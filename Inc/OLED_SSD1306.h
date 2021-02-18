@@ -9,7 +9,7 @@ void OLED_open(void);
 void OLED_close(void);
 void OLED_clear(void);
 
-void OLED_Display_Character(uint8_t x, uint8_t y, char *pCharacter);
+void OLED_Display_Char(uint8_t x, uint8_t y, char *pCharacter);
 void OLED_Display_String(uint8_t x, char *pString);
 
 #endif
